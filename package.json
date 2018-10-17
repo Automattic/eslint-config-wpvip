@@ -1,0 +1,36 @@
+{
+  "name": "eslint-config-wpvip",
+  "version": "0.0.1",
+  "description": "ESLint configs to enforce VIP's (internal) JS coding standards",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Automattic/eslint-config-wpvip.git"
+  },
+  "keywords": [
+    "eslint",
+    "eslintconfig"
+  ],
+  "author": "Automattic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Automattic/eslint-config-wpvip/issues"
+  },
+  "homepage": "https://github.com/Automattic/eslint-config-wpvip#readme",
+  "dependencies": {
+    "eslint-config-wpcalypso": "^4.0.0",
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-flowtype": "^2.50.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "eslint-plugin-wpcalypso": "^4.0.1",
+    "eslint-plugin-json": "^1.2.1"
+  },
+  "peerDependencies": {
+    "eslint": "^3.3.1 || ^4.6.1 || ^5.0.0"
+  }
+}
