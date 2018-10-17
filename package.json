@@ -20,7 +20,7 @@
     "url": "https://github.com/Automattic/eslint-config-wpvip/issues"
   },
   "homepage": "https://github.com/Automattic/eslint-config-wpvip#readme",
-  "dependencies": {
+  "devDependencies": {
     "babel-eslint": "^8.2.6",
     "eslint-config-wpcalypso": "^4.0.0",
     "eslint-loader": "^2.1.0",
