@@ -29,6 +29,7 @@ module.exports = {
 		beforeAll: true,
 		afterAll: true,
 		jest: true,
+		window: true,
 	},
 	rules: {
 		'wpcalypso/jsx-classname-namespace': 0,
