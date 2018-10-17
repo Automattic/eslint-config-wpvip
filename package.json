@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Automattic/eslint-config-wpvip#readme",
   "dependencies": {
+    "babel-eslint": "^8.2.6",
     "eslint-config-wpcalypso": "^4.0.0",
     "eslint-loader": "^2.1.0",
     "eslint-plugin-flowtype": "^2.50.0",
