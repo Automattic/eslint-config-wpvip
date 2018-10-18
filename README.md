@@ -3,10 +3,14 @@ ESLint configs to enforce VIP's (internal) JS coding standards
 
 # Installation
 
-To add `eslint-config-wpvip` to you project, first install it:
+To add `eslint-config-wpvip` to you project, first install it to `package.json` (not yet published to NPM):
 
 ```
-npm i --save-dev eslint-config-wpvip
+"devDependencies": {
+  ...
+  "eslint-config-wpvip": "github:automattic/eslint-config-wpvip#6b5993b",
+  ...
+}
 ```
 
 And install the required dependencies:
