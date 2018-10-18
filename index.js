@@ -62,4 +62,9 @@ module.exports = {
 			'as-needed',
 		],
 	},
+	settings: {
+		react: {
+			version: '16.4',
+		},
+	},
 };
