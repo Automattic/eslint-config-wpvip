@@ -61,6 +61,9 @@ module.exports = {
 			'warn',
 			'as-needed',
 		],
+		radix: [
+			'error',
+		],
 	},
 	settings: {
 		react: {
