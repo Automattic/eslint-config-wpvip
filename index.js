@@ -19,6 +19,7 @@ module.exports = {
 		'wpcalypso',
 		'flowtype',
 		'json',
+		'no-async-foreach',
 	],
 	globals: {
 		describe: true,
@@ -62,6 +63,9 @@ module.exports = {
 			'as-needed',
 		],
 		radix: [
+			'error',
+		],
+		'no-async-foreach/no-async-foreach': [
 			'error',
 		],
 	},

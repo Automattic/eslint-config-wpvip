@@ -16,7 +16,7 @@ To add `eslint-config-wpvip` to you project, first install it to `package.json` 
 And install the required dependencies:
 
 ```
-npm i --save-dev babel-eslint@10 eslint@4 eslint-plugin-flowtype@3 eslint-plugin-import@2 eslint-plugin-jsx-a11y@6 eslint-plugin-react@7 eslint-plugin-wpcalypso@4 eslint-plugin-json@1
+npm i --save-dev babel-eslint@10 eslint@4 eslint-plugin-flowtype@3 eslint-plugin-import@2 eslint-plugin-jsx-a11y@6 eslint-plugin-react@7 eslint-plugin-wpcalypso@4 eslint-plugin-json@1 eslint-plugin-no-async-foreach
 ```
 
 Then in your `package.json`, add:
