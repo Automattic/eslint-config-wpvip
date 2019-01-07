@@ -52,6 +52,9 @@ module.exports = {
 		'no-duplicate-imports': [
 			'warn',
 		],
+		'no-unsafe-negation': [
+			'error',
+		],
 		'max-len': [
 			'warn',
 			{
