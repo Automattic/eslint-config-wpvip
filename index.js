@@ -35,7 +35,7 @@ module.exports = {
 	rules: {
 		'wpcalypso/jsx-classname-namespace': 0,
 		camelcase: [
-			'warn',
+			0,
 		],
 		'no-console': [
 			'warn',
