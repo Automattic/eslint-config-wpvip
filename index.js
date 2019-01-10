@@ -39,7 +39,7 @@ module.exports = {
 			{
 				properties: 'never',
 				ignoreDestructuring: true,
-			}
+			},
 		],
 		'no-console': [
 			'warn',
