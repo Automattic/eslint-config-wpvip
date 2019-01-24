@@ -3,6 +3,7 @@ module.exports = {
 	env: {
 		es6: true,
 		node: true,
+		'jest/globals': true,
 	},
 	extends: [
 		'plugin:flowtype/recommended',
@@ -20,16 +21,9 @@ module.exports = {
 		'flowtype',
 		'json',
 		'no-async-foreach',
+		'jest',
 	],
 	globals: {
-		describe: true,
-		it: true,
-		expect: true,
-		beforeEach: true,
-		afterEach: true,
-		beforeAll: true,
-		afterAll: true,
-		jest: true,
 		window: true,
 	},
 	rules: {
@@ -75,6 +69,27 @@ module.exports = {
 		'no-async-foreach/no-async-foreach': [
 			'error',
 		],
+
+		// Jest rules, from https://github.com/jest-community/eslint-plugin-jest
+		'jest/consistent-test-it': 'error',
+		'jest/lowercase-name': 'error',
+		'jest/expect-expect': 'warn',
+		'jest/no-disabled-tests': 'warn',
+		'jest/no-alias-methods': 'warn',
+		'jest/no-focused-tests': 'error',
+		'jest/no-identical-title': 'error',
+		'jest/no-jest-import': 'error',
+		'jest/no-test-prefixes': 'error',
+		'jest/no-truthy-falsy': 'warn',
+		'jest/prefer-spy-on': 'warn',
+		'jest/prefer-to-be-null': 'warn',
+		'jest/prefer-to-be-undefined': 'warn',
+		'jest/prefer-to-contain': 'warn',
+		'jest/prefer-to-have-length': 'warn',
+		'jest/require-tothrow-message': 'warn',
+		'jest/valid-describe': 'error',
+		'jest/valid-expect': 'error',
+		'jest/valid-expect-in-promise': 'error',
 	},
 	settings: {
 		react: {
