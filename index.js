@@ -69,6 +69,12 @@ module.exports = {
 		'no-async-foreach/no-async-foreach': [
 			'error',
 		],
+		'valid-typeof': [
+			'error',
+			{
+				requireStringLiterals: true,
+			},
+		],
 
 		// Jest rules, from https://github.com/jest-community/eslint-plugin-jest
 		'jest/consistent-test-it': 'error',
