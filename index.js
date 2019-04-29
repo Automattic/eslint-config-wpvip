@@ -69,6 +69,9 @@ module.exports = {
 		'no-async-foreach/no-async-foreach': [
 			'error',
 		],
+		'spaced-comment': [
+			'error',
+		],
 		'valid-typeof': [
 			'error',
 			{
