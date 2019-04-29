@@ -35,6 +35,9 @@ module.exports = {
 				ignoreDestructuring: true,
 			},
 		],
+		'capitalized-comments': [
+			'error',
+		],
 		'no-console': [
 			'warn',
 		],
