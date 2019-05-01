@@ -36,7 +36,7 @@ module.exports = {
 			},
 		],
 		'capitalized-comments': [
-			'error',
+			'warn',
 		],
 		'no-console': [
 			'warn',
@@ -73,7 +73,7 @@ module.exports = {
 			'error',
 		],
 		'spaced-comment': [
-			'error',
+			'warn',
 		],
 		'valid-typeof': [
 			'error',
