@@ -35,6 +35,9 @@ module.exports = {
 				ignoreDestructuring: true,
 			},
 		],
+		'capitalized-comments': [
+			'warn',
+		],
 		'no-console': [
 			'warn',
 		],
@@ -68,6 +71,9 @@ module.exports = {
 		],
 		'no-async-foreach/no-async-foreach': [
 			'error',
+		],
+		'spaced-comment': [
+			'warn',
 		],
 		'valid-typeof': [
 			'error',
