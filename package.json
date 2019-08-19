@@ -28,7 +28,7 @@
   "peerDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.0.0 || ^6.0.0",
-    "eslint-plugin-flowtype": "^3.0.0",
+    "eslint-plugin-flowtype": "^3.0.0 || ^4.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-no-async-foreach": "^0.1.1",
@@ -40,7 +40,7 @@
   "devDependencies": {
     "babel-eslint": "10.0.2",
     "eslint": "6.2.0",
-    "eslint-plugin-flowtype": "3.13.0",
+    "eslint-plugin-flowtype": "4.2.0",
     "eslint-plugin-import": "2.18.1",
     "eslint-plugin-json": "1.4.0",
     "eslint-plugin-jsx-a11y": "6.2.3",
