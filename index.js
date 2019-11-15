@@ -81,7 +81,7 @@ module.exports = {
 				requireStringLiterals: true,
 			},
 		],
-		
+
 		'no-return-await': [
 			'error',
 		],
