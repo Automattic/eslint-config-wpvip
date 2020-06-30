@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/Automattic/eslint-config-wpvip#readme",
   "dependencies": {
-    "eslint-config-wpcalypso": "^4.0.0",
+    "eslint-config-wpcalypso": "^5.0.0",
     "eslint-loader": "^3.0.0",
     "webpack": "^4.21.0"
   },
