@@ -78,6 +78,13 @@ module.exports = {
 				requireStringLiterals: true,
 			},
 		],
+		'id-length': [
+			'warn',
+			{
+				min: 2,
+				max: 40,
+			},
+		],
 
 		'no-return-await': [
 			'error',
