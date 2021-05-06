@@ -99,7 +99,7 @@ module.exports = {
 		'jest/prefer-to-be-undefined': 'warn',
 		'jest/prefer-to-contain': 'warn',
 		'jest/prefer-to-have-length': 'warn',
-		'jest/require-tothrow-message': 'warn',
+		'jest/require-to-throw-message': 'warn',
 		'jest/valid-describe': 'error',
 		'jest/valid-expect': 'error',
 		'jest/valid-expect-in-promise': 'error',
