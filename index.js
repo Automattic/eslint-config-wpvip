@@ -86,10 +86,6 @@ module.exports = {
 			},
 		],
 
-		'no-return-await': [
-			'error',
-		],
-
 		// Jest rules, from https://github.com/jest-community/eslint-plugin-jest
 		'jest/consistent-test-it': 'error',
 		'jest/lowercase-name': 'error',
