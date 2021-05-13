@@ -22,7 +22,7 @@
   "homepage": "https://github.com/Automattic/eslint-config-wpvip#readme",
   "dependencies": {
     "eslint-config-wpcalypso": "^4.0.0",
-    "webpack": "^4.21.0"
+    "webpack": "^5.0.0"
   },
   "peerDependencies": {
     "@babel/eslint-parser": "^7.13.14",
