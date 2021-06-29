@@ -32,7 +32,6 @@ module.exports = {
 			'warn',
 			{
 				properties: 'never',
-				ignoreDestructuring: true,
 			},
 		],
 		'no-console': [
