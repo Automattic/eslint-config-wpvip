@@ -59,6 +59,9 @@ module.exports = {
 				code: 200,
 			},
 		],
+		'prefer-arrow-callback': [
+			'warn',
+		],
 		'arrow-parens': [
 			'warn',
 			'as-needed',
