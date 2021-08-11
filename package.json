@@ -4,7 +4,8 @@
   "description": "ESLint configs to enforce VIP's (internal) JS coding standards",
   "main": "index.js",
   "scripts": {
-    "test": "eslint ."
+    "test": "npm run lint",
+	"lint": "eslint ."
   },
   "repository": {
     "type": "git",
