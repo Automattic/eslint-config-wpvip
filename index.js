@@ -91,7 +91,7 @@ module.exports = {
 
 		// Jest rules, from https://github.com/jest-community/eslint-plugin-jest
 		'jest/consistent-test-it': 'error',
-		'jest/lowercase-name': 'error',
+		'jest/prefix-lowercase-title': 'error',
 		'jest/expect-expect': 'warn',
 		'jest/no-disabled-tests': 'warn',
 		'jest/no-alias-methods': 'warn',
@@ -106,7 +106,7 @@ module.exports = {
 		'jest/prefer-to-contain': 'warn',
 		'jest/prefer-to-have-length': 'warn',
 		'jest/require-to-throw-message': 'warn',
-		'jest/valid-describe': 'error',
+		'jest/valid-describe-callback': 'error',
 		'jest/valid-expect': 'error',
 		'jest/valid-expect-in-promise': 'error',
 	},
