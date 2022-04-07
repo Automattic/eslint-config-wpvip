@@ -3,12 +3,12 @@ ESLint configs to enforce VIP's (internal) JS coding standards
 
 # Installation
 
-To add `eslint-config-wpvip` to you project, first install it to `package.json` (not yet published to NPM):
+To add `eslint-config-wpvip` to you project, first install it to `package.json` (not yet published to NPM, make sure to use the latest commit hash):
 
 ```
 "devDependencies": {
   ...
-  "eslint-config-wpvip": "github:automattic/eslint-config-wpvip#6b5993b",
+  "eslint-config-wpvip": "github:automattic/eslint-config-wpvip#984b8a8",
   ...
 }
 ```
@@ -16,7 +16,7 @@ To add `eslint-config-wpvip` to you project, first install it to `package.json` 
 And install the required dependencies:
 
 ```
-npm i --save-dev babel-eslint@10 eslint@4 eslint-plugin-flowtype@3 eslint-plugin-import@2 eslint-plugin-jsx-a11y@6 eslint-plugin-react@7 eslint-plugin-wpcalypso@4 eslint-plugin-json@1 eslint-plugin-no-async-foreach
+npm i --save-dev @babel/eslint-parser@7 eslint@7 eslint-plugin-flowtype@5 eslint-plugin-import@2 eslint-plugin-jsx-a11y@6 eslint-plugin-no-async-foreach eslint-plugin-react@7 eslint-plugin-wpcalypso@4 eslint-plugin-json@3 eslint-plugin-jest@25
 ```
 
 Then in your `package.json`, add:
