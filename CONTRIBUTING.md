@@ -17,6 +17,6 @@ When you modify the rules, please add cases to the following files:
 
 After changing the rules or the `disallowed` fixture, run the following to update the snapshot of jest errors found:
 
-`npm run jest --updateSnapshot`
+`npm run update-snapshot`
 
 ...and commit the change to the snapshot file in your branch / PR.

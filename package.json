@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "jest": "jest",
-    "test": "npm run lint && npm run jest",
-    "lint": "eslint --ignore-pattern __fixtures__/disallowed.js ."
+    "lint": "eslint --ignore-pattern __fixtures__/disallowed.js .",
+    "test": "npm run lint && jest",
+    "update-snapshot": "jest --updateSnapshot"
   },
   "repository": {
     "type": "git",
