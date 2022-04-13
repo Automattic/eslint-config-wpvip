@@ -4,8 +4,9 @@
   "description": "ESLint configs to enforce VIP's (internal) JS coding standards",
   "main": "index.js",
   "scripts": {
-    "test": "npm run lint",
-    "lint": "eslint ."
+    "jest": "jest",
+    "test": "npm run lint && npm run jest",
+    "lint": "eslint --ignore-pattern __fixtures__/disallowed.js ."
   },
   "repository": {
     "type": "git",
@@ -47,6 +48,7 @@
     "eslint-plugin-jsx-a11y": "6.5.1",
     "eslint-plugin-no-async-foreach": "0.1.1",
     "eslint-plugin-react": "7.27.0",
-    "eslint-plugin-wpcalypso": "4.1.0"
+    "eslint-plugin-wpcalypso": "4.1.0",
+    "jest": "27.5.1"
   }
 }
