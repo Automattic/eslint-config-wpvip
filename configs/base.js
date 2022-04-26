@@ -41,6 +41,11 @@ module.exports = {
 		'no-unsafe-negation': 'error',
 		'no-unused-vars': 'error',
 		'prefer-arrow-callback': 'warn',
+
+		// Temporarily navigate Gutenberg bug that too-eagerly loads prettier config:
+		// https://github.com/WordPress/gutenberg/blob/2bbbcf58f1a05113267030f0ac884f6b814d5a85/packages/eslint-plugin/configs/recommended.js#L9
+		'prettier/prettier': 0,
+
 		radix: 'error',
 		'space-in-parens': [
 			'error',
