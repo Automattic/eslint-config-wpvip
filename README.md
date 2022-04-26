@@ -4,10 +4,10 @@ ESLint plugin to provide WordPress VIP's (internal) JavaScript and TypeScript co
 
 ## Installation
 
-Install `eslint` and `eslint-config-wpvip` to your project. Note that this package is not yet published to NPM, so you'll need to grab the latest commit SHA.
+Install `eslint` and `eslint-config-wpvip` to your project. Note that this package is not yet published to NPM, so you'll need to grab the latest commit SHA and use an alias.
 
 ```sh
-npm install --save-dev eslint github:automattic/eslint-config-wpvip#[commit-sha]
+npm install --save-dev eslint eslint-plugin-wpvip@github:Automattic/eslint-config-wpvip#[commit-sha]
 ```
 
 If your project uses TypeScript, make sure `typescript` is installed as well.
