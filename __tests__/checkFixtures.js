@@ -1,24 +1,33 @@
-const fs = require( 'fs' );
-const path = require( 'path' );
-const eslint = require( 'eslint' );
+import { ESLint } from 'eslint';
 
-const checkFile = fileName => {
-	const resolvedPath = path.resolve( __dirname, fileName );
-	const cli = new eslint.CLIEngine();
-	const fileContents = fs.readFileSync( resolvedPath, 'utf8' );
-	return cli.executeOnText( fileContents );
-};
-
-const getErrors = fileName => checkFile( fileName ).results[ 0 ].messages;
-
-describe( 'check the allowed fixture', () => {
-	it( 'allowed fixture has no errors', () => {
-		expect( getErrors( '../__fixtures__/allowed.js' ) ).toStrictEqual( [] );
+async function getLintMessages( type, fixture ) {
+	const eslint = new ESLint( {
+		overrideConfigFile: `__fixtures__/${ type }/eslintrc.js`,
+		useEslintrc: false,
 	} );
-} );
 
-describe( 'check the disallowed fixture', () => {
-	it( 'disallowed fixture errors match snapshot', () => {
-		expect( getErrors( '../__fixtures__/disallowed.js' ) ).toMatchSnapshot();
+	const files = `__fixtures__/${ type }/${ fixture }`;
+	const [ { messages } ] = await eslint.lintFiles( files );
+
+	return messages;
+}
+
+describe( 'linting', () => {
+	it.each( [
+		[ 'base', 'allowed.js' ],
+		[ 'cli', 'allowed.js' ],
+		[ 'typescript', 'allowed.ts' ],
+	] )( '%s %s fixture produces no errors', async ( type, fixture ) => {
+		// Allowed fixtures should produce no lint messages.
+		expect( await getLintMessages( type, fixture ) ).toStrictEqual( [] );
+	} );
+
+	it.each( [
+		[ 'base', 'disallowed.js' ],
+		[ 'cli', 'disallowed.js' ],
+		[ 'typescript', 'disallowed.ts' ],
+	] )( '%s %s fixture matches snapshot', async ( type, fixture ) => {
+		// Disallowed fixtures produce messages that should match a snapshot.
+		expect( await getLintMessages( type, fixture ) ).toMatchSnapshot();
 	} );
 } );

@@ -4,15 +4,16 @@ module.exports = {
 	},
 	extends: [
 		'eslint:recommended',
-		'plugin:@wordpress/eslint-plugin/esnext',
-		'plugin:@wordpress/eslint-plugin/jsdoc',
-		'plugin:@wordpress/eslint-plugin/i18n',
+		'plugin:json/recommended',
 	],
 	plugins: [
 		'no-async-foreach',
 	],
 	rules: {
-		// Additions or overrides
+		'arrow-parens': [
+			'warn',
+			'as-needed',
+		],
 		camelcase: [
 			'warn',
 			{
@@ -20,20 +21,12 @@ module.exports = {
 				ignoreDestructuring: true,
 			},
 		],
-		'no-console': [
+		'id-length': [
 			'warn',
-		],
-		'no-unused-vars': [
-			'warn',
-		],
-		'no-process-exit': [
-			0,
-		],
-		'no-duplicate-imports': [
-			'warn',
-		],
-		'no-unsafe-negation': [
-			'error',
+			{
+				min: 2,
+				max: 40,
+			},
 		],
 		'max-len': [
 			'warn',
@@ -41,19 +34,14 @@ module.exports = {
 				code: 200,
 			},
 		],
-		'prefer-arrow-callback': [
-			'warn',
-		],
-		'arrow-parens': [
-			'warn',
-			'as-needed',
-		],
-		radix: [
-			'error',
-		],
-		'no-async-foreach/no-async-foreach': [
-			'error',
-		],
+		'no-async-foreach/no-async-foreach': 'error',
+		'no-console': 'warn',
+		'no-duplicate-imports': 'warn',
+		'no-process-exit': 'error',
+		'no-unsafe-negation': 'error',
+		'no-unused-vars': 'error',
+		'prefer-arrow-callback': 'warn',
+		radix: 'error',
 		'space-in-parens': [
 			'error',
 			'always',
@@ -61,20 +49,11 @@ module.exports = {
 				exceptions: [ 'empty' ],
 			},
 		],
-		'spaced-comment': [
-			'warn',
-		],
+		'spaced-comment': 'warn',
 		'valid-typeof': [
 			'error',
 			{
 				requireStringLiterals: true,
-			},
-		],
-		'id-length': [
-			'warn',
-			{
-				min: 2,
-				max: 40,
 			},
 		],
 	},

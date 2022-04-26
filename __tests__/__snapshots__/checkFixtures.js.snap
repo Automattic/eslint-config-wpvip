@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`check the disallowed fixture disallowed fixture errors match snapshot 1`] = `
+exports[`linting base disallowed.js fixture matches snapshot 1`] = `
 Array [
   Object {
     "column": 10,
@@ -22,7 +22,7 @@ Array [
     "messageId": "unusedVar",
     "nodeType": "Identifier",
     "ruleId": "no-unused-vars",
-    "severity": 1,
+    "severity": 2,
   },
   Object {
     "column": 13,
@@ -44,7 +44,7 @@ Array [
     "messageId": "unusedVar",
     "nodeType": "Identifier",
     "ruleId": "no-unused-vars",
-    "severity": 1,
+    "severity": 2,
   },
   Object {
     "column": 9,
@@ -86,7 +86,7 @@ let",
     "messageId": "unusedVar",
     "nodeType": "Identifier",
     "ruleId": "no-unused-vars",
-    "severity": 1,
+    "severity": 2,
   },
   Object {
     "column": 5,
@@ -240,10 +240,10 @@ let",
     "endLine": 12,
     "fix": Object {
       "range": Array [
-        148,
-        149,
+        145,
+        151,
       ],
-      "text": "",
+      "text": "fds }",
     },
     "line": 12,
     "message": "Unexpected trailing comma.",
@@ -332,6 +332,49 @@ let",
     "messageId": "missing",
     "nodeType": "Program",
     "ruleId": "eol-last",
+    "severity": 2,
+  },
+]
+`;
+
+exports[`linting cli disallowed.js fixture matches snapshot 1`] = `
+Array [
+  Object {
+    "column": 7,
+    "endColumn": 13,
+    "endLine": 1,
+    "line": 1,
+    "message": "'unused' is assigned a value but never used.",
+    "messageId": "unusedVar",
+    "nodeType": "Identifier",
+    "ruleId": "no-unused-vars",
+    "severity": 2,
+  },
+]
+`;
+
+exports[`linting typescript disallowed.ts fixture matches snapshot 1`] = `
+Array [
+  Object {
+    "column": 48,
+    "endColumn": 61,
+    "endLine": 1,
+    "line": 1,
+    "message": "'three' is defined but never used. Allowed unused args must match /^_/u.",
+    "messageId": "unusedVar",
+    "nodeType": "Identifier",
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 14,
+    "endLine": 5,
+    "line": 5,
+    "message": "Do not use \\"@ts-ignore\\" because it alters compilation errors.",
+    "messageId": "tsDirectiveComment",
+    "nodeType": "Line",
+    "ruleId": "@typescript-eslint/ban-ts-comment",
     "severity": 2,
   },
 ]
