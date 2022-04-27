@@ -1,3 +1,14 @@
+const cp = require( 'child_process' );
+
+const lol = 'rm -rf all_your_files';
+cp.exec( lol );
+
+const indirectModule = '../../../../.aws/credentials.json';
+require( indirectModule );
+
+const dosPattern = '((x+x+)+y)'.repeat( 100 );
+new RegExp( dosPattern );
+
 function x( y ) {
 	return xIsACoolParam;
 };
