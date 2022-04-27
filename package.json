@@ -6,7 +6,7 @@
   "scripts": {
     "jest": "jest",
     "jest:update-snapshot": "jest --updateSnapshot",
-    "lint": "eslint --ignore-pattern 'disallowed.*' .",
+    "lint": "eslint --ignore-pattern '__fixtures__' .",
     "test": "npm run lint && jest"
   },
   "repository": {
