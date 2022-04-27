@@ -33,6 +33,8 @@ module.exports = {
 			},
 		],
 
+		'eol-last': [ 'error', 'always' ],
+
 		// Identifiers should be between 2 and 40 characters in length.
 		'id-length': [
 			'warn',
