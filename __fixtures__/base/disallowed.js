@@ -9,8 +9,20 @@ let things = {
 	f7: (  ) => ['x'],
 	12: '32',
 	ff: xx => xx,
-	gg: ( {fds, }) => 
+	gg: ( {fds, }) =>
         fds,
 };
+
+export async function doThingsInSequence() {
+	for ( const thing of Object.keys( things ) ) {
+		await Promise.resolve( thing );
+	}
+}
+
+export function doThingsInSequenceWithoutWaiting() {
+	Object.keys( things ).forEach( async ( thing ) => {
+		await Promise.resolve( thing );
+	} );
+}
 
 nonExistent();

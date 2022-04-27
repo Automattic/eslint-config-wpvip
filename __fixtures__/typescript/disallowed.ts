@@ -1,4 +1,4 @@
-export function add( one: number, two: number, three: number ): number {
+export function add( one: number, two: number, three: String ): number {
 	return one + two;
 }
 
