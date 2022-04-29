@@ -12,6 +12,16 @@ const things = {
 	gg: ( { fds } ) => fds,
 };
 
+export async function doParallelThings() {
+	const done = [];
+
+	for ( const thing of Object.keys( things ) ) {
+		done.push( Promise.resolve( thing ) );
+	}
+
+	return await Promise.all( done );
+}
+
 export default {
 	things,
 };

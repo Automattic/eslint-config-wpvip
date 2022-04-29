@@ -1,7 +1,11 @@
 {
-	"root": true,
-	"extends": "./index.js",
-	"env": {
-		"node": true
-	}
+	"extends": [
+		"plugin:@wordpress/eslint-plugin/recommended",
+		"./configs/base",
+		"./configs/cli",
+		"./configs/react",
+		"./configs/testing",
+		"./configs/typescript",
+		"./rules"
+	]
 }
