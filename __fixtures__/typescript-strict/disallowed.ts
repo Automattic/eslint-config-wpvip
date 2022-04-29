@@ -2,6 +2,10 @@ export function add( one: number, two: number, three: String ): number {
 	return one + two;
 }
 
+export function multiply( one: number, two: any ): number {
+	return one * two;
+}
+
 // @ts-ignore
 const things = {
 	ab: 13,
@@ -13,13 +17,10 @@ const things = {
 	gg: ( { fds } ) => fds,
 };
 
-export function multiply( one: number, two: any ): number {
-	return one * two;
-}
-
-export function shadow() {
-	const add = 2;
-	return add;
+const outerScopeVar = 1;
+function shadow() {
+	const outerScopeVar = 2;
+	return outerScopeVar;
 }
 
 export default {

@@ -17,6 +17,7 @@ describe( 'linting', () => {
 		[ 'base', 'allowed.js' ],
 		[ 'cli', 'allowed.js' ],
 		[ 'typescript', 'allowed.ts' ],
+		[ 'typescript-strict', 'allowed.ts' ],
 	] )( '%s %s fixture produces no errors', async ( type, fixture ) => {
 		// Allowed fixtures should produce no lint messages.
 		expect( await getLintMessages( type, fixture ) ).toStrictEqual( [] );
@@ -26,6 +27,7 @@ describe( 'linting', () => {
 		[ 'base', 'disallowed.js' ],
 		[ 'cli', 'disallowed.js' ],
 		[ 'typescript', 'disallowed.ts' ],
+		[ 'typescript-strict', 'disallowed.ts' ],
 	] )( '%s %s fixture matches snapshot', async ( type, fixture ) => {
 		// Disallowed fixtures produce messages that should match a snapshot.
 		expect( await getLintMessages( type, fixture ) ).toMatchSnapshot();

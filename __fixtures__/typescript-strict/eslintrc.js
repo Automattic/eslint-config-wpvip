@@ -1,0 +1,11 @@
+module.exports = {
+	extends: [
+		'plugin:@wordpress/eslint-plugin/recommended',
+		'../../configs/base',
+		'../../configs/typescript',
+		'../../configs/typescript-strict',
+	],
+	parserOptions: {
+		project: "./__fixtures__/typescript-strict/tsconfig.json",
+	},
+};

@@ -36,6 +36,11 @@ export function doThingsInSequenceWithoutWaiting() {
 	} );
 }
 
+export function shadow() {
+	const lol = 2;
+	return lol;
+}
+
 nonExistent();
 
 // There is intentionally no new line at the end of this file to hit [eol-last](https://eslint.org/docs/rules/eol-last).
