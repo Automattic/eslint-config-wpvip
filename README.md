@@ -1,13 +1,13 @@
-# WordPress VIP ESLint config
+# WordPress VIP ESLint plugin
 
-ESLint plugin to provide WordPress VIP's (internal) JavaScript and TypeScript coding standards. It is designed to extend [`@wordpress/eslint-plugin`](https://github.com/WordPress/gutenberg/tree/trunk/packages/eslint-plugin), but allows you to choose which preset(s) you want to use.
+This is an ESLint plugin to provide WordPress VIP's (internal) JavaScript and TypeScript coding standards. It is designed to extend [`@wordpress/eslint-plugin`](https://github.com/WordPress/gutenberg/tree/trunk/packages/eslint-plugin), but allows you to choose which preset(s) you want to use.
 
 ## Installation
 
-Install `eslint` and `eslint-config-wpvip` to your project. Note that this package is not yet published to NPM, so you'll need to grab the latest commit SHA and use an alias.
+Install `eslint` and `@automattic/eslint-plugin-wpvip` to your project.
 
 ```sh
-npm install --save-dev eslint eslint-plugin-wpvip@github:Automattic/eslint-config-wpvip#[commit-sha]
+npm install --save-dev eslint @automattic/eslint-plugin-wpvip
 ```
 
 If your project uses TypeScript, make sure `typescript` is installed as well.
@@ -20,10 +20,10 @@ Create an `.eslintrc.json` file with your desired presets. Here is an example th
 {
 	"extends": [
 		"plugin:@wordpress/eslint-plugin/recommended",
-		"plugin:wpvip/base",
-		"plugin:wpvip/react",
-		"plugin:wpvip/testing",
-		"plugin:wpvip/typescript",
+		"plugin:@automattic/wpvip/base",
+		"plugin:@automattic/wpvip/react",
+		"plugin:@automattic/wpvip/testing",
+		"plugin:@automattic/wpvip/typescript",
 	]
 }
 ```

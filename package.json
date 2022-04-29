@@ -1,13 +1,18 @@
 {
-  "name": "eslint-config-wpvip",
-  "version": "0.0.1",
-  "description": "ESLint configs to enforce VIP's (internal) JS coding standards",
+  "name": "@automattic/eslint-plugin-wpvip",
+  "version": "0.1.1-0",
+  "description": "ESLint plugin for internal WordPress VIP projects",
   "main": "index.js",
   "scripts": {
     "jest": "jest",
     "jest:update-snapshot": "jest --updateSnapshot",
     "lint": "eslint --ignore-pattern '__fixtures__' .",
+    "publish": "npx np --any-branch --branch=trunk --no-release-draft",
+    "publish:beta": "npm run publish -- --tag=beta",
     "test": "npm run lint && jest"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
