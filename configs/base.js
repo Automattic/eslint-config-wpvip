@@ -3,6 +3,7 @@ module.exports = {
 		node: true,
 	},
 	extends: [
+		'plugin:@wordpress/eslint-plugin/recommended-with-formatting',
 		'eslint:recommended',
 		'plugin:json/recommended',
 		'plugin:security/recommended',
@@ -84,13 +85,6 @@ module.exports = {
 
 		// Arrow functions should be used for function arguments and callbacks.
 		'prefer-arrow-callback': 'warn',
-
-		// Temporarily navigate Gutenberg bug that too-eagerly loads prettier config:
-		// https://github.com/WordPress/gutenberg/pull/40634
-		//
-		// Once this is released and available on NPM, we can remove `prettier` as
-		// a devDependency and remove this rule.
-		'prettier/prettier': 0,
 
 		// `parseInt` calls must always supply a radix argument.
 		radix: 'error',

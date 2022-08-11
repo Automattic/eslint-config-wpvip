@@ -16,6 +16,7 @@ describe( 'linting', () => {
 	it.each( [
 		[ 'base', 'allowed.js' ],
 		[ 'cli', 'allowed.js' ],
+		[ 'prettier', 'allowed.js' ],
 		[ 'typescript', 'allowed.ts' ],
 		[ 'typescript-strict', 'allowed.ts' ],
 	] )( '%s %s fixture produces no errors', async ( type, fixture ) => {
@@ -26,6 +27,7 @@ describe( 'linting', () => {
 	it.each( [
 		[ 'base', 'disallowed.js' ],
 		[ 'cli', 'disallowed.js' ],
+		[ 'prettier', 'disallowed.js' ],
 		[ 'typescript', 'disallowed.ts' ],
 		[ 'typescript-strict', 'disallowed.ts' ],
 	] )( '%s %s fixture matches snapshot', async ( type, fixture ) => {

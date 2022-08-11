@@ -15,6 +15,6 @@ module.exports = {
 	rules: {
 		// TypeScript `any` type must not be used. This is a warning in the base
 		// config, and is elevated to an error here.
-    '@typescript-eslint/no-explicit-any': 'error',
+		'@typescript-eslint/no-explicit-any': 'error',
 	},
 };

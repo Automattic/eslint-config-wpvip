@@ -19,6 +19,25 @@ module.exports = {
 	 * Please include a short description of the rule. For rules that downgrade or
 	 * disable errors, include a brief justification or reasoning.
 	 */
+	ignorePatterns: [ '**/*.d.ts' ],
+	overrides: [
+		{
+			files: [ '**/*.ts', '**/*.tsx' ],
+			parser: '@typescript-eslint/parser',
+			rules: {
+				// Prefer the TypeScript versions of some rules.
+				'no-duplicate-imports': 'off',
+				'@typescript-eslint/no-duplicate-imports': 'error',
+				'no-shadow': 'off',
+				'@typescript-eslint/no-shadow': 'error',
+
+				// Don't require redundant JSDoc types in TypeScript files.
+				'jsdoc/require-param-type': 'off',
+				'jsdoc/require-returns-type': 'off',
+			},
+		},
+	],
+	plugins: [ '@typescript-eslint' ],
 	rules: {
 		// Elevate the unused vars rule to an error, but allow it to be suppressed
 		// with a naming convention.
@@ -29,5 +48,12 @@ module.exports = {
 				argsIgnorePattern: '^_',
 			},
 		],
+	},
+	settings: {
+		'import/resolver': {
+			node: {
+				extensions: [ '.js', '.jsx', '.ts', '.tsx' ],
+			},
+		},
 	},
 };
