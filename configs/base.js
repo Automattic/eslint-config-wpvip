@@ -33,6 +33,10 @@ module.exports = {
 			},
 		],
 
+		// Maximum cyclomatic complexity must not be above 20.
+		complexity: 'error',
+
+		// Files must end in a newline.
 		'eol-last': [ 'error', 'always' ],
 
 		// Identifiers should be between 2 and 40 characters in length.

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "lib": ["es2017"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+		"noEmit": true,
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "strict": true,
+    "target": "es2017"
+  },
+  "include": ["*.ts"]
+}
