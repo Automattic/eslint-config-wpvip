@@ -1,6 +1,6 @@
 # WordPress VIP ESLint plugin
 
-This is an ESLint plugin to provide WordPress VIP's (internal) JavaScript and TypeScript coding standards. It is designed to extend [`@wordpress/eslint-plugin`](https://github.com/WordPress/gutenberg/tree/trunk/packages/eslint-plugin), but allows you to choose which preset(s) you want to use.
+This is an ESLint plugin to provide WordPress VIP's (internal) JavaScript and TypeScript coding standards. It extends [`@wordpress/eslint-plugin`](https://github.com/WordPress/gutenberg/tree/trunk/packages/eslint-plugin).
 
 ## Installation
 
@@ -19,18 +19,15 @@ Create an `.eslintrc.json` file with your desired presets. Here is an example th
 ```
 {
 	"extends": [
-		"plugin:@wordpress/eslint-plugin/recommended",
 		"plugin:@automattic/wpvip/base",
 		"plugin:@automattic/wpvip/react",
 		"plugin:@automattic/wpvip/testing",
-		"plugin:@automattic/wpvip/typescript",
+		"plugin:@automattic/wpvip/typescript"
 	]
 }
 ```
 
 And that's it! Code editors that are configured to work with ESLint will automatically pick up the rulesets and flag any errors or warnings.
-
-See the `configs` directory and [`@wordpress/eslint-plugin`](https://github.com/WordPress/gutenberg/tree/trunk/packages/eslint-plugin) for available presets.
 
 Tip: setup a `lint` npm script in `package.json`:
 
@@ -38,6 +35,31 @@ Tip: setup a `lint` npm script in `package.json`:
 "scripts": {
   "lint": "eslint .",
   "test": "npm run lint"
+}
+```
+
+## Available presets
+
+Use these presets in the `extends` section of your `eslintrc`:
+
+- `plugin:@automattic/wpvip/base`
+- `plugin:@automattic/wpvip/prettier`
+- `plugin:@automattic/wpvip/react`
+- `plugin:@automattic/wpvip/testing`
+- `plugin:@automattic/wpvip/typescript`
+- `plugin:@automattic/wpvip/typescript-migration`
+- `plugin:@automattic/wpvip/typescript-strict`
+
+## Prettier
+
+This plugin comes with support for `prettier`. Configure it by [adding a `.prettierrc`](https://prettier.io/docs/en/configuration.html) to your project and enabling the `@automattic/wpvip/prettier` preset:
+
+```
+{
+	"extends": [
+		"plugin:@automattic/wpvip/base",
+		"plugin:@automattic/wpvip/prettier"
+	]
 }
 ```
 

@@ -192,6 +192,96 @@ let",
     "severity": 2,
   },
   Object {
+    "column": 7,
+    "endColumn": 9,
+    "endLine": 20,
+    "fix": Object {
+      "range": Array [
+        353,
+        355,
+      ],
+      "text": " ",
+    },
+    "line": 20,
+    "message": "Multiple spaces found before ')'.",
+    "messageId": "multipleSpaces",
+    "nodeType": "Punctuator",
+    "ruleId": "no-multi-spaces",
+    "severity": 2,
+  },
+  Object {
+    "column": 14,
+    "endColumn": 15,
+    "endLine": 20,
+    "fix": Object {
+      "range": Array [
+        361,
+        361,
+      ],
+      "text": " ",
+    },
+    "line": 20,
+    "message": "A space is required after '['.",
+    "messageId": "missingSpaceAfter",
+    "nodeType": "ArrayExpression",
+    "ruleId": "array-bracket-spacing",
+    "severity": 2,
+  },
+  Object {
+    "column": 18,
+    "endColumn": 19,
+    "endLine": 20,
+    "fix": Object {
+      "range": Array [
+        364,
+        364,
+      ],
+      "text": " ",
+    },
+    "line": 20,
+    "message": "A space is required before ']'.",
+    "messageId": "missingSpaceBefore",
+    "nodeType": "ArrayExpression",
+    "ruleId": "array-bracket-spacing",
+    "severity": 2,
+  },
+  Object {
+    "column": 8,
+    "endColumn": 9,
+    "endLine": 23,
+    "fix": Object {
+      "range": Array [
+        401,
+        401,
+      ],
+      "text": " ",
+    },
+    "line": 23,
+    "message": "A space is required after '{'.",
+    "messageId": "requireSpaceAfter",
+    "nodeType": "ObjectPattern",
+    "ruleId": "object-curly-spacing",
+    "severity": 2,
+  },
+  Object {
+    "column": 12,
+    "endColumn": 13,
+    "endLine": 23,
+    "fix": Object {
+      "range": Array [
+        401,
+        407,
+      ],
+      "text": "fds }",
+    },
+    "line": 23,
+    "message": "Unexpected trailing comma.",
+    "messageId": "unexpected",
+    "nodeType": "Property",
+    "ruleId": "comma-dangle",
+    "severity": 2,
+  },
+  Object {
     "column": 15,
     "endColumn": 16,
     "endLine": 23,
@@ -207,6 +297,24 @@ let",
     "messageId": "missingClosingSpace",
     "nodeType": "Program",
     "ruleId": "space-in-parens",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 9,
+    "endLine": 24,
+    "fix": Object {
+      "range": Array [
+        412,
+        420,
+      ],
+      "text": "		",
+    },
+    "line": 24,
+    "message": "Expected indentation of 2 tabs but found 8 spaces.",
+    "messageId": "wrongIndentation",
+    "nodeType": "Identifier",
+    "ruleId": "indent",
     "severity": 2,
   },
   Object {
@@ -291,6 +399,119 @@ let",
 `;
 
 exports[`linting cli disallowed.js fixture matches snapshot 1`] = `Array []`;
+
+exports[`linting prettier disallowed.js fixture matches snapshot 1`] = `
+Array [
+  Object {
+    "column": 13,
+    "endColumn": 18,
+    "endLine": 5,
+    "fix": Object {
+      "range": Array [
+        61,
+        66,
+      ],
+      "text": "'x'",
+    },
+    "line": 5,
+    "message": "Replace \`·'x'·\` with \`'x'\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 6,
+    "endColumn": 8,
+    "endLine": 7,
+    "fix": Object {
+      "range": Array [
+        85,
+        87,
+      ],
+      "text": "(xx)",
+    },
+    "line": 7,
+    "message": "Replace \`xx\` with \`(xx)\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 7,
+    "endColumn": 24,
+    "endLine": 8,
+    "fix": Object {
+      "range": Array [
+        101,
+        118,
+      ],
+      "text": "{ fds }) => fds,",
+    },
+    "line": 8,
+    "message": "Replace \`·{·fds·}·)·=>·fds\` with \`{·fds·})·=>·fds,\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 6,
+    "endColumn": 44,
+    "endLine": 13,
+    "fix": Object {
+      "range": Array [
+        146,
+        184,
+      ],
+      "text": "const thing of Object.keys(things)",
+    },
+    "line": 13,
+    "message": "Replace \`·const·thing·of·Object.keys(·things·)·\` with \`const·thing·of·Object.keys(things)\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 20,
+    "endLine": 14,
+    "fix": Object {
+      "range": Array [
+        188,
+        207,
+      ],
+      "text": "	done.push(thing",
+    },
+    "line": 14,
+    "message": "Replace \`··done.push(·thing·\` with \`↹done.push(thing\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  Object {
+    "column": 1,
+    "endColumn": 1,
+    "endLine": 21,
+    "fix": Object {
+      "range": Array [
+        242,
+        243,
+      ],
+      "text": "",
+    },
+    "line": 20,
+    "message": "Delete \`⏎\`",
+    "messageId": "delete",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+]
+`;
 
 exports[`linting typescript disallowed.ts fixture matches snapshot 1`] = `
 Array [
