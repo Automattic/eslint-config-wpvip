@@ -1,6 +1,6 @@
 # WordPress VIP ESLint plugin
 
-This is an ESLint plugin to provide WordPress VIP's (internal) JavaScript and TypeScript coding standards. It extends [`@wordpress/eslint-plugin`](https://github.com/WordPress/gutenberg/tree/trunk/packages/eslint-plugin), but allows you to choose which preset(s) you want to use.
+This is an ESLint plugin to provide WordPress VIP's (internal) JavaScript and TypeScript coding standards. It extends [`@wordpress/eslint-plugin`](https://github.com/WordPress/gutenberg/tree/trunk/packages/eslint-plugin).
 
 ## Installation
 
