@@ -1,4 +1,6 @@
 .babel*
 .circleci/
+.github/
+.prettierrc
 __fixtures__/
 __tests__/
