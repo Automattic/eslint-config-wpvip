@@ -1,7 +1,7 @@
 module.exports = {
 	base: require( './base' ),
 	cli: require( './cli' ),
-	'no-prettier': require( './no-prettier' ),
+	prettier: require( './prettier' ),
 	react: require( './react' ),
 	testing: require( './testing' ),
 	typescript: require( './typescript' ),
