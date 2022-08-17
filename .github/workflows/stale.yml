@@ -2,7 +2,7 @@ name: Stale monitor
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 0 * * *'
 
 jobs:
   stale:
@@ -12,6 +12,4 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-      - uses: Automattic/vip-actions/stale@add/stale-action
-        with:
-          days-before-stale: "30"
+      - uses: Automattic/vip-actions/stale@trunk
