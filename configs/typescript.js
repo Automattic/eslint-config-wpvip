@@ -24,6 +24,7 @@ module.exports = {
 		{
 			files: [ '**/*.ts', '**/*.tsx' ],
 			parser: '@typescript-eslint/parser',
+			// Note that these rules only take effect in TypeScript files (.ts, .tsx).
 			rules: {
 				// Prefer the TypeScript versions of some rules.
 				'no-duplicate-imports': 'off',
@@ -31,7 +32,9 @@ module.exports = {
 				'no-shadow': 'off',
 				'@typescript-eslint/no-shadow': 'error',
 
-				// Don't require redundant JSDoc types in TypeScript files.
+				// Don't require redundant JSDoc parameter descriptions and types in
+				// TypeScript files.
+				'jsdoc/require-param': 'off',
 				'jsdoc/require-param-type': 'off',
 				'jsdoc/require-returns-type': 'off',
 			},
