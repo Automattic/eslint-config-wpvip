@@ -14,7 +14,7 @@ describe( 'exported configs', () => {
 		// This test makes sure we don't forget to export a config.
 		const expectedNames = fs.readdirSync( 'configs' )
 			.filter( path => 'index.js' !== path )
-		// eslint-disable-next-line security/detect-non-literal-fs-filename
+			// eslint-disable-next-line security/detect-non-literal-fs-filename
 			.filter( path => ! fs.statSync( `configs/${ path }` ).isDirectory() )
 			.map( path => path.replace( /\.js$/, '' ).replace( /[_-]/ig, '/' ) )
 			.sort();
