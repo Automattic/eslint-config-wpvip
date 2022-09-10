@@ -7,12 +7,7 @@
     "jest": "jest",
     "jest:update-snapshot": "jest --updateSnapshot",
     "lint": "eslint --ignore-pattern '__fixtures__' .",
-    "publish": "npx np --any-branch --branch=trunk --no-release-draft",
-    "publish:beta": "npm run publish -- --tag=beta",
     "test": "npm run lint && jest"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "repository": {
     "type": "git",
