@@ -1,4 +1,4 @@
-import { ESLint } from 'eslint';
+const { ESLint } = require( 'eslint' );
 
 async function getLintMessages( type, fixture ) {
 	const eslint = new ESLint( {

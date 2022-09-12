@@ -2,9 +2,7 @@
 	"extends": [
 		"./configs/base",
 		"./configs/cli",
-		"./configs/react",
 		"./configs/testing",
-		"./configs/typescript",
 		"./rules"
 	]
 }
