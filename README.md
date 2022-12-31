@@ -96,3 +96,4 @@ Then modify the `npm run lint` command to pass through to `eslines`:
 ```
 
 Errors will still appear in any code editor that supports ESLint, but tests will continue to pass as the code is migrated to the new rulesets.
+test
