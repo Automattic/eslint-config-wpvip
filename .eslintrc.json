@@ -1,4 +1,10 @@
 {
+	"plugins": [
+		"jest"
+	],
+	"env": {
+		"jest/globals": true
+	},
 	"extends": [
 		"./configs/base",
 		"./configs/cli",
