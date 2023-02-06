@@ -8,8 +8,8 @@ export function add( one: number, two: number, _three: number ): number {
 /**
  * This function subtracts two integers from one another.
  *
- * @param  one
- * @param  two
+ * @param one
+ * @param two
  */
 export function subtract( one: number, two: number ): number {
 	return one - two;
