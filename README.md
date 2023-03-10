@@ -14,15 +14,19 @@ If your project uses TypeScript, make sure `typescript` is installed as well.
 
 ## Configuration
 
-Create an `.eslintrc.json` file with your desired presets. Here is an example that would suit a project that uses React and TypeScript and has Jest unit tests:
+Create an `.eslintrc.js` file with your desired presets. Note: The first line `require`s an init helper that allows you to avoid installing peer dependencies (available from `v0.5.0`).
+
+Here is an example that would suit a project that uses React and TypeScript and has Jest unit tests:
 
 ```
-{
-	"extends": [
-		"plugin:@automattic/wpvip/base",
-		"plugin:@automattic/wpvip/react",
-		"plugin:@automattic/wpvip/testing",
-		"plugin:@automattic/wpvip/typescript"
+require( '@automattic/eslint-plugin-wpvip/init' );
+
+module.exports = {
+	extends: [
+		'plugin:@automattic/wpvip/base',
+		'plugin:@automattic/wpvip/react',
+		'plugin:@automattic/wpvip/testing',
+		'plugin:@automattic/wpvip/typescript',
 	]
 }
 ```
