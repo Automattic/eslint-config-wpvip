@@ -1,7 +1,10 @@
 name: CI
 
 on:
+  pull_request:
   push:
+    branches:
+      - trunk
   workflow_dispatch:
 
 permissions:
@@ -14,22 +17,34 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version:
-          - current
-          - lts/*
-          - lts/-1
-          - lts/-2
+        node:
+          # Uncomment when Node.js v20 is released (April 2023)
+          # - version: 20
+          #   version-name: next-lts
+          - version-file: .nvmrc
+            version-name: pinned
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false
 
       - name: Set up Node.js environment
         uses: actions/setup-node@v3
         with:
+          node-version: ${{ matrix.node.version }}
+          node-version-file: ${{ matrix.node.version-file }}
           cache: npm
-          node-version: ${{ matrix.node-version }}
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ matrix.node.version-name }}-${{ hashFiles('package-lock.json') }}
 
       - name: Install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
 
       - name: Run tests
