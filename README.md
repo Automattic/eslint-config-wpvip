@@ -10,53 +10,39 @@ Install `eslint` and `@automattic/eslint-plugin-wpvip` to your project.
 npm install --save-dev eslint @automattic/eslint-plugin-wpvip
 ```
 
-If your project uses TypeScript, make sure `typescript` is installed as well.
-
 ## Configuration
 
-Create an `.eslintrc.js` file with your desired presets. Note: The first line `require`s an init helper that allows you to avoid installing peer dependencies (available from `v0.5.0`).
+Create an `.eslintrc.js` file with your desired configs. **Note:** The `init` file allows you to avoid installing peer dependencies (available from `v0.5.0`).
 
-Here is an example that would suit a project that uses React and TypeScript and has Jest unit tests:
-
-```
+```js
 require( '@automattic/eslint-plugin-wpvip/init' );
 
 module.exports = {
 	extends: [
 		'plugin:@automattic/wpvip/base',
-		'plugin:@automattic/wpvip/react',
-		'plugin:@automattic/wpvip/testing',
-		'plugin:@automattic/wpvip/typescript',
 	]
 }
 ```
 
-And that's it! Code editors that are configured to work with ESLint will automatically pick up the rulesets and flag any errors or warnings.
+And that's it! Code editors that are configured to work with ESLint will automatically pick up the rules and flag any errors or warnings.
 
-Tip: setup a `lint` npm script in `package.json`:
+Tip: Set up a `lint` npm script in `package.json`:
 
-```
+```json
 "scripts": {
-  "lint": "eslint .",
-  "test": "npm run lint"
+  "lint": "eslint ."
 }
 ```
 
-## Available presets
+You may also wish to define an `.eslintignore` file if there are files or paths that you do not want to lint.
 
-Use these presets in the `extends` section of your `eslintrc`:
+## TypeScript
 
-- `plugin:@automattic/wpvip/base`
-- `plugin:@automattic/wpvip/prettier`
-- `plugin:@automattic/wpvip/react`
-- `plugin:@automattic/wpvip/testing`
-- `plugin:@automattic/wpvip/typescript`
-- `plugin:@automattic/wpvip/typescript-migration`
-- `plugin:@automattic/wpvip/typescript-strict`
+TypeScript rules are automatically added whenever your project has installed the [`typescript` NPM package]() as a dependency.
 
 ## Prettier
 
-Prettier integration with ESLint is automatically enabled whenever your project has installed the [`prettier` NPM package](https://www.npmjs.com/package/prettier).
+Prettier integration with ESLint is automatically enabled whenever your project has installed the [`prettier` NPM package](https://www.npmjs.com/package/prettier) as a dependency.
 
 By default, this plugin provides the [WordPress prettier config](https://github.com/WordPress/gutenberg/blob/605aeb0f4f7d2225120e498f95ae27b9f56d77a3/packages/prettier-config/lib/index.js). You can define your own [`.prettierrc` configuration file](https://prettier.io/docs/en/configuration.html), which will be merged with the default. The following `.prettierrc` will use spaces for indentation instead of tabs:
 
@@ -66,49 +52,51 @@ By default, this plugin provides the [WordPress prettier config](https://github.
 }
 ```
 
-If you have the `prettier` NPM package installed but wish to disable the automatic integration, add the `disable-prettier` preset to your `.eslintrc.js`:
+If you have installed the `prettier` NPM package but wish to disable the automatic integration, add the `prettier-off` config to your `.eslintrc.js`:
 
 ```json
 {
 	"extends": [
 		"plugin:@automattic/wpvip/base",
-		"plugin:@automattic/wpvip/disable-prettier"
+		"plugin:@automattic/wpvip/prettier-off"
 	]
 }
 ```
 
+## JSDoc
 
+The `base` config includes rules related to enforce [JSDoc](https://jsdoc.app/) best practices, but they are not triggered if your code does not provide `@param` or `@return` markers:
 
-## Migrating
+```js
+/**
+ * No rules are triggered for this docblock, because there are no param or
+ * return markers
+ */
+ function myFunc1() {}
 
-Changing linter rules can be tricky and lead to huge PRs. To ease adoption, we can add [eslines](https://github.com/Automattic/eslines) to our project, to turn lint errors into warnings.
-
-```sh
-npm i --save-dev eslines
+/**
+ * Rules *are* triggered for this docblock.
+ *
+ * @param myArg
+ */
+ function myFunc2(myArg) {}
 ```
 
-Add the default `.eslines.json` to your project root:
+If you want to enforce the use of JSDoc, use the `jsdoc` config:
 
-```
+```json
 {
-    "branches": {
-        "default": ["downgrade-unmodified-lines"]
-    },
-    "processors": {
-        "downgrade-unmodified-lines": {
-            "remote": "origin/master",
-            "rulesNotToDowngrade": ["no-unused-vars"]
-        }
-    }
+	"extends": [
+		"plugin:@automattic/wpvip/base",
+		"plugin:@automattic/wpvip/jsdoc"
+	]
 }
 ```
 
-Then modify the `npm run lint` command to pass through to `eslines`:
+## "Weak" configs
 
-```
-"scripts": {
-  "lint": "eslint -f json . | eslines"
-}
-```
+This plugin provides a few "weak" configs for legacy codebases that are working to transition to stronger standards. These configs downgrade select rules from the `base` config to warnings. Warnings will still be visible in code editors, but will not fail continous integration workflows.
 
-Errors will still appear in any code editor that supports ESLint, but tests will continue to pass as the code is migrated to the new rulesets.
+These configs are intended for temporary use and should not be used long-term. We also do not recommend the use of tools like [eslines](https://github.com/Automattic/eslines) to ignore errors or warnings. While the intention is to prevent large-scale changes and transition slowly to stronger standards, the effect is usually that the transition stalls and stops completely.
+
+Two "weak" configs are available: `weak` and `weak-typescript`. While pull requests on this project are always welcome, please carefully consider whether adding rules to these configs is truly necessary.

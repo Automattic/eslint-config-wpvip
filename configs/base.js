@@ -1,4 +1,6 @@
-module.exports = {
+const isPackageInstalled = require('@wordpress/eslint-plugin/utils/is-package-installed');
+
+const baseConfig = {
 	env: {
 		node: true,
 	},
@@ -102,4 +104,35 @@ module.exports = {
 			},
 		],
 	},
+	overrides: [],
 };
+
+// Make our default TypeScript rules more useful.
+if (isPackageInstalled('typescript')) {
+	baseConfig.overrides.push({
+		extends: [
+			'plugin:@typescript-eslint/recommended-requiring-type-checking',
+			'plugin:@typescript-eslint/strict',
+		],
+		files: ['**/*.ts', '**/*.tsx'],
+		rules: {
+			// TypeScript `any` type must not be used. This is a warning in the base
+			// config, and is elevated to an error here.
+			'@typescript-eslint/no-explicit-any': 'error',
+		},
+	});
+}
+
+// Make our default React rules more useful.
+if (isPackageInstalled('react')) {
+	// @TODO
+}
+
+// Add Jest-specific rules if it is installed.
+if (isPackageInstalled('jest')) {
+	baseConfig.env['jest/globals'] = true;
+	baseConfig.extends.push('plugin:jest/recommended');
+	baseConfig.plugins.push('jest');
+}
+
+module.exports = baseConfig;

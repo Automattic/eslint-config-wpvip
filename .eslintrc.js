@@ -4,8 +4,11 @@
 
 module.exports = {
 	extends: [
-		'plugin:eslint-plugin/recommended',
+		'plugin:eslint-plugin/recommended', // linting for eslint plugins!
 		'plugin:@automattic/wpvip/base',
-		'plugin:@automattic/wpvip/testing',
 	],
+	parserOptions: {
+		project: './tsconfig.json',
+	},
+	root: true,
 };
