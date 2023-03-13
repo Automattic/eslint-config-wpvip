@@ -1,6 +1,3 @@
 module.exports = {
-	extends: [
-		'../../configs/base',
-		'../../configs/cli',
-	],
+	extends: ['../../configs/base', '../../configs/cli'],
 };

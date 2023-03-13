@@ -1,38 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`linting base disallowed.js fixture matches snapshot 1`] = `
-Array [
-  Object {
-    "column": 12,
-    "endColumn": 38,
+[
+  {
+    "column": 20,
+    "endColumn": 37,
     "endLine": 1,
+    "fix": {
+      "range": [
+        19,
+        36,
+      ],
+      "text": "'child_process'",
+    },
     "line": 1,
-    "message": "Found require(\\"child_process\\")",
-    "nodeType": "CallExpression",
-    "ruleId": "security/detect-child-process",
-    "severity": 1,
+    "message": "Replace \`·'child_process'·\` with \`'child_process'\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
   },
-  Object {
-    "column": 1,
-    "endColumn": 8,
+  {
+    "column": 9,
+    "endColumn": 14,
     "endLine": 4,
+    "fix": {
+      "range": [
+        85,
+        90,
+      ],
+      "text": "lol",
+    },
     "line": 4,
-    "message": "Found child_process.exec() with non Literal first argument",
-    "nodeType": "MemberExpression",
-    "ruleId": "security/detect-child-process",
-    "severity": 1,
+    "message": "Replace \`·lol·\` with \`lol\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
   },
-  Object {
-    "column": 1,
-    "endColumn": 26,
+  {
+    "column": 9,
+    "endColumn": 25,
     "endLine": 7,
+    "fix": {
+      "range": [
+        162,
+        178,
+      ],
+      "text": "indirectModule",
+    },
     "line": 7,
-    "message": "Found non-literal argument in require",
-    "nodeType": "CallExpression",
-    "ruleId": "security/detect-non-literal-require",
-    "severity": 1,
+    "message": "Replace \`·indirectModule·\` with \`indirectModule\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
   },
-  Object {
+  {
+    "column": 40,
+    "endColumn": 45,
+    "endLine": 9,
+    "fix": {
+      "range": [
+        221,
+        226,
+      ],
+      "text": "100",
+    },
+    "line": 9,
+    "message": "Replace \`·100·\` with \`100\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  {
     "column": 1,
     "endColumn": 25,
     "endLine": 10,
@@ -42,7 +84,25 @@ Array [
     "ruleId": "security/detect-non-literal-regexp",
     "severity": 1,
   },
-  Object {
+  {
+    "column": 12,
+    "endColumn": 24,
+    "endLine": 10,
+    "fix": {
+      "range": [
+        240,
+        252,
+      ],
+      "text": "dosPattern",
+    },
+    "line": 10,
+    "message": "Replace \`·dosPattern·\` with \`dosPattern\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  {
     "column": 10,
     "endColumn": 11,
     "endLine": 12,
@@ -53,7 +113,7 @@ Array [
     "ruleId": "id-length",
     "severity": 1,
   },
-  Object {
+  {
     "column": 10,
     "endColumn": 11,
     "endLine": 12,
@@ -64,7 +124,25 @@ Array [
     "ruleId": "no-unused-vars",
     "severity": 2,
   },
-  Object {
+  {
+    "column": 12,
+    "endColumn": 15,
+    "endLine": 12,
+    "fix": {
+      "range": [
+        267,
+        270,
+      ],
+      "text": "y",
+    },
+    "line": 12,
+    "message": "Replace \`·y·\` with \`y\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  {
     "column": 13,
     "endColumn": 14,
     "endLine": 12,
@@ -75,7 +153,7 @@ Array [
     "ruleId": "id-length",
     "severity": 1,
   },
-  Object {
+  {
     "column": 13,
     "endColumn": 14,
     "endLine": 12,
@@ -86,7 +164,7 @@ Array [
     "ruleId": "no-unused-vars",
     "severity": 2,
   },
-  Object {
+  {
     "column": 9,
     "endColumn": 22,
     "endLine": 13,
@@ -97,32 +175,30 @@ Array [
     "ruleId": "no-undef",
     "severity": 2,
   },
-  Object {
+  {
     "column": 2,
     "endColumn": 3,
     "endLine": 14,
-    "fix": Object {
-      "range": Array [
-        297,
-        304,
+    "fix": {
+      "range": [
+        298,
+        299,
       ],
-      "text": "}
-
-let",
+      "text": "",
     },
     "line": 14,
-    "message": "Unnecessary semicolon.",
-    "messageId": "unexpected",
-    "nodeType": "EmptyStatement",
-    "ruleId": "no-extra-semi",
+    "message": "Delete \`;\`",
+    "messageId": "delete",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
     "severity": 2,
   },
-  Object {
+  {
     "column": 5,
     "endColumn": 11,
     "endLine": 16,
-    "fix": Object {
-      "range": Array [
+    "fix": {
+      "range": [
         301,
         427,
       ],
@@ -144,7 +220,7 @@ let",
     "ruleId": "prefer-const",
     "severity": 2,
   },
-  Object {
+  {
     "column": 2,
     "endColumn": 3,
     "endLine": 17,
@@ -155,169 +231,79 @@ let",
     "ruleId": "id-length",
     "severity": 1,
   },
-  Object {
+  {
     "column": 7,
     "endColumn": 9,
     "endLine": 20,
-    "fix": Object {
-      "range": Array [
+    "fix": {
+      "range": [
         353,
         355,
       ],
       "text": "",
     },
     "line": 20,
-    "message": "There should be no space after this paren.",
-    "messageId": "rejectedOpeningSpace",
-    "nodeType": "Program",
-    "ruleId": "space-in-parens",
+    "message": "Delete \`··\`",
+    "messageId": "delete",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
     "severity": 2,
   },
-  Object {
+  {
+    "column": 6,
+    "endColumn": 8,
+    "endLine": 22,
+    "fix": {
+      "range": [
+        383,
+        385,
+      ],
+      "text": "(xx)",
+    },
+    "line": 22,
+    "message": "Replace \`xx\` with \`(xx)\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  {
     "column": 7,
-    "endColumn": 9,
-    "endLine": 20,
-    "fix": Object {
-      "range": Array [
-        353,
-        355,
-      ],
-      "text": "",
-    },
-    "line": 20,
-    "message": "There should be no space before this paren.",
-    "messageId": "rejectedClosingSpace",
-    "nodeType": "Program",
-    "ruleId": "space-in-parens",
-    "severity": 2,
-  },
-  Object {
-    "column": 7,
-    "endColumn": 9,
-    "endLine": 20,
-    "fix": Object {
-      "range": Array [
-        353,
-        355,
-      ],
-      "text": " ",
-    },
-    "line": 20,
-    "message": "Multiple spaces found before ')'.",
-    "messageId": "multipleSpaces",
-    "nodeType": "Punctuator",
-    "ruleId": "no-multi-spaces",
-    "severity": 2,
-  },
-  Object {
-    "column": 14,
-    "endColumn": 15,
-    "endLine": 20,
-    "fix": Object {
-      "range": Array [
-        361,
-        361,
-      ],
-      "text": " ",
-    },
-    "line": 20,
-    "message": "A space is required after '['.",
-    "messageId": "missingSpaceAfter",
-    "nodeType": "ArrayExpression",
-    "ruleId": "array-bracket-spacing",
-    "severity": 2,
-  },
-  Object {
-    "column": 18,
-    "endColumn": 19,
-    "endLine": 20,
-    "fix": Object {
-      "range": Array [
-        364,
-        364,
-      ],
-      "text": " ",
-    },
-    "line": 20,
-    "message": "A space is required before ']'.",
-    "messageId": "missingSpaceBefore",
-    "nodeType": "ArrayExpression",
-    "ruleId": "array-bracket-spacing",
-    "severity": 2,
-  },
-  Object {
-    "column": 8,
-    "endColumn": 9,
-    "endLine": 23,
-    "fix": Object {
-      "range": Array [
-        401,
-        401,
-      ],
-      "text": " ",
-    },
-    "line": 23,
-    "message": "A space is required after '{'.",
-    "messageId": "requireSpaceAfter",
-    "nodeType": "ObjectPattern",
-    "ruleId": "object-curly-spacing",
-    "severity": 2,
-  },
-  Object {
-    "column": 12,
-    "endColumn": 13,
-    "endLine": 23,
-    "fix": Object {
-      "range": Array [
-        401,
-        407,
-      ],
-      "text": "fds }",
-    },
-    "line": 23,
-    "message": "Unexpected trailing comma.",
-    "messageId": "unexpected",
-    "nodeType": "Property",
-    "ruleId": "comma-dangle",
-    "severity": 2,
-  },
-  Object {
-    "column": 15,
-    "endColumn": 16,
-    "endLine": 23,
-    "fix": Object {
-      "range": Array [
-        407,
-        407,
-      ],
-      "text": " ",
-    },
-    "line": 23,
-    "message": "There must be a space before this paren.",
-    "messageId": "missingClosingSpace",
-    "nodeType": "Program",
-    "ruleId": "space-in-parens",
-    "severity": 2,
-  },
-  Object {
-    "column": 1,
-    "endColumn": 9,
+    "endColumn": 8,
     "endLine": 24,
-    "fix": Object {
-      "range": Array [
-        412,
-        420,
+    "fix": {
+      "range": [
+        399,
+        419,
       ],
-      "text": "		",
+      "text": "{ fds }) =>",
     },
-    "line": 24,
-    "message": "Expected indentation of 2 tabs but found 8 spaces.",
-    "messageId": "wrongIndentation",
-    "nodeType": "Identifier",
-    "ruleId": "indent",
+    "line": 23,
+    "message": "Replace \`·{fds,·})·=>⏎·······\` with \`{·fds·})·=>\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
     "severity": 2,
   },
-  Object {
+  {
+    "column": 7,
+    "endColumn": 45,
+    "endLine": 28,
+    "fix": {
+      "range": [
+        480,
+        518,
+      ],
+      "text": "const thing of Object.keys(things)",
+    },
+    "line": 28,
+    "message": "Replace \`·const·thing·of·Object.keys(·things·)·\` with \`const·thing·of·Object.keys(things)\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  {
     "column": 3,
     "endColumn": 33,
     "endLine": 29,
@@ -328,35 +314,89 @@ let",
     "ruleId": "no-await-in-loop",
     "severity": 2,
   },
-  Object {
+  {
+    "column": 25,
+    "endColumn": 32,
+    "endLine": 29,
+    "fix": {
+      "range": [
+        546,
+        553,
+      ],
+      "text": "thing",
+    },
+    "line": 29,
+    "message": "Replace \`·thing·\` with \`thing\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  {
     "column": 2,
     "endColumn": 6,
     "endLine": 36,
     "line": 34,
-    "message": "No async function in forEachs",
+    "message": "Avoid passing an async function to Array.prototype.forEach",
     "nodeType": "ExpressionStatement",
-    "ruleId": "no-async-foreach/no-async-foreach",
+    "ruleId": "@automattic/wpvip/no-async-foreach",
     "severity": 2,
   },
-  Object {
-    "column": 41,
-    "endColumn": 46,
+  {
+    "column": 14,
+    "endColumn": 47,
     "endLine": 34,
-    "fix": Object {
-      "range": Array [
-        653,
-        662,
+    "fix": {
+      "range": [
+        628,
+        661,
+      ],
+      "text": "things).forEach(async (thing",
+    },
+    "line": 34,
+    "message": "Replace \`·things·).forEach(·async·(·thing·\` with \`things).forEach(async·(thing\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  {
+    "column": 25,
+    "endColumn": 32,
+    "endLine": 35,
+    "fix": {
+      "range": [
+        692,
+        699,
       ],
       "text": "thing",
     },
-    "line": 34,
-    "message": "Unexpected parentheses around single function argument.",
-    "messageId": "unexpectedParens",
-    "nodeType": "ArrowFunctionExpression",
-    "ruleId": "arrow-parens",
-    "severity": 1,
+    "line": 35,
+    "message": "Replace \`·thing·\` with \`thing\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
   },
-  Object {
+  {
+    "column": 3,
+    "endColumn": 4,
+    "endLine": 36,
+    "fix": {
+      "range": [
+        704,
+        705,
+      ],
+      "text": "",
+    },
+    "line": 36,
+    "message": "Delete \`·\`",
+    "messageId": "delete",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  {
     "column": 8,
     "endColumn": 11,
     "endLine": 40,
@@ -367,7 +407,7 @@ let",
     "ruleId": "no-shadow",
     "severity": 2,
   },
-  Object {
+  {
     "column": 1,
     "endColumn": 12,
     "endLine": 44,
@@ -378,10 +418,10 @@ let",
     "ruleId": "no-undef",
     "severity": 2,
   },
-  Object {
+  {
     "column": 121,
-    "fix": Object {
-      "range": Array [
+    "fix": {
+      "range": [
         906,
         906,
       ],
@@ -395,19 +435,38 @@ let",
     "ruleId": "eol-last",
     "severity": 2,
   },
+  {
+    "column": 121,
+    "endColumn": 121,
+    "endLine": 46,
+    "fix": {
+      "range": [
+        906,
+        906,
+      ],
+      "text": "
+",
+    },
+    "line": 46,
+    "message": "Insert \`⏎\`",
+    "messageId": "insert",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
 ]
 `;
 
-exports[`linting cli disallowed.js fixture matches snapshot 1`] = `Array []`;
+exports[`linting cli disallowed.js fixture matches snapshot 1`] = `[]`;
 
 exports[`linting prettier disallowed.js fixture matches snapshot 1`] = `
-Array [
-  Object {
+[
+  {
     "column": 13,
     "endColumn": 18,
     "endLine": 5,
-    "fix": Object {
-      "range": Array [
+    "fix": {
+      "range": [
         61,
         66,
       ],
@@ -420,12 +479,12 @@ Array [
     "ruleId": "prettier/prettier",
     "severity": 2,
   },
-  Object {
+  {
     "column": 6,
     "endColumn": 8,
     "endLine": 7,
-    "fix": Object {
-      "range": Array [
+    "fix": {
+      "range": [
         85,
         87,
       ],
@@ -438,12 +497,12 @@ Array [
     "ruleId": "prettier/prettier",
     "severity": 2,
   },
-  Object {
+  {
     "column": 7,
     "endColumn": 24,
     "endLine": 8,
-    "fix": Object {
-      "range": Array [
+    "fix": {
+      "range": [
         101,
         118,
       ],
@@ -456,12 +515,12 @@ Array [
     "ruleId": "prettier/prettier",
     "severity": 2,
   },
-  Object {
+  {
     "column": 6,
     "endColumn": 44,
     "endLine": 13,
-    "fix": Object {
-      "range": Array [
+    "fix": {
+      "range": [
         146,
         184,
       ],
@@ -474,12 +533,12 @@ Array [
     "ruleId": "prettier/prettier",
     "severity": 2,
   },
-  Object {
+  {
     "column": 1,
     "endColumn": 20,
     "endLine": 14,
-    "fix": Object {
-      "range": Array [
+    "fix": {
+      "range": [
         188,
         207,
       ],
@@ -492,12 +551,12 @@ Array [
     "ruleId": "prettier/prettier",
     "severity": 2,
   },
-  Object {
+  {
     "column": 1,
     "endColumn": 1,
     "endLine": 21,
-    "fix": Object {
-      "range": Array [
+    "fix": {
+      "range": [
         242,
         243,
       ],
@@ -514,8 +573,26 @@ Array [
 `;
 
 exports[`linting typescript disallowed.ts fixture matches snapshot 1`] = `
-Array [
-  Object {
+[
+  {
+    "column": 21,
+    "endColumn": 62,
+    "endLine": 1,
+    "fix": {
+      "range": [
+        20,
+        61,
+      ],
+      "text": "one: number, two: number, three: String",
+    },
+    "line": 1,
+    "message": "Replace \`·one:·number,·two:·number,·three:·String·\` with \`one:·number,·two:·number,·three:·String\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  {
     "column": 48,
     "endColumn": 61,
     "endLine": 1,
@@ -526,12 +603,12 @@ Array [
     "ruleId": "@typescript-eslint/no-unused-vars",
     "severity": 2,
   },
-  Object {
+  {
     "column": 55,
     "endColumn": 61,
     "endLine": 1,
-    "fix": Object {
-      "range": Array [
+    "fix": {
+      "range": [
         54,
         60,
       ],
@@ -544,18 +621,90 @@ Array [
     "ruleId": "@typescript-eslint/ban-types",
     "severity": 2,
   },
-  Object {
+  {
     "column": 1,
     "endColumn": 14,
     "endLine": 5,
     "line": 5,
-    "message": "Do not use \\"@ts-ignore\\" because it alters compilation errors.",
+    "message": "Do not use "@ts-ignore" because it alters compilation errors.",
     "messageId": "tsDirectiveComment",
     "nodeType": "Line",
     "ruleId": "@typescript-eslint/ban-ts-comment",
     "severity": 2,
   },
-  Object {
+  {
+    "column": 13,
+    "endColumn": 18,
+    "endLine": 10,
+    "fix": {
+      "range": [
+        170,
+        175,
+      ],
+      "text": "'x'",
+    },
+    "line": 10,
+    "message": "Replace \`·'x'·\` with \`'x'\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  {
+    "column": 7,
+    "endColumn": 19,
+    "endLine": 12,
+    "fix": {
+      "range": [
+        195,
+        207,
+      ],
+      "text": "xx: string",
+    },
+    "line": 12,
+    "message": "Replace \`·xx:·string·\` with \`xx:·string\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  {
+    "column": 7,
+    "endColumn": 16,
+    "endLine": 13,
+    "fix": {
+      "range": [
+        222,
+        231,
+      ],
+      "text": "{ fds }",
+    },
+    "line": 13,
+    "message": "Replace \`·{·fds·}·\` with \`{·fds·}\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  {
+    "column": 26,
+    "endColumn": 49,
+    "endLine": 16,
+    "fix": {
+      "range": [
+        270,
+        293,
+      ],
+      "text": "one: number, two: any",
+    },
+    "line": 16,
+    "message": "Replace \`·one:·number,·two:·any·\` with \`one:·number,·two:·any\`",
+    "messageId": "replace",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+  {
     "column": 45,
     "endColumn": 48,
     "endLine": 16,
@@ -565,11 +714,11 @@ Array [
     "nodeType": "TSAnyKeyword",
     "ruleId": "@typescript-eslint/no-explicit-any",
     "severity": 1,
-    "suggestions": Array [
-      Object {
+    "suggestions": [
+      {
         "desc": "Use \`unknown\` instead, this will force you to explicitly, and safely assert the type is correct.",
-        "fix": Object {
-          "range": Array [
+        "fix": {
+          "range": [
             289,
             292,
           ],
@@ -577,10 +726,10 @@ Array [
         },
         "messageId": "suggestUnknown",
       },
-      Object {
+      {
         "desc": "Use \`never\` instead, this is useful when instantiating generic type parameters that you don't need to know the type of.",
-        "fix": Object {
-          "range": Array [
+        "fix": {
+          "range": [
             289,
             292,
           ],
@@ -590,7 +739,7 @@ Array [
       },
     ],
   },
-  Object {
+  {
     "column": 8,
     "endColumn": 11,
     "endLine": 21,
@@ -605,10 +754,10 @@ Array [
 `;
 
 exports[`linting typescript-strict disallowed.ts fixture matches snapshot 1`] = `
-Array [
-  Object {
-    "column": 48,
-    "endColumn": 61,
+[
+  {
+    "column": 47,
+    "endColumn": 60,
     "endLine": 1,
     "line": 1,
     "message": "'three' is defined but never used. Allowed unused args must match /^_/u.",
@@ -617,14 +766,14 @@ Array [
     "ruleId": "@typescript-eslint/no-unused-vars",
     "severity": 2,
   },
-  Object {
-    "column": 55,
-    "endColumn": 61,
+  {
+    "column": 54,
+    "endColumn": 60,
     "endLine": 1,
-    "fix": Object {
-      "range": Array [
-        54,
-        60,
+    "fix": {
+      "range": [
+        53,
+        59,
       ],
       "text": "string",
     },
@@ -635,9 +784,9 @@ Array [
     "ruleId": "@typescript-eslint/ban-types",
     "severity": 2,
   },
-  Object {
-    "column": 45,
-    "endColumn": 48,
+  {
+    "column": 44,
+    "endColumn": 47,
     "endLine": 5,
     "line": 5,
     "message": "Unexpected any. Specify a different type.",
@@ -645,24 +794,24 @@ Array [
     "nodeType": "TSAnyKeyword",
     "ruleId": "@typescript-eslint/no-explicit-any",
     "severity": 2,
-    "suggestions": Array [
-      Object {
+    "suggestions": [
+      {
         "desc": "Use \`unknown\` instead, this will force you to explicitly, and safely assert the type is correct.",
-        "fix": Object {
-          "range": Array [
+        "fix": {
+          "range": [
+            136,
             139,
-            142,
           ],
           "text": "unknown",
         },
         "messageId": "suggestUnknown",
       },
-      Object {
+      {
         "desc": "Use \`never\` instead, this is useful when instantiating generic type parameters that you don't need to know the type of.",
-        "fix": Object {
-          "range": Array [
+        "fix": {
+          "range": [
+            136,
             139,
-            142,
           ],
           "text": "never",
         },
@@ -670,20 +819,20 @@ Array [
       },
     ],
   },
-  Object {
+  {
     "column": 1,
     "endColumn": 14,
     "endLine": 9,
     "line": 9,
-    "message": "Do not use \\"@ts-ignore\\" because it alters compilation errors.",
+    "message": "Do not use "@ts-ignore" because it alters compilation errors.",
     "messageId": "tsDirectiveComment",
     "nodeType": "Line",
     "ruleId": "@typescript-eslint/ban-ts-comment",
     "severity": 2,
   },
-  Object {
-    "column": 21,
-    "endColumn": 24,
+  {
+    "column": 19,
+    "endColumn": 22,
     "endLine": 17,
     "line": 17,
     "message": "Unsafe return of an \`any\` typed value.",
@@ -692,7 +841,7 @@ Array [
     "ruleId": "@typescript-eslint/no-unsafe-return",
     "severity": 2,
   },
-  Object {
+  {
     "column": 7,
     "endColumn": 20,
     "endLine": 20,
@@ -703,7 +852,7 @@ Array [
     "ruleId": "@typescript-eslint/no-unused-vars",
     "severity": 2,
   },
-  Object {
+  {
     "column": 10,
     "endColumn": 16,
     "endLine": 21,
@@ -714,7 +863,7 @@ Array [
     "ruleId": "@typescript-eslint/no-unused-vars",
     "severity": 2,
   },
-  Object {
+  {
     "column": 8,
     "endColumn": 21,
     "endLine": 22,

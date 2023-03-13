@@ -5,6 +5,6 @@ module.exports = {
 		'../../configs/typescript-strict',
 	],
 	parserOptions: {
-		project: "./__fixtures__/typescript-strict/tsconfig.json",
+		project: './__fixtures__/typescript-strict/tsconfig.json',
 	},
 };

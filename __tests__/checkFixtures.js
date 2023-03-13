@@ -1,13 +1,17 @@
 const { ESLint } = require('eslint');
+const path = require('path');
 
 async function getLintMessages(type, fixture) {
+	const paths = [__dirname, '..', '__fixtures__', type];
 	const eslint = new ESLint({
-		overrideConfigFile: `__fixtures__/${type}/eslintrc.js`,
+		ignore: false,
+		overrideConfigFile: path.resolve(...paths, 'eslintrc.js'),
 		useEslintrc: false,
 	});
 
-	const files = `__fixtures__/${type}/${fixture}`;
-	const [{ messages }] = await eslint.lintFiles(files);
+	const [{ messages }] = await eslint.lintFiles(
+		path.resolve(...paths, fixture)
+	);
 
 	return messages;
 }

@@ -17,6 +17,10 @@ module.exports = {
 	 * disable errors, include a brief justification or reasoning.
 	 */
 	rules: {
+		// Async/await must not be used in a `.forEach` method, because the result
+		// will not be awaited in the outer scope.
+		'@automattic/wpvip/no-async-foreach': 'error',
+
 		// Identifiers should be in camelCase. Object properties are excluded
 		// (including when destructuring) since they often come from external
 		// sources (like APIs).
@@ -43,6 +47,14 @@ module.exports = {
 			},
 		],
 
+		// Disable JSDoc rule to require param definitions. While other JSDoc rules
+		// are still present and active, they are effectively dormant unless
+		// triggered by invalid or insufficient JSDoc. In other words, if you don't
+		// attempt JSDoc, none will be required by the linter.
+		//
+		// Reenable this rule with the jsdoc preset.
+		'jsdoc/require-param': 'off',
+
 		// Lines containing code should be a maximum of 200 characters in length.
 		'max-len': [
 			'warn',
@@ -50,10 +62,6 @@ module.exports = {
 				code: 200,
 			},
 		],
-
-		// Async/await must not be used in a `.forEach` method, because the result
-		// will not be awaited in the outer scope.
-		'@automattic/wpvip/no-async-foreach': 'error',
 
 		// Async/await must not be used in a loop, because it leads to sequential
 		// execution, when parallel execution is almost always preferred.
