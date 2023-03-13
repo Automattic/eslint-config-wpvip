@@ -56,16 +56,28 @@ Use these presets in the `extends` section of your `eslintrc`:
 
 ## Prettier
 
-This plugin comes with support for `prettier`. Configure it by [adding a `.prettierrc`](https://prettier.io/docs/en/configuration.html) to your project and enabling the `@automattic/wpvip/prettier` preset:
+Prettier integration with ESLint is automatically enabled whenever your project has installed the [`prettier` NPM package](https://www.npmjs.com/package/prettier).
 
+By default, this plugin provides the [WordPress prettier config](https://github.com/WordPress/gutenberg/blob/605aeb0f4f7d2225120e498f95ae27b9f56d77a3/packages/prettier-config/lib/index.js). You can define your own [`.prettierrc` configuration file](https://prettier.io/docs/en/configuration.html), which will be merged with the default. The following `.prettierrc` will use spaces for indentation instead of tabs:
+
+```json
+{
+  "useTabs": false
+}
 ```
+
+If you have the `prettier` NPM package installed but wish to disable the automatic integration, add the `disable-prettier` preset to your `.eslintrc.js`:
+
+```json
 {
 	"extends": [
 		"plugin:@automattic/wpvip/base",
-		"plugin:@automattic/wpvip/prettier"
+		"plugin:@automattic/wpvip/disable-prettier"
 	]
 }
 ```
+
+
 
 ## Migrating
 

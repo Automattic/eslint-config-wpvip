@@ -12,17 +12,15 @@
  * https://github.com/WordPress/gutenberg/blob/trunk/packages/eslint-plugin/configs/recommended.js
  */
 module.exports = {
-	extends: [
-		'plugin:@typescript-eslint/recommended',
-	],
+	extends: ['plugin:@typescript-eslint/recommended'],
 	/**
 	 * Please include a short description of the rule. For rules that downgrade or
 	 * disable errors, include a brief justification or reasoning.
 	 */
-	ignorePatterns: [ '**/*.d.ts' ],
+	ignorePatterns: ['**/*.d.ts'],
 	overrides: [
 		{
-			files: [ '**/*.ts', '**/*.tsx' ],
+			files: ['**/*.ts', '**/*.tsx'],
 			parser: '@typescript-eslint/parser',
 			// Note that these rules only take effect in TypeScript files (.ts, .tsx).
 			rules: {
@@ -40,7 +38,7 @@ module.exports = {
 			},
 		},
 	],
-	plugins: [ '@typescript-eslint' ],
+	plugins: ['@typescript-eslint'],
 	rules: {
 		// Elevate the unused vars rule to an error, but allow it to be suppressed
 		// with a naming convention.
@@ -55,7 +53,7 @@ module.exports = {
 	settings: {
 		'import/resolver': {
 			node: {
-				extensions: [ '.js', '.jsx', '.ts', '.tsx' ],
+				extensions: ['.js', '.jsx', '.ts', '.tsx'],
 			},
 		},
 	},

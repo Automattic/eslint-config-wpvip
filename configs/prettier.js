@@ -1,7 +1,5 @@
 module.exports = {
-	extends: [
-		'plugin:prettier/recommended',
-	],
+	extends: ['plugin:prettier/recommended'],
 	/**
 	 * Please include a short description of the rule. For rules that downgrade or
 	 * disable errors, include a brief justification or reasoning.

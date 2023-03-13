@@ -17,13 +17,6 @@ module.exports = {
 	 * disable errors, include a brief justification or reasoning.
 	 */
 	rules: {
-		// Parenthesis should be omitted for arrow functions when there is a single
-		// argument.
-		'arrow-parens': [
-			'warn',
-			'as-needed',
-		],
-
 		// Identifiers should be in camelCase. Object properties are excluded
 		// (including when destructuring) since they often come from external
 		// sources (like APIs).
@@ -39,7 +32,7 @@ module.exports = {
 		complexity: 'error',
 
 		// Files must end in a newline.
-		'eol-last': [ 'error', 'always' ],
+		'eol-last': ['error', 'always'],
 
 		// Identifiers should be between 2 and 40 characters in length.
 		'id-length': [
@@ -89,15 +82,6 @@ module.exports = {
 
 		// `parseInt` calls must always supply a radix argument.
 		radix: 'error',
-
-		// Parentheses must include ( spaces ), except when empty.
-		'space-in-parens': [
-			'error',
-			'always',
-			{
-				exceptions: [ 'empty' ],
-			},
-		],
 
 		// Comments should always include consistent spacing for readability.
 		'spaced-comment': 'warn',

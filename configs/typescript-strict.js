@@ -5,9 +5,7 @@
  * you enforce additional best practices for TypeScript projects.
  */
 module.exports = {
-	extends: [
-		'plugin:@typescript-eslint/recommended-requiring-type-checking',
-	],
+	extends: ['plugin:@typescript-eslint/recommended-requiring-type-checking'],
 	/**
 	 * Please include a short description of the rule. For rules that downgrade or
 	 * disable errors, include a brief justification or reasoning.
