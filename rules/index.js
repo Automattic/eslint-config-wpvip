@@ -1,5 +1,4 @@
 module.exports = {
-	rules: {
-		// Custom ESLint rules
-	},
+	// Custom ESLint rules
+	'no-async-foreach': require('./no-async-foreach'),
 };

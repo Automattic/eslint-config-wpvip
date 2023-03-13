@@ -3,14 +3,15 @@ module.exports = {
 		node: true,
 	},
 	extends: [
-		'plugin:@wordpress/eslint-plugin/recommended-with-formatting',
 		'eslint:recommended',
+		'plugin:@wordpress/eslint-plugin/recommended',
 		'plugin:json/recommended',
 		'plugin:security/recommended',
 	],
-	plugins: [
-		'no-async-foreach',
-	],
+	/**
+	 * We must explicitly add this plugin to use our custom rules.
+	 */
+	plugins: ['@automattic/wpvip'],
 	/**
 	 * Please include a short description of the rule. For rules that downgrade or
 	 * disable errors, include a brief justification or reasoning.
@@ -59,7 +60,7 @@ module.exports = {
 
 		// Async/await must not be used in a `.forEach` method, because the result
 		// will not be awaited in the outer scope.
-		'no-async-foreach/no-async-foreach': 'error',
+		'@automattic/wpvip/no-async-foreach': 'error',
 
 		// Async/await must not be used in a loop, because it leads to sequential
 		// execution, when parallel execution is almost always preferred.
