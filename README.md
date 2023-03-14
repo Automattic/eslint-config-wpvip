@@ -63,6 +63,21 @@ If you have installed the `prettier` NPM package but wish to disable the automat
 }
 ```
 
+## CLI
+
+The `cli` config allows certain behaviors that are usually against best practice but are useful in a codebase that produces a CLI tool:
+
+```json
+{
+	"extends": [
+		"plugin:@automattic/wpvip/base",
+		"plugin:@automattic/wpvip/cli"
+	]
+}
+```
+
+If your project is not a CLI tool but calls `console` or `process` methods occasionally, don't use this config—just add ignore statements in those few spots.
+
 ## JSDoc
 
 The `base` config includes rules related to enforce [JSDoc](https://jsdoc.app/) best practices, but they are not triggered if your code does not provide `@param` or `@return` markers:
