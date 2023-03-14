@@ -42,9 +42,7 @@ TypeScript rules are automatically added whenever your project has installed the
 
 ## Prettier
 
-Prettier integration with ESLint is automatically enabled whenever your project has installed the [`prettier` NPM package](https://www.npmjs.com/package/prettier) as a dependency.
-
-By default, this plugin provides the [WordPress prettier config](https://github.com/WordPress/gutenberg/blob/605aeb0f4f7d2225120e498f95ae27b9f56d77a3/packages/prettier-config/lib/index.js). You can define your own [`.prettierrc` configuration file](https://prettier.io/docs/en/configuration.html), which will be merged with the default. The following `.prettierrc` will use spaces for indentation instead of tabs:
+Prettier integration with ESLint is automatically enabled. Further, by default, this plugin provides the [WordPress prettier config](https://github.com/WordPress/gutenberg/blob/605aeb0f4f7d2225120e498f95ae27b9f56d77a3/packages/prettier-config/lib/index.js). You can define your own [`.prettierrc` configuration file](https://prettier.io/docs/en/configuration.html), which will be merged with the default. The following `.prettierrc` will use spaces for indentation instead of tabs:
 
 ```json
 {
@@ -52,7 +50,7 @@ By default, this plugin provides the [WordPress prettier config](https://github.
 }
 ```
 
-If you have installed the `prettier` NPM package but wish to disable the automatic integration, add the `prettier-off` config to your `.eslintrc.js`:
+If you wish to disable the automatic Prettier integration, add the `prettier-off` config to your `.eslintrc.js`:
 
 ```json
 {
