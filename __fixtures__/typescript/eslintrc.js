@@ -1,3 +1,3 @@
 module.exports = {
-	extends: ['../../configs/base', '../../configs/typescript'],
+	extends: [ '../../configs/base', '../../configs/typescript' ],
 };

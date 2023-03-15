@@ -8,26 +8,27 @@
  */
 
 module.exports = {
-	create(context) {
+	create( context ) {
 		return {
-			ExpressionStatement(node) {
+			ExpressionStatement( node ) {
 				const { callee } = node.expression;
-				if (!callee || !callee.property || !callee.property.name)
+				if ( ! callee || ! callee.property || ! callee.property.name ) {
 					return;
-				if (callee.property.name === 'forEach') {
+				}
+				if ( callee.property.name === 'forEach' ) {
 					const functionArguments = node.expression.arguments.find(
-						(exp) => {
+						( exp ) => {
 							return (
 								exp.type === 'ArrowFunctionExpression' ||
 								exp.type === 'FunctionExpression'
 							);
-						}
+						},
 					);
-					if (functionArguments) {
-						if (functionArguments.async) {
+					if ( functionArguments ) {
+						if ( functionArguments.async ) {
 							context.report(
 								node,
-								'Avoid passing an async function to Array.prototype.forEach'
+								'Avoid passing an async function to Array.prototype.forEach',
 							);
 						}
 					}

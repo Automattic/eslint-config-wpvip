@@ -1,8 +1,12 @@
 module.exports = {
-	base: require('./base'),
-	cli: require('./cli'),
-	jsdoc: require('./jsdoc'),
-	'prettier-off': require('./prettier-off'),
-	weak: require('./weak'),
-	'weak-typescript': require('./weak-typescript'),
+	base: require( './base' ),
+	cli: require( './cli' ),
+	javascript: require( './javascript' ),
+	jsdoc: require( './jsdoc' ),
+	prettier: require( './prettier' ),
+	react: require( './react' ),
+	testing: require( './testing' ),
+	typescript: require( './typescript' ),
+	'weak-javascript': require( './weak-javascript' ),
+	'weak-typescript': require( './weak-typescript' ),
 };
