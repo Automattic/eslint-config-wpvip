@@ -29,6 +29,71 @@ module.exports = {
 	 * disable errors, include a brief justification or reasoning.
 	 */
 	rules: {
+		// These rules are from eslint:recommended, but are enumerated here for
+		// visibility:
+		// https://github.com/eslint/eslint/blob/main/packages/js/src/configs/eslint-recommended.js
+		'constructor-super': 'error',
+		'for-direction': 'error',
+		'getter-return': 'error',
+		'no-async-promise-executor': 'error',
+		'no-case-declarations': 'error',
+		'no-class-assign': 'error',
+		'no-compare-neg-zero': 'error',
+		// 'no-cond-assign': 'error', // overridden below
+		'no-const-assign': 'error',
+		'no-constant-condition': 'error',
+		'no-control-regex': 'error',
+		'no-debugger': 'error',
+		'no-delete-var': 'error',
+		'no-dupe-args': 'error',
+		'no-dupe-class-members': 'error',
+		'no-dupe-else-if': 'error',
+		'no-dupe-keys': 'error',
+		'no-duplicate-case': 'error',
+		'no-empty': 'error',
+		'no-empty-character-class': 'error',
+		'no-empty-pattern': 'error',
+		'no-ex-assign': 'error',
+		'no-extra-boolean-cast': 'error',
+		'no-extra-semi': 'error',
+		'no-fallthrough': 'error',
+		'no-func-assign': 'error',
+		'no-global-assign': 'error',
+		'no-import-assign': 'error',
+		'no-inner-declarations': 'error',
+		'no-invalid-regexp': 'error',
+		'no-irregular-whitespace': 'error',
+		'no-loss-of-precision': 'error',
+		'no-misleading-character-class': 'error',
+		'no-mixed-spaces-and-tabs': 'error',
+		'no-new-symbol': 'error',
+		'no-nonoctal-decimal-escape': 'error',
+		'no-obj-calls': 'error',
+		'no-octal': 'error',
+		'no-prototype-builtins': 'error',
+		'no-redeclare': 'error',
+		'no-regex-spaces': 'error',
+		'no-self-assign': 'error',
+		'no-setter-return': 'error',
+		'no-shadow-restricted-names': 'error',
+		'no-sparse-arrays': 'error',
+		'no-this-before-super': 'error',
+		'no-undef': 'error',
+		'no-unexpected-multiline': 'error',
+		'no-unreachable': 'error',
+		'no-unsafe-finally': 'error',
+		'no-unsafe-negation': 'error',
+		'no-unsafe-optional-chaining': 'error',
+		'no-unused-labels': 'error',
+		// 'no-unused-vars': 'error', // overridden below
+		'no-useless-backreference': 'error',
+		'no-useless-catch': 'error',
+		'no-useless-escape': 'error',
+		'no-with': 'error',
+		'require-yield': 'error',
+		'use-isnan': 'error',
+		// 'valid-typeof': 'error', // overridden below
+
 		// Async/await must not be used in a `.forEach` method, because the result
 		// will not be awaited in the outer scope.
 		'@automattic/wpvip/no-async-foreach': 'error',
@@ -40,46 +105,12 @@ module.exports = {
 		// Unguarded getRangeAt calls can throw errors in some browsers.
 		'@automattic/wpvip/no-unguarded-get-range-at': 'error',
 
-		'array-bracket-spacing': [ 'error', 'always' ],
-
 		'array-callback-return': 'error',
-
-		'arrow-parens': [ 'error', 'always' ],
-
-		'arrow-spacing': 'error',
-
-		'brace-style': [ 'error', '1tbs' ],
-
-		// Identifiers should be in camelCase. Object properties are excluded
-		// (including when destructuring) since they often come from external
-		// sources (like APIs).
-		camelcase: [
-			'error',
-			{
-				properties: 'never',
-				ignoreDestructuring: true,
-			},
-		],
-
-		'comma-dangle': [ 'error', 'always-multiline' ],
-
-		'comma-spacing': 'error',
-
-		'comma-style': [ 'error', 'last' ],
 
 		// Maximum cyclomatic complexity must not be above 20.
 		complexity: 'error',
 
-		'computed-property-spacing': [ 'error', 'always' ],
-
-		'constructor-super': 'error',
-
-		curly: [ 'error', 'all' ],
-
 		'dot-notation': 'error',
-
-		// Files must end in a newline.
-		'eol-last': [ 'error', 'always' ],
 
 		eqeqeq: 'error',
 
@@ -108,21 +139,9 @@ module.exports = {
 
 		'import/no-unresolved': 'error',
 
-		indent: [ 'error', 'tab', { SwitchCase: 1 } ],
-
-		'key-spacing': 'error',
-
-		'keyword-spacing': 'error',
-
+		// Enforce Unix linebreaks. Included here and not in "formatting" since it
+		// is not controversial and helps with interchange.
 		'linebreak-style': [ 'error', 'unix' ],
-
-		// Lines containing code should be a maximum of 200 characters in length.
-		'max-len': [
-			'warn',
-			{
-				code: 200,
-			},
-		],
 
 		'no-alert': 'error',
 
@@ -140,18 +159,6 @@ module.exports = {
 		// logging function that logs on your behalf (and ignore this rule there).
 		'no-console': 'warn',
 
-		'no-const-assign': 'error',
-
-		'no-debugger': 'error',
-
-		'no-dupe-args': 'error',
-
-		'no-dupe-class-members': 'error',
-
-		'no-dupe-keys': 'error',
-
-		'no-duplicate-case': 'error',
-
 		// A single `import` statement should be used when importing multiple things
 		// from a module.
 		'no-duplicate-imports': 'error',
@@ -162,17 +169,9 @@ module.exports = {
 
 		'no-eval': 'error',
 
-		'no-extra-semi': 'error',
-
-		'no-fallthrough': 'error',
-
-		'no-irregular-whitespace': 'error',
-
 		'no-lonely-if': 'error',
 
 		'no-mixed-operators': 'error',
-
-		'no-mixed-spaces-and-tabs': 'error',
 
 		'no-multi-spaces': 'error',
 
@@ -182,21 +181,9 @@ module.exports = {
 
 		'no-nested-ternary': 'error',
 
-		'no-redeclare': 'error',
-
 		'no-shadow': 'error',
 
-		'no-trailing-spaces': 'error',
-
-		'no-undef': 'error',
-
 		'no-undef-init': 'error',
-
-		'no-unreachable': 'error',
-
-		// Negating the left operand of a statment frequently leads to logical
-		// errors. Example: `!key in obj` vs. `!(key in obj)`.
-		'no-unsafe-negation': 'error',
 
 		'no-unused-expressions': 'error',
 
@@ -210,56 +197,17 @@ module.exports = {
 
 		'no-var': 'error',
 
+		// Non-controversial formatting rule.
 		'no-whitespace-before-property': 'error',
 
-		'no-with': 'error',
-
-		'object-curly-spacing': [ 'error', 'always' ],
-
-		'object-shorthand': 'error',
-
 		'one-var': [ 'error', 'never' ],
-
-		'operator-linebreak': 'error',
-
-		'padded-blocks': [ 'error', 'never' ],
-
-		// Arrow functions should be used for function arguments and callbacks.
-		'prefer-arrow-callback': 'warn',
 
 		'prefer-const': [ 'error', { destructuring: 'all' } ],
 
 		radix: 'error',
 
-		quotes: [
-			'error',
-			'single',
-			{ allowTemplateLiterals: true, avoidEscape: true },
-		],
-
-		'quote-props': [ 'error', 'as-needed' ],
-
+		// Non-controversial formatting rule.
 		semi: 'error',
-
-		'semi-spacing': 'error',
-
-		'space-before-blocks': [ 'error', 'always' ],
-
-		'space-before-function-paren': [
-			'error',
-			{ anonymous: 'never', named: 'never', asyncArrow: 'always' },
-		],
-
-		'space-in-parens': [ 'error', 'always' ],
-
-		'space-infix-ops': 'error',
-
-		'space-unary-ops': [ 'error', { overrides: { '!': true, yield: true } } ],
-
-		// Comments should always include consistent spacing for readability.
-		'spaced-comment': 'warn',
-
-		'template-curly-spacing': [ 'error', 'always' ],
 
 		// The result of `typeof` must always be compared to a literal string.
 		'valid-typeof': [

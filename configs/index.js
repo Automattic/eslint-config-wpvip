@@ -1,6 +1,7 @@
 module.exports = {
 	base: require( './base' ),
 	cli: require( './cli' ),
+	formatting: require( './formatting' ),
 	javascript: require( './javascript' ),
 	jsdoc: require( './jsdoc' ),
 	prettier: require( './prettier' ),
