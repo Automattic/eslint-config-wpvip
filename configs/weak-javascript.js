@@ -7,9 +7,48 @@
  * temporary basis.
  */
 module.exports = {
-	/**
-	 * Downgrade rules from the base preset to "warn". Do not disable rules (set
-	 * to "off"). If a rule is already set to a warning, do not disable it.
-	 */
-	rules: {},
+	overrides: [
+		{
+			// Don't apply weak rules to TypeScript files.
+			files: [ '**/*.js', '**/*.jsx' ],
+
+			/**
+			 * Downgrade rules from the base preset to "warn". Do not disable rules (set
+			 * to "off"). If a rule is already set to a warning, do not disable it.
+			 */
+			rules: {
+				'@automattic/wpvip/no-unused-vars-before-return': 'warn',
+
+				complexity: 'warn',
+
+				eqeqeq: 'warn',
+
+				'object-shorthand': 'warn',
+
+				'no-async-promise-executor': 'warn',
+
+				'no-await-in-loop': 'warn',
+
+				'no-case-declarations': 'warn',
+
+				'no-else-return': 'warn',
+
+				'no-mixed-operators': 'warn',
+
+				'no-prototype-builtins': 'warn',
+
+				'no-shadow': 'warn',
+
+				'no-unused-vars': 'warn',
+
+				'no-useless-escape': 'warn',
+
+				'no-var': 'warn',
+
+				'one-var': 'warn',
+
+				radix: 'warn',
+			},
+		},
+	],
 };

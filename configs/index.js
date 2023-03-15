@@ -9,5 +9,6 @@ module.exports = {
 	testing: require( './testing' ),
 	typescript: require( './typescript' ),
 	'weak-javascript': require( './weak-javascript' ),
+	'weak-testing': require( './weak-testing' ),
 	'weak-typescript': require( './weak-typescript' ),
 };

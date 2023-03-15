@@ -39,7 +39,7 @@ module.exports = {
 		'no-case-declarations': 'error',
 		'no-class-assign': 'error',
 		'no-compare-neg-zero': 'error',
-		// 'no-cond-assign': 'error', // overridden below
+		// 'no-cond-assign': 'error', // extended below
 		'no-const-assign': 'error',
 		'no-constant-condition': 'error',
 		'no-control-regex': 'error',
@@ -50,7 +50,7 @@ module.exports = {
 		'no-dupe-else-if': 'error',
 		'no-dupe-keys': 'error',
 		'no-duplicate-case': 'error',
-		'no-empty': 'error',
+		// 'no-empty': 'error', // extended below
 		'no-empty-character-class': 'error',
 		'no-empty-pattern': 'error',
 		'no-ex-assign': 'error',
@@ -85,14 +85,14 @@ module.exports = {
 		'no-unsafe-negation': 'error',
 		'no-unsafe-optional-chaining': 'error',
 		'no-unused-labels': 'error',
-		// 'no-unused-vars': 'error', // overridden below
+		// 'no-unused-vars': 'error', // extended below
 		'no-useless-backreference': 'error',
 		'no-useless-catch': 'error',
 		'no-useless-escape': 'error',
 		'no-with': 'error',
 		'require-yield': 'error',
 		'use-isnan': 'error',
-		// 'valid-typeof': 'error', // overridden below
+		// 'valid-typeof': 'error', // extended below
 
 		// Async/await must not be used in a `.forEach` method, because the result
 		// will not be awaited in the outer scope.
@@ -110,11 +110,7 @@ module.exports = {
 		// Maximum cyclomatic complexity must not be above 20.
 		complexity: 'error',
 
-		'dot-notation': 'error',
-
 		eqeqeq: 'error',
-
-		'func-call-spacing': 'error',
 
 		// Identifiers should be between 2 and 40 characters in length in order to
 		// provide a concise semantic meaning.
@@ -165,6 +161,8 @@ module.exports = {
 
 		'no-else-return': 'error',
 
+		'no-empty': [ 'error', { allowEmptyCatch: true } ],
+
 		'no-eq-null': 'error',
 
 		'no-eval': 'error',
@@ -172,12 +170,6 @@ module.exports = {
 		'no-lonely-if': 'error',
 
 		'no-mixed-operators': 'error',
-
-		'no-multi-spaces': 'error',
-
-		'no-multi-str': 'error',
-
-		'no-multiple-empty-lines': [ 'error', { max: 1 } ],
 
 		'no-nested-ternary': 'error',
 
@@ -197,17 +189,11 @@ module.exports = {
 
 		'no-var': 'error',
 
-		// Non-controversial formatting rule.
-		'no-whitespace-before-property': 'error',
-
 		'one-var': [ 'error', 'never' ],
 
 		'prefer-const': [ 'error', { destructuring: 'all' } ],
 
 		radix: 'error',
-
-		// Non-controversial formatting rule.
-		semi: 'error',
 
 		// The result of `typeof` must always be compared to a literal string.
 		'valid-typeof': [
