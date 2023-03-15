@@ -17,7 +17,7 @@ module.exports = {
 		schema: [],
 		fixable: 'code',
 	},
-	create( context ) {
+	create(context) {
 		const comments = context.getSourceCode().getAllComments();
 
 		/**
@@ -45,8 +45,8 @@ module.exports = {
 		 *
 		 * @return {string} Expected comment node value.
 		 */
-		function getCommentValue( locality ) {
-			return `*\n * ${ locality } dependencies\n `;
+		function getCommentValue(locality) {
+			return `*\n * ${locality} dependencies\n `;
 		}
 
 		/**
@@ -57,10 +57,10 @@ module.exports = {
 		 *
 		 * @return {WPPackageLocality} Package locality.
 		 */
-		function getPackageLocality( source ) {
-			if ( source.startsWith( '.' ) ) {
+		function getPackageLocality(source) {
+			if (source.startsWith('.')) {
 				return 'Internal';
-			} else if ( source.startsWith( '@wordpress/' ) ) {
+			} else if (source.startsWith('@wordpress/')) {
 				return 'WordPress';
 			}
 
@@ -76,9 +76,9 @@ module.exports = {
 		 *
 		 * @return {boolean} Whether comment node satisfies locality.
 		 */
-		function isLocalityDependencyBlock( node, locality ) {
+		function isLocalityDependencyBlock(node, locality) {
 			const { type, value } = node;
-			if ( type !== 'Block' ) {
+			if (type !== 'Block') {
 				return false;
 			}
 
@@ -88,16 +88,16 @@ module.exports = {
 			// - Ending period
 			// - "Node" dependencies as an alias for External.
 
-			if ( locality === 'External' ) {
+			if (locality === 'External') {
 				locality = '(External|Node)';
 			}
 
 			// eslint-disable-next-line security/detect-non-literal-regexp
 			const pattern = new RegExp(
-				`^\\*?\\n \\* ${ locality } dependencies\\.?\\n $`,
-				'i',
+				`^\\*?\\n \\* ${locality} dependencies\\.?\\n $`,
+				'i'
 			);
-			return pattern.test( value );
+			return pattern.test(value);
 		}
 
 		/**
@@ -109,12 +109,12 @@ module.exports = {
 		 *
 		 * @return {boolean} Whether node occurs before reference.
 		 */
-		function isBefore( node, reference ) {
-			if ( ! node.range || ! reference.range ) {
+		function isBefore(node, reference) {
+			if (!node.range || !reference.range) {
 				return false;
 			}
 
-			return node.range[ 0 ] < reference.range[ 0 ];
+			return node.range[0] < reference.range[0];
 		}
 
 		/**
@@ -128,22 +128,22 @@ module.exports = {
 		 *
 		 * @return {WPDependencyBlockCorrection | undefined} Correction, if applicable.
 		 */
-		function getDependencyBlockCorrection( node, locality ) {
-			const value = getCommentValue( locality );
+		function getDependencyBlockCorrection(node, locality) {
+			const value = getCommentValue(locality);
 
-			for ( const comment of comments ) {
-				if ( ! isBefore( comment, node ) ) {
+			for (const comment of comments) {
+				if (!isBefore(comment, node)) {
 					// Exhausted options.
 					break;
 				}
 
-				if ( ! isLocalityDependencyBlock( comment, locality ) ) {
+				if (!isLocalityDependencyBlock(comment, locality)) {
 					// Not usable (either not an block comment, or not one
 					// matching a tolerable pattern).
 					continue;
 				}
 
-				if ( comment.value === value ) {
+				if (comment.value === value) {
 					// No change needed. (OK)
 					return;
 				}
@@ -159,7 +159,7 @@ module.exports = {
 			/**
 			 * @param {import('estree').Program} node Program node.
 			 */
-			Program( node ) {
+			Program(node) {
 				/**
 				 * The set of package localities which have been reported for
 				 * the current program. Each locality is reported at most one
@@ -181,29 +181,25 @@ module.exports = {
 				// Since we only care to enforce imports which occur at the
 				// top-level scope, match on Program and test its children,
 				// rather than matching the import nodes directly.
-				node.body.forEach( ( child ) => {
+				node.body.forEach((child) => {
 					/** @type {string} */
 					let source;
-					switch ( child.type ) {
+					switch (child.type) {
 						case 'ImportDeclaration':
-							source = /** @type {string} */ (
-								child.source.value
-							);
-							candidates.push( [ child, source ] );
+							source = /** @type {string} */ (child.source.value);
+							candidates.push([child, source]);
 							break;
 
 						case 'VariableDeclaration':
-							child.declarations.forEach( ( declaration ) => {
+							child.declarations.forEach((declaration) => {
 								const { init } = declaration;
 								if (
-									! init ||
+									!init ||
 									init.type !== 'CallExpression' ||
-									/** @type {import('estree').CallExpression} */ (
-										init
-									).callee.type !== 'Identifier' ||
-									/** @type {import('estree').Identifier} */ (
-										init.callee
-									).name !== 'require'
+									/** @type {import('estree').CallExpression} */ (init).callee
+										.type !== 'Identifier' ||
+									/** @type {import('estree').Identifier} */ (init.callee)
+										.name !== 'require'
 								) {
 									return;
 								}
@@ -211,51 +207,45 @@ module.exports = {
 								const { arguments: args } = init;
 								if (
 									args.length === 1 &&
-									args[ 0 ].type === 'Literal' &&
-									typeof args[ 0 ].value === 'string'
+									args[0].type === 'Literal' &&
+									typeof args[0].value === 'string'
 								) {
-									source = args[ 0 ].value;
-									candidates.push( [ child, source ] );
+									source = args[0].value;
+									candidates.push([child, source]);
 								}
-							} );
+							});
 					}
-				} );
+				});
 
-				for ( const [ child, source ] of candidates ) {
-					const locality = getPackageLocality( source );
-					if ( verified.has( locality ) ) {
+				for (const [child, source] of candidates) {
+					const locality = getPackageLocality(source);
+					if (verified.has(locality)) {
 						continue;
 					}
 
 					// Avoid verifying any other imports for the locality,
 					// regardless whether a correction must be made.
-					verified.add( locality );
+					verified.add(locality);
 
 					// Determine whether a correction must be made.
-					const correction = getDependencyBlockCorrection(
-						child,
-						locality,
-					);
-					if ( ! correction ) {
+					const correction = getDependencyBlockCorrection(child, locality);
+					if (!correction) {
 						continue;
 					}
 
-					context.report( {
+					context.report({
 						node: child,
-						message: `Expected preceding "${ locality } dependencies" comment block`,
-						fix( fixer ) {
+						message: `Expected preceding "${locality} dependencies" comment block`,
+						fix(fixer) {
 							const { comment, value } = correction;
-							const text = `/*${ value }*/`;
-							if ( comment && comment.range ) {
-								return fixer.replaceTextRange(
-									comment.range,
-									text,
-								);
+							const text = `/*${value}*/`;
+							if (comment && comment.range) {
+								return fixer.replaceTextRange(comment.range, text);
 							}
 
-							return fixer.insertTextBefore( child, text + '\n' );
+							return fixer.insertTextBefore(child, text + '\n');
 						},
-					} );
+					});
 				}
 			},
 		};

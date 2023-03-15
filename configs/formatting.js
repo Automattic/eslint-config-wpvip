@@ -4,13 +4,13 @@ module.exports = {
 	 * disable errors, include a brief justification or reasoning.
 	 */
 	rules: {
-		'array-bracket-spacing': [ 'error', 'always' ],
+		'array-bracket-spacing': ['error', 'always'],
 
-		'arrow-parens': [ 'error', 'always' ],
+		'arrow-parens': ['error', 'always'],
 
 		'arrow-spacing': 'error',
 
-		'brace-style': [ 'error', '1tbs' ],
+		'brace-style': ['error', '1tbs'],
 
 		// Identifiers should be in camelCase. Object properties are excluded
 		// (including when destructuring) since they often come from external
@@ -23,24 +23,24 @@ module.exports = {
 			},
 		],
 
-		'comma-dangle': [ 'error', 'always-multiline' ],
+		'comma-dangle': ['error', 'always-multiline'],
 
 		'comma-spacing': 'error',
 
-		'comma-style': [ 'error', 'last' ],
+		'comma-style': ['error', 'last'],
 
-		'computed-property-spacing': [ 'error', 'always' ],
+		'computed-property-spacing': ['error', 'always'],
 
-		curly: [ 'error', 'all' ],
+		curly: ['error', 'all'],
 
 		'dot-notation': 'error',
 
 		// Files must end in a newline.
-		'eol-last': [ 'error', 'always' ],
+		'eol-last': ['error', 'always'],
 
 		'func-call-spacing': 'error',
 
-		indent: [ 'error', 'tab', { SwitchCase: 1 } ],
+		indent: ['error', 'tab', { SwitchCase: 1 }],
 
 		'key-spacing': 'error',
 
@@ -58,19 +58,19 @@ module.exports = {
 
 		'no-multi-str': 'error',
 
-		'no-multiple-empty-lines': [ 'error', { max: 1 } ],
+		'no-multiple-empty-lines': ['error', { max: 1 }],
 
 		'no-trailing-spaces': 'error',
 
 		'no-whitespace-before-property': 'error',
 
-		'object-curly-spacing': [ 'error', 'always' ],
+		'object-curly-spacing': ['error', 'always'],
 
 		'object-shorthand': 'error',
 
 		'operator-linebreak': 'error',
 
-		'padded-blocks': [ 'error', 'never' ],
+		'padded-blocks': ['error', 'never'],
 
 		// Arrow functions should be used for function arguments and callbacks.
 		'prefer-arrow-callback': 'warn',
@@ -81,30 +81,28 @@ module.exports = {
 			{ allowTemplateLiterals: true, avoidEscape: true },
 		],
 
-		'quote-props': [ 'error', 'as-needed' ],
+		'quote-props': ['error', 'as-needed'],
 
 		semi: 'error',
 
 		'semi-spacing': 'error',
 
-		'space-before-blocks': [ 'error', 'always' ],
+		'space-before-blocks': ['error', 'always'],
 
 		'space-before-function-paren': [
 			'error',
 			{ anonymous: 'never', named: 'never', asyncArrow: 'always' },
 		],
 
-		'space-in-parens': [ 'error', 'always' ],
+		'space-in-parens': ['error', 'always'],
 
 		'space-infix-ops': 'error',
 
-		'space-unary-ops': [ 'error', { overrides: { '!': true, yield: true } } ],
+		'space-unary-ops': ['error', { overrides: { '!': true, yield: true } }],
 
 		// Comments should always include consistent spacing for readability.
 		'spaced-comment': 'warn',
 
-		'template-curly-spacing': [ 'error', 'always' ],
-
+		'template-curly-spacing': ['error', 'always'],
 	},
 };
-

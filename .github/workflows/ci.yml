@@ -11,16 +11,50 @@ permissions:
   contents: read
 
 jobs:
-  build:
-    name: Build
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js envirtonment
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-pinned-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Run linter
+        run: npm run lint
+
+  dependaban:
+    name: Dependaban
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: Automattic/vip-actions/dependaban@trunk
+
+  jest:
+    name: Jest tests
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         node:
-          # Uncomment when Node.js v20 is released (April 2023)
-          # - version: 20
-          #   version-name: next-lts
           - version-file: .nvmrc
             version-name: pinned
     steps:

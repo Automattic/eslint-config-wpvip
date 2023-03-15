@@ -5,9 +5,15 @@
  * you migrate an existing project to TypeScript.
  */
 module.exports = {
-	/**
-	 * Downgrade rules from the base preset to "warn". Do not disable rules (set
-	 * to "off"). If a rule is already set to a warning, do not disable it.
-	 */
-	rules: {},
+	overrides: [
+		{
+			files: ['**/*.ts', '**/*.tsx'],
+
+			/**
+			 * Downgrade rules from the base preset to "warn". Do not disable rules (set
+			 * to "off"). If a rule is already set to a warning, do not disable it.
+			 */
+			rules: {},
+		},
+	],
 };

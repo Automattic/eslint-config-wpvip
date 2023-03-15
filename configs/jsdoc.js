@@ -3,7 +3,7 @@
  * https://github.com/WordPress/gutenberg/blob/%40wordpress/eslint-plugin%4014.1.0/packages/eslint-plugin/configs/jsdoc.js
  */
 
-const globals = require( 'globals' );
+const globals = require('globals');
 
 /**
  * Helpful utilities that are globally defined and known to the TypeScript compiler.
@@ -41,7 +41,7 @@ const typescriptUtilityTypes = [
 ];
 
 module.exports = {
-	extends: [ 'plugin:jsdoc/recommended' ],
+	extends: ['plugin:jsdoc/recommended'],
 	settings: {
 		jsdoc: {
 			preferredTypes: {
@@ -61,9 +61,7 @@ module.exports = {
 					// Required to reference browser types because we don't have the `browser` environment enabled for the project.
 					// Here we filter out all browser globals that don't begin with an uppercase letter because those
 					// generally refer to window-level event listeners and are not a valid type to reference (e.g. `onclick`).
-					...Object.keys( globals.browser ).filter( ( key ) =>
-						/^[A-Z]/.test( key ),
-					),
+					...Object.keys(globals.browser).filter((key) => /^[A-Z]/.test(key)),
 					...typescriptUtilityTypes,
 					'void',
 					'JSX',
@@ -75,17 +73,14 @@ module.exports = {
 		'jsdoc/require-returns': 'off',
 		'jsdoc/require-yields': 'off',
 		'jsdoc/tag-lines': 'off',
-		'jsdoc/no-multi-asterisks': [
-			'error',
-			{ preventAtMiddleLines: false },
-		],
+		'jsdoc/no-multi-asterisks': ['error', { preventAtMiddleLines: false }],
 		'jsdoc/check-access': 'error',
 		'jsdoc/check-alignment': 'error',
 		'jsdoc/check-line-alignment': [
 			'error',
 			'always',
 			{
-				tags: [ 'param', 'arg', 'argument', 'property', 'prop' ],
+				tags: ['param', 'arg', 'argument', 'property', 'prop'],
 				preserveMainDescriptionPostDelimiter: true,
 			},
 		],

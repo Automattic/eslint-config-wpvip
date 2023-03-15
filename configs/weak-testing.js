@@ -21,4 +21,3 @@ module.exports = {
 		'jest/no-standalone-expect': 'warn',
 	},
 };
-

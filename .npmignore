@@ -1,6 +1,4 @@
-.babel*
-.circleci/
-.github/
-.prettierrc
+.*
 __fixtures__/
 __tests__/
+tsconfig.json

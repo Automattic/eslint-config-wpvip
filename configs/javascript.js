@@ -12,6 +12,8 @@ module.exports = {
 		node: true,
 	},
 
+	extends: ['plugin:json/recommended', 'plugin:security/recommended'],
+
 	parser: '@babel/eslint-parser',
 
 	parserOptions: {
@@ -22,15 +24,14 @@ module.exports = {
 	/**
 	 * Note: We must explicitly add this plugin to use our custom rules.
 	 */
-	plugins: [ '@automattic/wpvip', 'import' ],
+	plugins: ['@automattic/wpvip', 'import'],
 
 	/**
 	 * Please include a short description of the rule. For rules that downgrade or
 	 * disable errors, include a brief justification or reasoning.
 	 */
 	rules: {
-		// These rules are from eslint:recommended, but are enumerated here for
-		// visibility:
+		// BEGIN eslint:recommended, enumerated here for visibility:
 		// https://github.com/eslint/eslint/blob/main/packages/js/src/configs/eslint-recommended.js
 		'constructor-super': 'error',
 		'for-direction': 'error',
@@ -93,6 +94,7 @@ module.exports = {
 		'require-yield': 'error',
 		'use-isnan': 'error',
 		// 'valid-typeof': 'error', // extended below
+		// END eslint:recommended
 
 		// Async/await must not be used in a `.forEach` method, because the result
 		// will not be awaited in the outer scope.
@@ -137,7 +139,7 @@ module.exports = {
 
 		// Enforce Unix linebreaks. Included here and not in "formatting" since it
 		// is not controversial and helps with interchange.
-		'linebreak-style': [ 'error', 'unix' ],
+		'linebreak-style': ['error', 'unix'],
 
 		'no-alert': 'error',
 
@@ -149,7 +151,7 @@ module.exports = {
 
 		'no-caller': 'error',
 
-		'no-cond-assign': [ 'error', 'except-parens' ],
+		'no-cond-assign': ['error', 'except-parens'],
 
 		// `console.log` should not be used directly in code. Ideally, delegate to a
 		// logging function that logs on your behalf (and ignore this rule there).
@@ -161,7 +163,7 @@ module.exports = {
 
 		'no-else-return': 'error',
 
-		'no-empty': [ 'error', { allowEmptyCatch: true } ],
+		'no-empty': ['error', { allowEmptyCatch: true }],
 
 		'no-eq-null': 'error',
 
@@ -179,7 +181,7 @@ module.exports = {
 
 		'no-unused-expressions': 'error',
 
-		'no-unused-vars': [ 'error', { ignoreRestSiblings: true } ],
+		'no-unused-vars': ['error', { ignoreRestSiblings: true }],
 
 		'no-useless-computed-key': 'error',
 
@@ -189,9 +191,9 @@ module.exports = {
 
 		'no-var': 'error',
 
-		'one-var': [ 'error', 'never' ],
+		'one-var': ['error', 'never'],
 
-		'prefer-const': [ 'error', { destructuring: 'all' } ],
+		'prefer-const': ['error', { destructuring: 'all' }],
 
 		radix: 'error',
 
@@ -203,6 +205,6 @@ module.exports = {
 			},
 		],
 
-		'wrap-iife': [ 'error', 'any' ],
+		'wrap-iife': ['error', 'any'],
 	},
 };

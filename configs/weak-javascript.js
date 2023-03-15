@@ -10,7 +10,7 @@ module.exports = {
 	overrides: [
 		{
 			// Don't apply weak rules to TypeScript files.
-			files: [ '**/*.js', '**/*.jsx' ],
+			files: ['**/*.js', '**/*.jsx'],
 
 			/**
 			 * Downgrade rules from the base preset to "warn". Do not disable rules (set
