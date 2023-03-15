@@ -31,7 +31,13 @@ module.exports = {
 
 				'no-case-declarations': 'warn',
 
+				'no-dupe-else-if': 'warn',
+
 				'no-else-return': 'warn',
+
+				'no-eq-null': 'warn',
+
+				'no-lonely-if': 'warn',
 
 				'no-mixed-operators': 'warn',
 
