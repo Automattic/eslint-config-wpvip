@@ -21,6 +21,7 @@ module.exports = {
 	extends: [
 		'plugin:@automattic/wpvip/recommended',
 	],
+	root: true,
 };
 ```
 
