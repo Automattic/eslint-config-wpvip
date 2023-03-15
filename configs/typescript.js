@@ -18,10 +18,20 @@ module.exports = {
 
 			parser: '@typescript-eslint/parser',
 
+			parserOptions: {
+				project: './tsconfig.json',
+			},
+
 			rules: {
 				// TypeScript `any` type must not be used. This is a warning in the base
 				// config, and is elevated to an error here.
 				'@typescript-eslint/no-explicit-any': 'error',
+
+				// Disable some rules that TypeScript handles and are also a Performance
+				// issue. See:
+				// https://github.com/typescript-eslint/typescript-eslint/blob/main/docs/linting/troubleshooting/Performance.md#eslint-plugin-import
+				'import/default': 'off',
+				'import/named': 'off',
 
 				// Don't require redundant JSDoc types in TypeScript files.
 				'jsdoc/require-param-type': 'off',
@@ -42,10 +52,11 @@ module.exports = {
 	plugins: ['@typescript-eslint', 'jsdoc'],
 
 	settings: {
+		'import/parsers': {
+			'@typescript-eslint/parser': ['.ts', '.tsx'],
+		},
 		'import/resolver': {
-			node: {
-				extensions: ['.js', '.jsx', '.ts', '.tsx'],
-			},
+			typescript: {},
 		},
 	},
 };
