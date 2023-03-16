@@ -207,4 +207,13 @@ module.exports = {
 
 		'wrap-iife': ['error', 'any'],
 	},
+
+	settings: {
+		'import/resolver': {
+			node: {
+				extensions: ['.js', '.jsx', '.ts', '.tsx'],
+			},
+			typescript: 'eslint-import-resolver-typescript',
+		},
+	},
 };

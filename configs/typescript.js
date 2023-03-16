@@ -50,13 +50,4 @@ module.exports = {
 	],
 
 	plugins: ['@typescript-eslint', 'jsdoc'],
-
-	settings: {
-		'import/parsers': {
-			'@typescript-eslint/parser': ['.ts', '.tsx'],
-		},
-		'import/resolver': {
-			typescript: {},
-		},
-	},
 };
