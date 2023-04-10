@@ -1,5 +1,5 @@
 module.exports = {
-	base: require('./javascript'), // synonym for javascript
+	base: require('./base'), // synonym for javascript
 	cli: require('./cli'),
 	formatting: require('./formatting'),
 	javascript: require('./javascript'),
