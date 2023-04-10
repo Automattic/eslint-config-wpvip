@@ -1,36 +1,62 @@
 name: CI
 
 on:
+  pull_request:
   push:
+    branches:
+      - trunk
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  build:
-    name: Build
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup and install
+        uses: Automattic/vip-actions/nodejs-setup@trunk
+        with:
+          node-version-file: .nvmrc
+
+      - name: Run linter
+        run: npm run lint
+
+  check-types:
+    name: Check types
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup and install
+        uses: Automattic/vip-actions/nodejs-setup@trunk
+        with:
+          node-version-file: .nvmrc
+
+      - name: Check types
+        run: npm run check-types
+
+  dependaban:
+    name: Dependaban
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: Automattic/vip-actions/dependaban@trunk
+
+  jest:
+    name: Jest tests
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        node-version:
-          - current
-          - lts/*
-          - lts/-1
-          - lts/-2
+        node:
+          - version-file: .nvmrc
+            version-name: pinned
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js environment
-        uses: actions/setup-node@v3
+      - name: Setup and install
+        uses: Automattic/vip-actions/nodejs-setup@trunk
         with:
-          cache: npm
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install dependencies
-        run: npm ci
+          node-version-file: .nvmrc
 
       - name: Run tests
         run: npm test

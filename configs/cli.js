@@ -5,9 +5,9 @@ module.exports = {
 	 */
 	rules: {
 		// Allow child_process and non-literal `exec` arguments.
-		'security/detect-child-process': 0,
+		'security/detect-child-process': 'off',
 
 		// Process.exit is used in CLI context to stop execution.
-		'no-process-exit': 0,
+		'no-process-exit': 'off',
 	},
 };

@@ -1,0 +1,14 @@
+{
+  // https://github.com/tsconfig/bases/blob/main/bases/node18.json
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "declaration": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "strictNullChecks": true
+  },
+  "include": ["**/*.ts"]
+}

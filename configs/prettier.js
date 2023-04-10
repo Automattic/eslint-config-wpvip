@@ -1,13 +1,12 @@
+/**
+ * Based on:
+ * https://github.com/WordPress/gutenberg/blob/%40wordpress/eslint-plugin%4014.1.0/packages/eslint-plugin/configs/recommended.js
+ */
+
 module.exports = {
-	extends: [
-		'plugin:prettier/recommended',
-	],
-	/**
-	 * Please include a short description of the rule. For rules that downgrade or
-	 * disable errors, include a brief justification or reasoning.
-	 */
+	extends: ['plugin:prettier/recommended'],
+	plugins: ['prettier'],
 	rules: {
-		// Raise Prettier errors as ESLint errors.
 		'prettier/prettier': 'error',
 	},
 };

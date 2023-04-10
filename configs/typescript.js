@@ -1,62 +1,53 @@
 /**
- * Base TypeScript rules
- * =====================
- * These rules are intended to be used for all VIP TypeScript projects. They can
- * be extended by `typescript-migration` (to make migration to TypeScript
- * easier) and `typescript-strict` (to enforce additional best practices).
- *
- * Note that, if you also use the `@wordpress/eslint-plugin/recommended` preset,
- * a number of TypeScript rules are automattically added whenever TypeScript is
- * installed as a dependency of your project:
- *
- * https://github.com/WordPress/gutenberg/blob/trunk/packages/eslint-plugin/configs/recommended.js
+ * Based on:
+ * https://github.com/WordPress/gutenberg/blob/%40wordpress/eslint-plugin%4014.1.0/packages/eslint-plugin/configs/recommended.js
  */
+
 module.exports = {
-	extends: [
-		'plugin:@typescript-eslint/recommended',
-	],
-	/**
-	 * Please include a short description of the rule. For rules that downgrade or
-	 * disable errors, include a brief justification or reasoning.
-	 */
-	ignorePatterns: [ '**/*.d.ts' ],
+	ignorePatterns: ['**/*.d.ts'],
+
 	overrides: [
 		{
-			files: [ '**/*.ts', '**/*.tsx' ],
-			parser: '@typescript-eslint/parser',
-			// Note that these rules only take effect in TypeScript files (.ts, .tsx).
-			rules: {
-				// Prefer the TypeScript versions of some rules.
-				'no-duplicate-imports': 'off',
-				'@typescript-eslint/no-duplicate-imports': 'error',
-				'no-shadow': 'off',
-				'@typescript-eslint/no-shadow': 'error',
+			extends: [
+				'plugin:@typescript-eslint/eslint-recommended',
+				'plugin:@typescript-eslint/recommended-requiring-type-checking',
+				'plugin:@typescript-eslint/strict',
+			],
 
-				// Don't require redundant JSDoc parameter descriptions and types in
-				// TypeScript files.
-				'jsdoc/require-param': 'off',
+			files: ['**/*.ts', '**/*.tsx'],
+
+			parser: '@typescript-eslint/parser',
+
+			parserOptions: {
+				project: './tsconfig.json',
+			},
+
+			rules: {
+				// TypeScript `any` type must not be used. This is a warning in the base
+				// config, and is elevated to an error here.
+				'@typescript-eslint/no-explicit-any': 'error',
+
+				// Disable some rules that TypeScript handles and are also a Performance
+				// issue. See:
+				// https://github.com/typescript-eslint/typescript-eslint/blob/main/docs/linting/troubleshooting/Performance.md#eslint-plugin-import
+				'import/default': 'off',
+				'import/named': 'off',
+
+				// Don't require redundant JSDoc types in TypeScript files.
 				'jsdoc/require-param-type': 'off',
 				'jsdoc/require-returns-type': 'off',
+
+				// Use TypeScript-specific rules.
+				'no-duplicate-imports': 'off',
+				'no-shadow': 'off',
+				'@typescript-eslint/no-duplicate-imports': 'error',
+				'@typescript-eslint/no-shadow': 'error',
+
+				// Handled by TS itself.
+				'no-unused-vars': 'off',
 			},
 		},
 	],
-	plugins: [ '@typescript-eslint' ],
-	rules: {
-		// Elevate the unused vars rule to an error, but allow it to be suppressed
-		// with a naming convention.
-		'@typescript-eslint/no-unused-vars': [
-			'error',
-			{
-				// Allow unused vars if they are prefixed with "_".
-				argsIgnorePattern: '^_',
-			},
-		],
-	},
-	settings: {
-		'import/resolver': {
-			node: {
-				extensions: [ '.js', '.jsx', '.ts', '.tsx' ],
-			},
-		},
-	},
+
+	plugins: ['@typescript-eslint', 'jsdoc'],
 };

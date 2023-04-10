@@ -1,5 +1,8 @@
+/**
+ * Custom ESLint rules
+ */
 module.exports = {
-	rules: {
-		// Custom ESLint rules
-	},
+	'dependency-group': require('./dependency-group'),
+	'no-async-foreach': require('./no-async-foreach'),
+	'no-unguarded-get-range-at': require('./no-unguarded-get-range-at'),
 };
