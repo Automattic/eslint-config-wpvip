@@ -6,7 +6,7 @@ const configNames = Object.keys(configs).sort();
 describe('exported configs', () => {
 	it('does not use disallowed characters in object keys', () => {
 		configNames.forEach((name) => {
-			expect(name).toMatch(/^[a-z/]+$/);
+			expect(name).toMatch(/^[a-z\-/]+$/);
 		});
 	});
 
@@ -17,7 +17,7 @@ describe('exported configs', () => {
 			.filter((path) => 'index.js' !== path)
 			// eslint-disable-next-line security/detect-non-literal-fs-filename
 			.filter((path) => !fs.statSync(`configs/${path}`).isDirectory())
-			.map((path) => path.replace(/\.js$/, '').replace(/[_-]/gi, '/'))
+			.map((path) => path.replace(/\.js$/, ''))
 			.sort();
 
 		expect(configNames).toEqual(expectedNames);
