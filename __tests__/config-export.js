@@ -3,14 +3,14 @@ const configs = require('../configs');
 
 const configNames = Object.keys(configs).sort();
 
-describe('exported configs', () => {
-	it('does not use disallowed characters in object keys', () => {
+describe('configs', () => {
+	it('do not use disallowed characters in object keys', () => {
 		configNames.forEach((name) => {
 			expect(name).toMatch(/^[a-z\-/]+$/);
 		});
 	});
 
-	it('exports all configs', () => {
+	it('are all exported', () => {
 		// This test makes sure we don't forget to export a config.
 		const expectedNames = fs
 			.readdirSync('configs')
