@@ -15,30 +15,25 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          persist-credentials: false
-
-      - name: Set up Node.js envirtonment
-        uses: actions/setup-node@v3
+      - name: Setup and install
+        uses: Automattic/vip-actions/nodejs-setup@trunk
         with:
           node-version-file: .nvmrc
-          cache: npm
-
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        id: cache-node-modules
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-pinned-${{ hashFiles('package-lock.json') }}
-
-      - name: Install dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
 
       - name: Run linter
         run: npm run lint
+
+  check-types:
+    name: Check types
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup and install
+        uses: Automattic/vip-actions/nodejs-setup@trunk
+        with:
+          node-version-file: .nvmrc
+
+      - name: Check types
+        run: npm run check-types
 
   dependaban:
     name: Dependaban
@@ -58,28 +53,10 @@ jobs:
           - version-file: .nvmrc
             version-name: pinned
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Setup and install
+        uses: Automattic/vip-actions/nodejs-setup@trunk
         with:
-          persist-credentials: false
-
-      - name: Set up Node.js environment
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node.version }}
-          node-version-file: ${{ matrix.node.version-file }}
-          cache: npm
-
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        id: cache-node-modules
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ matrix.node.version-name }}-${{ hashFiles('package-lock.json') }}
-
-      - name: Install dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: npm ci
+          node-version-file: .nvmrc
 
       - name: Run tests
         run: npm test

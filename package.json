@@ -4,6 +4,7 @@
   "description": "ESLint plugin for internal WordPress VIP projects",
   "main": "index.js",
   "scripts": {
+    "check-types": "tsc __tests__/**/*.ts",
     "jest": "npm run link-plugin && jest",
     "jest:update-snapshot": "jest --updateSnapshot",
     "link-plugin": "mkdir -p ./node_modules/@automattic; ln -fns $(pwd) ./node_modules/@automattic/eslint-plugin-wpvip",

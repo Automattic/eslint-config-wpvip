@@ -5,11 +5,10 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "checkJs": true,
     "declaration": true,
-    "incremental": true,
     "noEmit": true,
     "resolveJsonModule": true,
     "strictNullChecks": true
-  }
+  },
+  "include": ["**/*.ts"]
 }
