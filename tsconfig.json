@@ -1,30 +1,15 @@
 {
+  // https://github.com/tsconfig/bases/blob/main/bases/node18.json
+  "extends": "@tsconfig/node18/tsconfig.json",
   "compilerOptions": {
-    // Allow JavaScript files as we migrate.
     "allowJs": true,
-    "checkJs": false,
-
-    // https://www.typescriptlang.org/tsconfig#isolatedModules
-    "isolatedModules": true,
-
-    // Custom output directory (Nest default is ./dist).
-    "outDir": "./build",
-
-    // Preserve comments in output.
-    "removeComments": true,
-
-    // Allow importing JSON files directly.
-    "resolveJsonModule": true,
-
-    // The options below come from the default Nest tsconfig, minus those that
-    // are overridden above.
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
+    "checkJs": true,
     "declaration": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "incremental": true,
-    "sourceMap": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
     "strictNullChecks": true
   }
 }
