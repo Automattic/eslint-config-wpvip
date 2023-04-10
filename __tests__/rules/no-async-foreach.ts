@@ -1,8 +1,8 @@
-const rule = require('../../rules/no-async-foreach');
-const { RuleTester } = require('eslint');
+import rule from '../../rules/no-async-foreach';
+import { Linter, RuleTester } from 'eslint';
 
 const ruleTester = new RuleTester();
-const parserOptions = { ecmaVersion: 8 };
+const parserOptions: Linter.ParserOptions = { ecmaVersion: 8 };
 const errors = [
 	{ message: 'Avoid passing an async function to Array.prototype.forEach' },
 ];
