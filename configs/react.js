@@ -7,7 +7,7 @@ module.exports = {
 	extends: [
 		'plugin:react/recommended',
 		'plugin:react-hooks/recommended',
-		require('./jsx-ally'),
+		'plugin:jsx-a11y/recommended',
 	],
 
 	parserOptions: {
@@ -22,7 +22,7 @@ module.exports = {
 		},
 	},
 
-	plugins: ['@automattic/wpvip', 'react', 'react-hooks'],
+	plugins: ['@automattic/wpvip', 'jsx-a11y', 'react', 'react-hooks'],
 
 	rules: {
 		'@automattic/wpvip/no-unused-vars-before-return': [
@@ -31,6 +31,21 @@ module.exports = {
 				excludePattern: '^use',
 			},
 		],
+
+		'jsx-a11y/label-has-associated-control': [
+			'error',
+			{
+				assert: 'htmlFor',
+			},
+		],
+
+		'jsx-a11y/media-has-caption': 'off',
+
+		'jsx-a11y/no-noninteractive-tabindex': 'off',
+
+		'jsx-a11y/role-has-required-aria-props': 'off',
+
+		'jsx-quotes': 'error',
 
 		'react/display-name': 'off',
 
