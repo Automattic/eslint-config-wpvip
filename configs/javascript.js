@@ -100,10 +100,6 @@ module.exports = {
 		// will not be awaited in the outer scope.
 		'@automattic/wpvip/no-async-foreach': 'error',
 
-		// Variables that are potentially not needed before a return statement can
-		// be assigned after the return.
-		'@automattic/wpvip/no-unused-vars-before-return': 'error',
-
 		// Unguarded getRangeAt calls can throw errors in some browsers.
 		'@automattic/wpvip/no-unguarded-get-range-at': 'error',
 

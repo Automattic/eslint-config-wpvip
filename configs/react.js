@@ -25,13 +25,6 @@ module.exports = {
 	plugins: ['@automattic/wpvip', 'jsx-a11y', 'react', 'react-hooks'],
 
 	rules: {
-		'@automattic/wpvip/no-unused-vars-before-return': [
-			'error',
-			{
-				excludePattern: '^use',
-			},
-		],
-
 		'jsx-a11y/label-has-associated-control': [
 			'error',
 			{

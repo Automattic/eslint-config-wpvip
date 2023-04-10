@@ -17,8 +17,6 @@ module.exports = {
 			 * to "off"). If a rule is already set to a warning, do not disable it.
 			 */
 			rules: {
-				'@automattic/wpvip/no-unused-vars-before-return': 'warn',
-
 				complexity: 'warn',
 
 				eqeqeq: 'warn',
