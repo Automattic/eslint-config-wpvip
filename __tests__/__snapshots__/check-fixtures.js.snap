@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`linting base disallowed.js fixture matches snapshot 1`] = `
+exports[`linting javascript.js fixture matches snapshot 1`] = `
 [
   {
     "column": 20,
@@ -420,23 +420,6 @@ exports[`linting base disallowed.js fixture matches snapshot 1`] = `
   },
   {
     "column": 121,
-    "fix": {
-      "range": [
-        906,
-        906,
-      ],
-      "text": "
-",
-    },
-    "line": 46,
-    "message": "Newline required at end of file but not found.",
-    "messageId": "missing",
-    "nodeType": "Program",
-    "ruleId": "eol-last",
-    "severity": 2,
-  },
-  {
-    "column": 121,
     "endColumn": 121,
     "endLine": 46,
     "fix": {
@@ -457,122 +440,7 @@ exports[`linting base disallowed.js fixture matches snapshot 1`] = `
 ]
 `;
 
-exports[`linting cli disallowed.js fixture matches snapshot 1`] = `[]`;
-
-exports[`linting prettier disallowed.js fixture matches snapshot 1`] = `
-[
-  {
-    "column": 13,
-    "endColumn": 18,
-    "endLine": 5,
-    "fix": {
-      "range": [
-        61,
-        66,
-      ],
-      "text": "'x'",
-    },
-    "line": 5,
-    "message": "Replace \`·'x'·\` with \`'x'\`",
-    "messageId": "replace",
-    "nodeType": null,
-    "ruleId": "prettier/prettier",
-    "severity": 2,
-  },
-  {
-    "column": 6,
-    "endColumn": 8,
-    "endLine": 7,
-    "fix": {
-      "range": [
-        85,
-        87,
-      ],
-      "text": "(xx)",
-    },
-    "line": 7,
-    "message": "Replace \`xx\` with \`(xx)\`",
-    "messageId": "replace",
-    "nodeType": null,
-    "ruleId": "prettier/prettier",
-    "severity": 2,
-  },
-  {
-    "column": 7,
-    "endColumn": 24,
-    "endLine": 8,
-    "fix": {
-      "range": [
-        101,
-        118,
-      ],
-      "text": "{ fds }) => fds,",
-    },
-    "line": 8,
-    "message": "Replace \`·{·fds·}·)·=>·fds\` with \`{·fds·})·=>·fds,\`",
-    "messageId": "replace",
-    "nodeType": null,
-    "ruleId": "prettier/prettier",
-    "severity": 2,
-  },
-  {
-    "column": 6,
-    "endColumn": 44,
-    "endLine": 13,
-    "fix": {
-      "range": [
-        146,
-        184,
-      ],
-      "text": "const thing of Object.keys(things)",
-    },
-    "line": 13,
-    "message": "Replace \`·const·thing·of·Object.keys(·things·)·\` with \`const·thing·of·Object.keys(things)\`",
-    "messageId": "replace",
-    "nodeType": null,
-    "ruleId": "prettier/prettier",
-    "severity": 2,
-  },
-  {
-    "column": 1,
-    "endColumn": 20,
-    "endLine": 14,
-    "fix": {
-      "range": [
-        188,
-        207,
-      ],
-      "text": "	done.push(thing",
-    },
-    "line": 14,
-    "message": "Replace \`··done.push(·thing·\` with \`↹done.push(thing\`",
-    "messageId": "replace",
-    "nodeType": null,
-    "ruleId": "prettier/prettier",
-    "severity": 2,
-  },
-  {
-    "column": 1,
-    "endColumn": 1,
-    "endLine": 21,
-    "fix": {
-      "range": [
-        242,
-        243,
-      ],
-      "text": "",
-    },
-    "line": 20,
-    "message": "Delete \`⏎\`",
-    "messageId": "delete",
-    "nodeType": null,
-    "ruleId": "prettier/prettier",
-    "severity": 2,
-  },
-]
-`;
-
-exports[`linting typescript disallowed.ts fixture matches snapshot 1`] = `
+exports[`linting typescript.ts fixture matches snapshot 1`] = `
 [
   {
     "column": 21,
@@ -593,44 +461,22 @@ exports[`linting typescript disallowed.ts fixture matches snapshot 1`] = `
     "severity": 2,
   },
   {
-    "column": 48,
-    "endColumn": 61,
-    "endLine": 1,
-    "line": 1,
-    "message": "'three' is defined but never used. Allowed unused args must match /^_/u.",
-    "messageId": "unusedVar",
-    "nodeType": "Identifier",
-    "ruleId": "@typescript-eslint/no-unused-vars",
-    "severity": 2,
-  },
-  {
-    "column": 55,
-    "endColumn": 61,
-    "endLine": 1,
-    "fix": {
-      "range": [
-        54,
-        60,
-      ],
-      "text": "string",
-    },
-    "line": 1,
-    "message": "Don't use \`String\` as a type. Use string instead",
-    "messageId": "bannedTypeMessage",
-    "nodeType": "Identifier",
-    "ruleId": "@typescript-eslint/ban-types",
-    "severity": 2,
-  },
-  {
     "column": 1,
     "endColumn": 14,
     "endLine": 5,
+    "fix": {
+      "range": [
+        95,
+        108,
+      ],
+      "text": "// @ts-expect-error",
+    },
     "line": 5,
-    "message": "Do not use "@ts-ignore" because it alters compilation errors.",
-    "messageId": "tsDirectiveComment",
+    "message": "Use "@ts-expect-error" to ensure an error is actually being suppressed.",
+    "messageId": "preferExpectErrorComment",
     "nodeType": "Line",
-    "ruleId": "@typescript-eslint/ban-ts-comment",
-    "severity": 2,
+    "ruleId": "@typescript-eslint/prefer-ts-expect-error",
+    "severity": 1,
   },
   {
     "column": 13,
@@ -687,6 +533,17 @@ exports[`linting typescript disallowed.ts fixture matches snapshot 1`] = `
     "severity": 2,
   },
   {
+    "column": 21,
+    "endColumn": 24,
+    "endLine": 13,
+    "line": 13,
+    "message": "Unsafe return of an \`any\` typed value.",
+    "messageId": "unsafeReturn",
+    "nodeType": "Identifier",
+    "ruleId": "@typescript-eslint/no-unsafe-return",
+    "severity": 2,
+  },
+  {
     "column": 26,
     "endColumn": 49,
     "endLine": 16,
@@ -713,7 +570,7 @@ exports[`linting typescript disallowed.ts fixture matches snapshot 1`] = `
     "messageId": "unexpectedAny",
     "nodeType": "TSAnyKeyword",
     "ruleId": "@typescript-eslint/no-explicit-any",
-    "severity": 1,
+    "severity": 2,
     "suggestions": [
       {
         "desc": "Use \`unknown\` instead, this will force you to explicitly, and safely assert the type is correct.",
@@ -745,130 +602,6 @@ exports[`linting typescript disallowed.ts fixture matches snapshot 1`] = `
     "endLine": 21,
     "line": 21,
     "message": "'add' is already declared in the upper scope on line 1 column 17.",
-    "messageId": "noShadow",
-    "nodeType": "Identifier",
-    "ruleId": "@typescript-eslint/no-shadow",
-    "severity": 2,
-  },
-]
-`;
-
-exports[`linting typescript-strict disallowed.ts fixture matches snapshot 1`] = `
-[
-  {
-    "column": 47,
-    "endColumn": 60,
-    "endLine": 1,
-    "line": 1,
-    "message": "'three' is defined but never used. Allowed unused args must match /^_/u.",
-    "messageId": "unusedVar",
-    "nodeType": "Identifier",
-    "ruleId": "@typescript-eslint/no-unused-vars",
-    "severity": 2,
-  },
-  {
-    "column": 54,
-    "endColumn": 60,
-    "endLine": 1,
-    "fix": {
-      "range": [
-        53,
-        59,
-      ],
-      "text": "string",
-    },
-    "line": 1,
-    "message": "Don't use \`String\` as a type. Use string instead",
-    "messageId": "bannedTypeMessage",
-    "nodeType": "Identifier",
-    "ruleId": "@typescript-eslint/ban-types",
-    "severity": 2,
-  },
-  {
-    "column": 44,
-    "endColumn": 47,
-    "endLine": 5,
-    "line": 5,
-    "message": "Unexpected any. Specify a different type.",
-    "messageId": "unexpectedAny",
-    "nodeType": "TSAnyKeyword",
-    "ruleId": "@typescript-eslint/no-explicit-any",
-    "severity": 2,
-    "suggestions": [
-      {
-        "desc": "Use \`unknown\` instead, this will force you to explicitly, and safely assert the type is correct.",
-        "fix": {
-          "range": [
-            136,
-            139,
-          ],
-          "text": "unknown",
-        },
-        "messageId": "suggestUnknown",
-      },
-      {
-        "desc": "Use \`never\` instead, this is useful when instantiating generic type parameters that you don't need to know the type of.",
-        "fix": {
-          "range": [
-            136,
-            139,
-          ],
-          "text": "never",
-        },
-        "messageId": "suggestNever",
-      },
-    ],
-  },
-  {
-    "column": 1,
-    "endColumn": 14,
-    "endLine": 9,
-    "line": 9,
-    "message": "Do not use "@ts-ignore" because it alters compilation errors.",
-    "messageId": "tsDirectiveComment",
-    "nodeType": "Line",
-    "ruleId": "@typescript-eslint/ban-ts-comment",
-    "severity": 2,
-  },
-  {
-    "column": 19,
-    "endColumn": 22,
-    "endLine": 17,
-    "line": 17,
-    "message": "Unsafe return of an \`any\` typed value.",
-    "messageId": "unsafeReturn",
-    "nodeType": "Identifier",
-    "ruleId": "@typescript-eslint/no-unsafe-return",
-    "severity": 2,
-  },
-  {
-    "column": 7,
-    "endColumn": 20,
-    "endLine": 20,
-    "line": 20,
-    "message": "'outerScopeVar' is assigned a value but never used.",
-    "messageId": "unusedVar",
-    "nodeType": "Identifier",
-    "ruleId": "@typescript-eslint/no-unused-vars",
-    "severity": 2,
-  },
-  {
-    "column": 10,
-    "endColumn": 16,
-    "endLine": 21,
-    "line": 21,
-    "message": "'shadow' is defined but never used.",
-    "messageId": "unusedVar",
-    "nodeType": "Identifier",
-    "ruleId": "@typescript-eslint/no-unused-vars",
-    "severity": 2,
-  },
-  {
-    "column": 8,
-    "endColumn": 21,
-    "endLine": 22,
-    "line": 22,
-    "message": "'outerScopeVar' is already declared in the upper scope on line 20 column 7.",
     "messageId": "noShadow",
     "nodeType": "Identifier",
     "ruleId": "@typescript-eslint/no-shadow",
