@@ -9,7 +9,7 @@
     "jest:update-snapshot": "jest --updateSnapshot",
     "link-plugin": "mkdir -p ./node_modules/@automattic; ln -fns $(pwd) ./node_modules/@automattic/eslint-plugin-wpvip",
     "lint": "npm run link-plugin && eslint .",
-    "test": "jest"
+    "test": "npm run jest"
   },
   "repository": {
     "type": "git",
