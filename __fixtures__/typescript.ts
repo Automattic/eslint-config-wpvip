@@ -25,3 +25,13 @@ export function shadow() {
 export default {
 	things,
 };
+
+function someCoolDecorator(
+	totallyRadArgument,
+	value
+): typeof totallyRadArgument {
+	return totallyRadArgument;
+}
+
+@someCoolDecorator
+export class EmptyClass {}

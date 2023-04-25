@@ -45,6 +45,15 @@ module.exports = {
 
 				// Handled by TS itself.
 				'no-unused-vars': 'off',
+
+				// Empty classes are allowed if they are accompanied by a decorator.
+				// This is common in frameworks such as Angular / nest.js.
+				'@typescript-eslint/no-extraneous-class': [
+					'warn',
+					{
+						allowWithDecorator: true,
+					},
+				],
 			},
 		},
 	],
