@@ -94,4 +94,4 @@ This plugin provides a few so-called "weak" configs for legacy codebases that ar
 
 These configs are intended for temporary use and should not be used long-term. We also do not recommend the use of tools like [eslines](https://github.com/Automattic/eslines) to ignore errors or warnings. While the intention is to prevent large-scale changes and transition slowly to stronger standards, the effect is usually that the transition stalls and eventually stops completely.
 
-Three "weak" configs are available: `weak-javascript`, `weak-typescript`, and `weak-jest`. While pull requests on this project are always welcome, please carefully consider whether adding rules to these configs is truly necessary. Ideally, we work to remove rules from these configs until they are no longer needed.
+Three "weak" configs are available: `weak-javascript`, `weak-typescript`, and `weak-testing`. While pull requests on this project are always welcome, please carefully consider whether adding rules to these configs is truly necessary. Ideally, we work to remove rules from these configs until they are no longer needed.
