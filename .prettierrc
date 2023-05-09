@@ -1,5 +1,1 @@
-{
-  "bracketSpacing": true,
-  "singleQuote": true,
-  "useTabs": true
-}
+"./prettier.js"

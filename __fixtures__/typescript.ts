@@ -26,10 +26,7 @@ export default {
 	things,
 };
 
-function someCoolDecorator(
-	totallyRadArgument,
-	value
-): typeof totallyRadArgument {
+function someCoolDecorator( totallyRadArgument, value ): typeof totallyRadArgument {
 	return totallyRadArgument;
 }
 

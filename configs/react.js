@@ -22,7 +22,7 @@ module.exports = {
 		},
 	},
 
-	plugins: ['@automattic/wpvip', 'jsx-a11y', 'react', 'react-hooks'],
+	plugins: [ '@automattic/wpvip', 'jsx-a11y', 'react', 'react-hooks' ],
 
 	rules: {
 		'jsx-a11y/label-has-associated-control': [
@@ -52,9 +52,9 @@ module.exports = {
 
 		'react/jsx-equals-spacing': 'error',
 
-		'react/jsx-indent': ['error', 'tab'],
+		'react/jsx-indent': [ 'error', 'tab' ],
 
-		'react/jsx-indent-props': ['error', 'tab'],
+		'react/jsx-indent-props': [ 'error', 'tab' ],
 
 		'react/jsx-key': 'error',
 

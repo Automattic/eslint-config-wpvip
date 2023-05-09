@@ -3,6 +3,6 @@
  */
 
 module.exports = {
-	extends: ['plugin:@automattic/wpvip/recommended'],
+	extends: [ 'plugin:@automattic/wpvip/recommended' ],
 	root: true,
 };
