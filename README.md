@@ -61,7 +61,7 @@ npm i --save-dev --save-exact "prettier@npm:wp-prettier@latest"
 This repo also provides a Prettier config, which you can use with the following `.prettierrc`:
 
 ```json
-"@automattic/eslint-plugin-wpvip/prettier"
+"@automattic/eslint-plugin-wpvip/prettierrc"
 ```
 
 For maximum benefit, see [Prettier's documentation on enabling format-on-save in your editor](https://prettier.io/docs/en/editors.html). This enables you to concentrate on coding while Prettier handles formatting.
