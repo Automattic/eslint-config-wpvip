@@ -33,8 +33,6 @@ You may also wish to define an `.eslintignore` file if there are files or paths 
 
 The "recommended" config includes rules for JavaScript, TypeScript, Jest, and React, including rules related to formatting and white space. It is intended to be strict! Opinionated defaults keep our codebases consistent and reduce the friction we experience when context-switching between projects.
 
-If your project has installed [Prettier](https://prettier.io/) as a dependency, then many formatting tasks will be delegated to it (via `eslint-plugin-prettier`). You are encouraged to define your own [`.prettierrc` configuration file](https://prettier.io/docs/en/configuration.html) to fine-tune your project’s formatting.
-
 Of course, this recommended config may not be ideal for every project, so feel free to "build your own" using the available modular configs. The recommended config is equivalent to:
 
 ```js
@@ -51,6 +49,22 @@ module.exports = {
 ```
 
 Note that the order of configs can matter, since they can contain overrides. It is particularly important to add the `prettier` config last.
+
+### Prettier
+
+Install [WP Prettier](https://github.com/Automattic/wp-prettier) to benefit from additional formatting rules:
+
+```sh
+npm i --save-dev --save-exact "prettier@npm:wp-prettier@latest"
+```
+
+This repo also provides a Prettier config, which you can use with the following `.prettierrc`:
+
+```json
+"@automattic/eslint-plugin-wpvip/prettier"
+```
+
+For maximum benefit, see [Prettier's documentation on enabling format-on-save in your editor](https://prettier.io/docs/en/editors.html). This enables you to concentrate on coding while Prettier handles formatting.
 
 ## CLI
 
