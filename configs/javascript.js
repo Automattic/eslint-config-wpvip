@@ -12,7 +12,7 @@ module.exports = {
 		node: true,
 	},
 
-	extends: ['plugin:json/recommended', 'plugin:security/recommended'],
+	extends: [ 'plugin:json/recommended', 'plugin:security/recommended' ],
 
 	parser: '@babel/eslint-parser',
 
@@ -24,7 +24,7 @@ module.exports = {
 	/**
 	 * Note: We must explicitly add this plugin to use our custom rules.
 	 */
-	plugins: ['@automattic/wpvip', 'import'],
+	plugins: [ '@automattic/wpvip', 'import' ],
 
 	/**
 	 * Please include a short description of the rule. For rules that downgrade or
@@ -135,7 +135,7 @@ module.exports = {
 
 		// Enforce Unix linebreaks. Included here and not in "formatting" since it
 		// is not controversial and helps with interchange.
-		'linebreak-style': ['error', 'unix'],
+		'linebreak-style': [ 'error', 'unix' ],
 
 		'no-alert': 'error',
 
@@ -147,7 +147,7 @@ module.exports = {
 
 		'no-caller': 'error',
 
-		'no-cond-assign': ['error', 'except-parens'],
+		'no-cond-assign': [ 'error', 'except-parens' ],
 
 		// `console.log` should not be used directly in code. Ideally, delegate to a
 		// logging function that logs on your behalf (and ignore this rule there).
@@ -159,7 +159,7 @@ module.exports = {
 
 		'no-else-return': 'error',
 
-		'no-empty': ['error', { allowEmptyCatch: true }],
+		'no-empty': [ 'error', { allowEmptyCatch: true } ],
 
 		'no-eq-null': 'error',
 
@@ -177,7 +177,7 @@ module.exports = {
 
 		'no-unused-expressions': 'error',
 
-		'no-unused-vars': ['error', { ignoreRestSiblings: true }],
+		'no-unused-vars': [ 'error', { ignoreRestSiblings: true } ],
 
 		'no-useless-computed-key': 'error',
 
@@ -187,9 +187,9 @@ module.exports = {
 
 		'no-var': 'error',
 
-		'one-var': ['error', 'never'],
+		'one-var': [ 'error', 'never' ],
 
-		'prefer-const': ['error', { destructuring: 'all' }],
+		'prefer-const': [ 'error', { destructuring: 'all' } ],
 
 		radix: 'error',
 
@@ -201,13 +201,13 @@ module.exports = {
 			},
 		],
 
-		'wrap-iife': ['error', 'any'],
+		'wrap-iife': [ 'error', 'any' ],
 	},
 
 	settings: {
 		'import/resolver': {
 			node: {
-				extensions: ['.js', '.jsx', '.ts', '.tsx'],
+				extensions: [ '.js', '.jsx', '.ts', '.tsx' ],
 			},
 			typescript: 'eslint-import-resolver-typescript',
 		},

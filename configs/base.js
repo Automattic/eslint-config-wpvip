@@ -1,1 +1,1 @@
-module.exports = require('./javascript');
+module.exports = require( './javascript' );
