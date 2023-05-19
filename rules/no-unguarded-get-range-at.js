@@ -11,7 +11,7 @@ module.exports = {
 	create( context ) {
 		return {
 			'CallExpression[callee.object.callee.property.name="getSelection"][callee.property.name="getRangeAt"]'(
-				node,
+				node
 			) {
 				context.report( {
 					node,

@@ -10,7 +10,7 @@ async function getLintMessages( fixture ) {
 	} );
 
 	const [ { messages } ] = await eslint.lintFiles(
-		path.resolve( ...rootPaths, '__fixtures__', fixture ),
+		path.resolve( ...rootPaths, '__fixtures__', fixture )
 	);
 
 	return messages;
