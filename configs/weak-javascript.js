@@ -52,6 +52,12 @@ module.exports = {
 				'one-var': 'warn',
 
 				radix: 'warn',
+
+				'promise/no-multiple-resolved': 'warn',
+				'promise/no-new-statics': 'warn',
+				'promise/no-return-in-finally': 'warn',
+				'promise/no-return-wrap': 'warn',
+				'promise/param-names': 'warn',
 			},
 		},
 	],
