@@ -58,6 +58,7 @@ module.exports = {
 				'promise/no-return-in-finally': 'warn',
 				'promise/no-return-wrap': 'warn',
 				'promise/param-names': 'warn',
+				'promise/valid-params': 'warn',
 			},
 		},
 	],
