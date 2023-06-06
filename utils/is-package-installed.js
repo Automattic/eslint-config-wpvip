@@ -1,8 +1,7 @@
 const debugLog = require( './debug-log' );
 const findPackageJson = require( 'find-package-json' );
 
-const packages = [ ...findPackageJson( __dirname ) ];
-const parent = packages.pop() || {};
+const parent = findPackageJson( __dirname ).next()?.value || {};
 
 debugLog( `Found package.json: ${ parent.__path || 'none' }` );
 
