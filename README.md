@@ -18,9 +18,7 @@ Create an `.eslintrc.js` file. **Note:** The `init` file allows you to avoid ins
 require( '@automattic/eslint-plugin-wpvip/init' );
 
 module.exports = {
-	extends: [
-		'plugin:@automattic/wpvip/recommended',
-	],
+	extends: [ 'plugin:@automattic/wpvip/recommended' ],
 	root: true,
 };
 ```
@@ -28,6 +26,24 @@ module.exports = {
 And that's it! It works automatically with most Babel and TypeScript projects. Code editors that are configured to work with ESLint will automatically pick up the rules and flag any errors or warnings.
 
 You may also wish to define an `.eslintignore` file if there are files or paths that you do not want to lint.
+
+Package scripts can be useful to run linting and formatting commands automatically. Here are some suggested scripts for your project's `package.json`—only copy the ones that are useful to you. The `cmd:` scripts help you compose commands without repeating verbose CLI arguments.
+
+```json
+{
+	"scripts": {
+		"cmd:format": "prettier '**/*.(js|json|jsx|md|ts|tsx|yml|yaml)'",
+		"cmd:lint": "eslint --ext 'js,jsx,ts,tsx'",
+		"format": "npm run cmd:format -- --write",
+		"format:check": "npm run cmd:format -- --check",
+		"lint": "npm run cmd:lint .",
+		"lint:fix": "npm run cmd:lint . -- --fix",
+		"lint:ignore-warnings": "npm run cmd:lint . -- --quiet"
+	}
+}
+```
+
+**Note:** ESLint automatically ignores files listed in `.eslintignore` or you can target `.gitignore` using `--ignore-path`. Similarly, Prettier automatically ignores files listed in `.prettierignore` or you can target `.gitignore` using `--ignore-path`.
 
 ## Recommended config
 
@@ -41,9 +57,9 @@ module.exports = {
 		'plugin:@automattic/wpvip/javascript',
 		'plugin:@automattic/wpvip/typescript', // when "typescript" is installed
 		'plugin:@automattic/wpvip/formatting',
-		'plugin:@automattic/wpvip/testing',    // when "jest" is installed
-		'plugin:@automattic/wpvip/react',      // when "react" is installed
-		'plugin:@automattic/wpvip/prettier',   // when "prettier" is installed
+		'plugin:@automattic/wpvip/testing', // when "jest" is installed
+		'plugin:@automattic/wpvip/react', // when "react" is installed
+		'plugin:@automattic/wpvip/prettier', // when "prettier" is installed
 	],
 };
 ```
@@ -66,16 +82,17 @@ This repo also provides a Prettier config, which you can use with the following 
 
 For maximum benefit, see [Prettier's documentation on enabling format-on-save in your editor](https://prettier.io/docs/en/editors.html). This enables you to concentrate on coding while Prettier handles formatting.
 
+### Editorconfig
+
+[Editorconfig](https://editorconfig.org/) provides additional formatting rules and works well with Prettier. Copy the [`.editorconfig` file](./.editorconfig) from this repo into your project.
+
 ## CLI
 
 The `cli` config allows certain behaviors that are usually against best practice but are useful in a codebase that produces a CLI tool:
 
 ```js
 module.exports = {
-	extends: [
-		'plugin:@automattic/wpvip/recommended',
-		'plugin:@automattic/wpvip/cli',
-	],
+	extends: [ 'plugin:@automattic/wpvip/recommended', 'plugin:@automattic/wpvip/cli' ],
 };
 ```
 
@@ -93,10 +110,7 @@ JSDoc is considered optional, especially compared to better alternatives like Ty
 
 ```js
 module.exports = {
-	extends: [
-		'plugin:@automattic/wpvip/recommended',
-		'plugin:@automattic/wpvip/jsdoc',
-	],
+	extends: [ 'plugin:@automattic/wpvip/recommended', 'plugin:@automattic/wpvip/jsdoc' ],
 };
 ```
 

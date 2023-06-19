@@ -1,22 +1,9 @@
-# Contributing to `eslint-config-wpvip`
+# Contributing
 
 ## Getting Started
 
-Clone this repo and run `npm install`.
-
-The rules for this shared config are declared in [index.js](./index.js) and are automatically applied to the code in this repo.
+This repo provides custom ESLint rules (in `./rules`) and configs (`./configs`). Generally speaking, any change is welcome for discussion, but keep in mind that these rules and configs are used across all of our projects, so they need to be practical and flexible.
 
 ## Automated Testing
 
-We're using jest to confirm that our configuration does what we think it will.
-
-When you modify the rules, please add cases to the following files:
-
-* `__fixtures__/**/allowed.js` -- Syntax that should be allowed according to the rule(s) affected by your proposed change
-* `__fixtures__/**/disallowed.js` -- Syntax that should *NOT* be allowed according to the rule(s) affected by your proposed change
-
-After changing the rules or the `disallowed` fixture, run the following to update the snapshot of jest errors found:
-
-`npm run update-snapshot`
-
-...and commit the change to the snapshot file in your branch / PR.
+This repo lints itself! Try to add code in `__fixtures__` that will produce errors, confirm that the errors are caught, then run `npm run jest:update-snapshot` to expect the errors.
