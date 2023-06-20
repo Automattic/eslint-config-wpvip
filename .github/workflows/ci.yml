@@ -14,6 +14,8 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Setup and install
         uses: Automattic/vip-actions/nodejs-setup@trunk
@@ -26,6 +28,8 @@ jobs:
   check-types:
     name: Check types
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Setup and install
         uses: Automattic/vip-actions/nodejs-setup@trunk
@@ -46,6 +50,11 @@ jobs:
   jest:
     name: Jest tests
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    needs:
+      - lint
+      - check-types
     strategy:
       fail-fast: false
       matrix:
