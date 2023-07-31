@@ -10,6 +10,10 @@ Install `eslint` and `@automattic/eslint-plugin-wpvip` to your project.
 npm install --save-dev eslint @automattic/eslint-plugin-wpvip
 ```
 
+## Contributing
+
+See [CONTRIBUTING.md](https://github.com/Automattic/eslint-config-wpvip/blob/trunk/CONTRIBUTING.md) for details on development, testing, publishing, etc.
+
 ## Configuration
 
 Create an `.eslintrc.js` file. **Note:** The `init` file allows you to avoid installing peer dependencies (available from `v0.5.0`).
