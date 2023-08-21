@@ -40,8 +40,8 @@ module.exports = {
 				// Use TypeScript-specific rules.
 				'no-duplicate-imports': 'off',
 				'no-shadow': 'off',
-				'@typescript-eslint/no-duplicate-imports': 'error',
 				'@typescript-eslint/no-shadow': 'error',
+				'import/no-duplicates': 'error',
 
 				// Handled by TS itself.
 				'no-unused-vars': 'off',
