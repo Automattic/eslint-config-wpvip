@@ -147,11 +147,70 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
     "ruleId": "no-undef",
     "severity": 2,
   },
+  {
+    "column": 121,
+    "endColumn": 121,
+    "endLine": 45,
+    "fix": {
+      "range": [
+        894,
+        894,
+      ],
+      "text": "
+",
+    },
+    "line": 45,
+    "message": "Insert \`⏎\`",
+    "messageId": "insert",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
 ]
 `;
 
 exports[`linting typescript.ts fixture matches snapshot 1`] = `
 [
+  {
+    "column": 48,
+    "endColumn": 61,
+    "endLine": 1,
+    "line": 1,
+    "message": "'three' is defined but never used.",
+    "messageId": "unusedVar",
+    "nodeType": "Identifier",
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "severity": 2,
+  },
+  {
+    "column": 55,
+    "endColumn": 61,
+    "endLine": 1,
+    "fix": {
+      "range": [
+        54,
+        60,
+      ],
+      "text": "string",
+    },
+    "line": 1,
+    "message": "Don't use \`String\` as a type. Use string instead",
+    "messageId": "bannedTypeMessage",
+    "nodeType": "Identifier",
+    "ruleId": "@typescript-eslint/ban-types",
+    "severity": 2,
+  },
+  {
+    "column": 1,
+    "endColumn": 14,
+    "endLine": 5,
+    "line": 5,
+    "message": "Do not use "@ts-ignore" because it alters compilation errors.",
+    "messageId": "tsDirectiveComment",
+    "nodeType": "Line",
+    "ruleId": "@typescript-eslint/ban-ts-comment",
+    "severity": 2,
+  },
   {
     "column": 1,
     "endColumn": 14,
@@ -168,7 +227,7 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
     "messageId": "preferExpectErrorComment",
     "nodeType": "Line",
     "ruleId": "@typescript-eslint/prefer-ts-expect-error",
-    "severity": 1,
+    "severity": 2,
   },
   {
     "column": 21,
@@ -225,6 +284,17 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
     "messageId": "noShadow",
     "nodeType": "Identifier",
     "ruleId": "@typescript-eslint/no-shadow",
+    "severity": 2,
+  },
+  {
+    "column": 49,
+    "endColumn": 54,
+    "endLine": 29,
+    "line": 29,
+    "message": "'value' is defined but never used.",
+    "messageId": "unusedVar",
+    "nodeType": "Identifier",
+    "ruleId": "@typescript-eslint/no-unused-vars",
     "severity": 2,
   },
 ]
