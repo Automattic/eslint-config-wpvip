@@ -37,6 +37,8 @@ module.exports = {
 				'@typescript-eslint/restrict-template-expressions': 'warn',
 
 				'@typescript-eslint/unbound-method': 'warn',
+
+				'import/no-duplicates': 'warn',
 			},
 		},
 	],
