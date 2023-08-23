@@ -7,5 +7,8 @@ indent_style = tab
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.json,*.yaml,*.yml]
+[{*.json,*.yaml,*.yml}]
 indent_style = space
+
+[{package.json,tsconfig.json,tsconfig.*.json}]
+tab_width = 2
