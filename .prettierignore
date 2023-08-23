@@ -1,0 +1,4 @@
+package.json
+package-lock.json
+__fixtures__/javascript.js
+__fixtures__/typescript.ts
