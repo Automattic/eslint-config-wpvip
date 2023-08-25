@@ -11,4 +11,4 @@ trim_trailing_whitespace = true
 indent_style = space
 
 [{package.json,tsconfig.json,tsconfig.*.json}]
-tab_width = 2
+indent_size = 2
