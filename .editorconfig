@@ -9,6 +9,4 @@ trim_trailing_whitespace = true
 
 [{*.json,*.yaml,*.yml}]
 indent_style = space
-
-[{package.json,tsconfig.json,tsconfig.*.json}]
 indent_size = 2
