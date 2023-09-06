@@ -1,3 +1,5 @@
+import { unusedEs6Import } from './stub/unusedEs6Import';
+
 export function add( one: number, two: number, three: String ): number {
 	return one + two;
 }

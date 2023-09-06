@@ -1,3 +1,5 @@
+import { unusedEs6Import } from './stub/unusedEs6Import';
+
 const cp = require( 'child_process' );
 
 const lol = 'rm -rf all_your_files';
