@@ -4,7 +4,7 @@
   "description": "ESLint plugin for internal WordPress VIP projects",
   "main": "index.js",
   "scripts": {
-    "check-types": "tsc __tests__/**/*.ts",
+    "check-types": "tsc -p tsconfig.check.json",
     "cmd:format": "prettier --ignore-path .gitignore '**/*.(js|json|jsx|md|ts|tsx|yml|yaml)'",
     "cmd:jest": "npm run link-plugin && jest",
     "cmd:lint": "npm run link-plugin && eslint --ext 'js,jsx,ts,tsx'",
