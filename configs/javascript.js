@@ -24,7 +24,7 @@ module.exports = {
 	/**
 	 * Note: We must explicitly add this plugin to use our custom rules.
 	 */
-	plugins: [ '@automattic/wpvip', 'import', 'promise' ],
+	plugins: [ '@automattic/wpvip', 'import', 'promise', 'unused-imports' ],
 
 	/**
 	 * Please include a short description of the rule. For rules that downgrade or
@@ -132,6 +132,7 @@ module.exports = {
 		],
 
 		'import/no-unresolved': 'error',
+		'unused-imports/no-unused-imports': 'warn',
 
 		// Enforce Unix linebreaks. Included here and not in "formatting" since it
 		// is not controversial and helps with interchange.

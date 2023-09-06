@@ -3,10 +3,40 @@
 exports[`linting javascript.js fixture matches snapshot 1`] = `
 [
   {
+    "column": 10,
+    "endColumn": 25,
+    "endLine": 1,
+    "fix": {
+      "range": [
+        0,
+        59,
+      ],
+      "text": "
+",
+    },
+    "line": 1,
+    "message": "'unusedEs6Import' is defined but never used.",
+    "messageId": "unusedVar",
+    "nodeType": "Identifier",
+    "ruleId": "unused-imports/no-unused-imports",
+    "severity": 1,
+  },
+  {
+    "column": 10,
+    "endColumn": 25,
+    "endLine": 1,
+    "line": 1,
+    "message": "'unusedEs6Import' is defined but never used.",
+    "messageId": "unusedVar",
+    "nodeType": "Identifier",
+    "ruleId": "no-unused-vars",
+    "severity": 2,
+  },
+  {
     "column": 1,
     "endColumn": 25,
-    "endLine": 10,
-    "line": 10,
+    "endLine": 12,
+    "line": 12,
     "message": "Found non-literal argument to RegExp Constructor",
     "nodeType": "NewExpression",
     "ruleId": "security/detect-non-literal-regexp",
@@ -15,8 +45,8 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
   {
     "column": 10,
     "endColumn": 11,
-    "endLine": 12,
-    "line": 12,
+    "endLine": 14,
+    "line": 14,
     "message": "Identifier name 'x' is too short (< 2).",
     "messageId": "tooShort",
     "nodeType": "Identifier",
@@ -26,8 +56,8 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
   {
     "column": 10,
     "endColumn": 11,
-    "endLine": 12,
-    "line": 12,
+    "endLine": 14,
+    "line": 14,
     "message": "'x' is defined but never used.",
     "messageId": "unusedVar",
     "nodeType": "Identifier",
@@ -37,8 +67,8 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
   {
     "column": 13,
     "endColumn": 14,
-    "endLine": 12,
-    "line": 12,
+    "endLine": 14,
+    "line": 14,
     "message": "Identifier name 'y' is too short (< 2).",
     "messageId": "tooShort",
     "nodeType": "Identifier",
@@ -48,8 +78,8 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
   {
     "column": 13,
     "endColumn": 14,
-    "endLine": 12,
-    "line": 12,
+    "endLine": 14,
+    "line": 14,
     "message": "'y' is defined but never used.",
     "messageId": "unusedVar",
     "nodeType": "Identifier",
@@ -59,8 +89,8 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
   {
     "column": 9,
     "endColumn": 22,
-    "endLine": 13,
-    "line": 13,
+    "endLine": 15,
+    "line": 15,
     "message": "'xIsACoolParam' is not defined.",
     "messageId": "undef",
     "nodeType": "Identifier",
@@ -70,11 +100,11 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
   {
     "column": 5,
     "endColumn": 11,
-    "endLine": 16,
+    "endLine": 18,
     "fix": {
       "range": [
-        300,
-        419,
+        359,
+        478,
       ],
       "text": "const things = {
 	a: 13,
@@ -86,7 +116,7 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
 	gg: ( { fds } ) => fds,
 };",
     },
-    "line": 16,
+    "line": 18,
     "message": "'things' is never reassigned. Use 'const' instead.",
     "messageId": "useConst",
     "nodeType": "Identifier",
@@ -96,8 +126,8 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
   {
     "column": 2,
     "endColumn": 3,
-    "endLine": 17,
-    "line": 17,
+    "endLine": 19,
+    "line": 19,
     "message": "Identifier name 'a' is too short (< 2).",
     "messageId": "tooShort",
     "nodeType": "Identifier",
@@ -107,8 +137,8 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
   {
     "column": 3,
     "endColumn": 33,
-    "endLine": 28,
-    "line": 28,
+    "endLine": 30,
+    "line": 30,
     "message": "Unexpected \`await\` inside a loop.",
     "messageId": "unexpectedAwait",
     "nodeType": "AwaitExpression",
@@ -118,8 +148,8 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
   {
     "column": 2,
     "endColumn": 6,
-    "endLine": 35,
-    "line": 33,
+    "endLine": 37,
+    "line": 35,
     "message": "Avoid passing an async function to Array.prototype.forEach",
     "nodeType": "ExpressionStatement",
     "ruleId": "@automattic/wpvip/no-async-foreach",
@@ -128,9 +158,9 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
   {
     "column": 8,
     "endColumn": 11,
-    "endLine": 39,
-    "line": 39,
-    "message": "'lol' is already declared in the upper scope on line 3 column 7.",
+    "endLine": 41,
+    "line": 41,
+    "message": "'lol' is already declared in the upper scope on line 5 column 7.",
     "messageId": "noShadow",
     "nodeType": "Identifier",
     "ruleId": "no-shadow",
@@ -139,8 +169,8 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
   {
     "column": 1,
     "endColumn": 12,
-    "endLine": 43,
-    "line": 43,
+    "endLine": 45,
+    "line": 45,
     "message": "'nonExistent' is not defined.",
     "messageId": "undef",
     "nodeType": "Identifier",
@@ -150,16 +180,16 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
   {
     "column": 121,
     "endColumn": 121,
-    "endLine": 45,
+    "endLine": 47,
     "fix": {
       "range": [
-        894,
-        894,
+        953,
+        953,
       ],
       "text": "
 ",
     },
-    "line": 45,
+    "line": 47,
     "message": "Insert \`⏎\`",
     "messageId": "insert",
     "nodeType": null,
@@ -172,10 +202,40 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
 exports[`linting typescript.ts fixture matches snapshot 1`] = `
 [
   {
-    "column": 48,
-    "endColumn": 61,
+    "column": 10,
+    "endColumn": 25,
     "endLine": 1,
     "line": 1,
+    "message": "'unusedEs6Import' is defined but never used.",
+    "messageId": "unusedVar",
+    "nodeType": "Identifier",
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "severity": 2,
+  },
+  {
+    "column": 10,
+    "endColumn": 25,
+    "endLine": 1,
+    "fix": {
+      "range": [
+        0,
+        59,
+      ],
+      "text": "
+",
+    },
+    "line": 1,
+    "message": "'unusedEs6Import' is defined but never used.",
+    "messageId": "unusedVar",
+    "nodeType": "Identifier",
+    "ruleId": "unused-imports/no-unused-imports",
+    "severity": 1,
+  },
+  {
+    "column": 48,
+    "endColumn": 61,
+    "endLine": 3,
+    "line": 3,
     "message": "'three' is defined but never used.",
     "messageId": "unusedVar",
     "nodeType": "Identifier",
@@ -185,15 +245,15 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
   {
     "column": 55,
     "endColumn": 61,
-    "endLine": 1,
+    "endLine": 3,
     "fix": {
       "range": [
-        54,
-        60,
+        113,
+        119,
       ],
       "text": "string",
     },
-    "line": 1,
+    "line": 3,
     "message": "Don't use \`String\` as a type. Use string instead",
     "messageId": "bannedTypeMessage",
     "nodeType": "Identifier",
@@ -203,8 +263,8 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
   {
     "column": 1,
     "endColumn": 14,
-    "endLine": 5,
-    "line": 5,
+    "endLine": 7,
+    "line": 7,
     "message": "Do not use "@ts-ignore" because it alters compilation errors.",
     "messageId": "tsDirectiveComment",
     "nodeType": "Line",
@@ -214,15 +274,15 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
   {
     "column": 1,
     "endColumn": 14,
-    "endLine": 5,
+    "endLine": 7,
     "fix": {
       "range": [
-        95,
-        108,
+        154,
+        167,
       ],
       "text": "// @ts-expect-error",
     },
-    "line": 5,
+    "line": 7,
     "message": "Use "@ts-expect-error" to ensure an error is actually being suppressed.",
     "messageId": "preferExpectErrorComment",
     "nodeType": "Line",
@@ -232,8 +292,8 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
   {
     "column": 21,
     "endColumn": 24,
-    "endLine": 13,
-    "line": 13,
+    "endLine": 15,
+    "line": 15,
     "message": "Unsafe return of an \`any\` typed value.",
     "messageId": "unsafeReturn",
     "nodeType": "Identifier",
@@ -243,8 +303,8 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
   {
     "column": 45,
     "endColumn": 48,
-    "endLine": 16,
-    "line": 16,
+    "endLine": 18,
+    "line": 18,
     "message": "Unexpected any. Specify a different type.",
     "messageId": "unexpectedAny",
     "nodeType": "TSAnyKeyword",
@@ -255,8 +315,8 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
         "desc": "Use \`unknown\` instead, this will force you to explicitly, and safely assert the type is correct.",
         "fix": {
           "range": [
-            289,
-            292,
+            348,
+            351,
           ],
           "text": "unknown",
         },
@@ -266,8 +326,8 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
         "desc": "Use \`never\` instead, this is useful when instantiating generic type parameters that you don't need to know the type of.",
         "fix": {
           "range": [
-            289,
-            292,
+            348,
+            351,
           ],
           "text": "never",
         },
@@ -278,9 +338,9 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
   {
     "column": 8,
     "endColumn": 11,
-    "endLine": 21,
-    "line": 21,
-    "message": "'add' is already declared in the upper scope on line 1 column 17.",
+    "endLine": 23,
+    "line": 23,
+    "message": "'add' is already declared in the upper scope on line 3 column 17.",
     "messageId": "noShadow",
     "nodeType": "Identifier",
     "ruleId": "@typescript-eslint/no-shadow",
@@ -289,8 +349,8 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
   {
     "column": 49,
     "endColumn": 54,
-    "endLine": 29,
-    "line": 29,
+    "endLine": 31,
+    "line": 31,
     "message": "'value' is defined but never used.",
     "messageId": "unusedVar",
     "nodeType": "Identifier",
