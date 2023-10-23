@@ -43,5 +43,3 @@ export function shadow() {
 }
 
 nonExistent();
-
-// There is intentionally no new line at the end of this file to hit [eol-last](https://eslint.org/docs/rules/eol-last).
