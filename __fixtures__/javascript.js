@@ -42,4 +42,7 @@ export function shadow() {
 	return lol;
 }
 
+// eslint-disable-next-line no-unused-vars
+const implicitCoercion = !! 'heyyy';
+
 nonExistent();

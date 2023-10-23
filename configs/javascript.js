@@ -168,6 +168,8 @@ module.exports = {
 
 		'no-lonely-if': 'error',
 
+		'no-implicit-coercion': 'error',
+
 		'no-mixed-operators': 'error',
 
 		'no-nested-ternary': 'error',
