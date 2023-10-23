@@ -180,6 +180,30 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
 ]
 `;
 
+exports[`linting javascript-missing-eol.js fixture matches snapshot 1`] = `
+[
+  {
+    "column": 51,
+    "endColumn": 51,
+    "endLine": 3,
+    "fix": {
+      "range": [
+        270,
+        270,
+      ],
+      "text": "
+",
+    },
+    "line": 3,
+    "message": "Insert \`⏎\`",
+    "messageId": "insert",
+    "nodeType": null,
+    "ruleId": "prettier/prettier",
+    "severity": 2,
+  },
+]
+`;
+
 exports[`linting typescript.ts fixture matches snapshot 1`] = `
 [
   {

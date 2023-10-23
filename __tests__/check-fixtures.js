@@ -17,7 +17,10 @@ async function getLintMessages( fixture ) {
 }
 
 describe( 'linting', () => {
-	it.each( [ 'javascript.js', 'typescript.ts' ] )( '%s fixture matches snapshot', async fixture => {
-		expect( await getLintMessages( fixture ) ).toMatchSnapshot();
-	} );
+	it.each( [ 'javascript.js', 'javascript-missing-eol.js', 'typescript.ts' ] )(
+		'%s fixture matches snapshot',
+		async fixture => {
+			expect( await getLintMessages( fixture ) ).toMatchSnapshot();
+		}
+	);
 } );
