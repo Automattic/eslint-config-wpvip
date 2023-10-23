@@ -177,25 +177,6 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
     "ruleId": "no-undef",
     "severity": 2,
   },
-  {
-    "column": 121,
-    "endColumn": 121,
-    "endLine": 47,
-    "fix": {
-      "range": [
-        953,
-        953,
-      ],
-      "text": "
-",
-    },
-    "line": 47,
-    "message": "Insert \`⏎\`",
-    "messageId": "insert",
-    "nodeType": null,
-    "ruleId": "prettier/prettier",
-    "severity": 2,
-  },
 ]
 `;
 
