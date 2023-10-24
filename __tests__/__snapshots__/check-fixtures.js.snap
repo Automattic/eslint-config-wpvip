@@ -167,29 +167,52 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
     "severity": 2,
   },
   {
+    "column": 26,
+    "endColumn": 36,
+    "endLine": 46,
+    "fix": {
+      "range": [
+        885,
+        895,
+      ],
+      "text": "Boolean('heyyy')",
+    },
+    "line": 46,
+    "message": "use \`Boolean('heyyy')\` instead.",
+    "messageId": "useRecommendation",
+    "nodeType": "UnaryExpression",
+    "ruleId": "no-implicit-coercion",
+    "severity": 2,
+  },
+  {
     "column": 1,
     "endColumn": 12,
-    "endLine": 45,
-    "line": 45,
+    "endLine": 48,
+    "line": 48,
     "message": "'nonExistent' is not defined.",
     "messageId": "undef",
     "nodeType": "Identifier",
     "ruleId": "no-undef",
     "severity": 2,
   },
+]
+`;
+
+exports[`linting javascript-missing-eol.js fixture matches snapshot 1`] = `
+[
   {
-    "column": 121,
-    "endColumn": 121,
-    "endLine": 47,
+    "column": 51,
+    "endColumn": 51,
+    "endLine": 3,
     "fix": {
       "range": [
-        953,
-        953,
+        270,
+        270,
       ],
       "text": "
 ",
     },
-    "line": 47,
+    "line": 3,
     "message": "Insert \`⏎\`",
     "messageId": "insert",
     "nodeType": null,

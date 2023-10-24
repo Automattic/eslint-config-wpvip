@@ -22,8 +22,8 @@ const parent =
 debugLog( `Found package.json: ${ parent.__path || 'none' }` );
 
 module.exports = function isPackageInstalled( packageName ) {
-	const isDevDependency = !! parent.devDependencies?.[ `${ packageName }` ];
-	const isProdDependency = !! parent.dependencies?.[ `${ packageName }` ];
+	const isDevDependency = Boolean( parent.devDependencies?.[ `${ packageName }` ] );
+	const isProdDependency = Boolean( parent.dependencies?.[ `${ packageName }` ] );
 
 	return isDevDependency || isProdDependency;
 };
