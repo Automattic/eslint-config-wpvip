@@ -1,4 +1,5 @@
 import { unusedEs6Import } from './stub/unusedEs6Import';
+import { Buffer } from 'node:buffer';
 
 export function add( one: number, two: number, three: String ): number {
 	return one + two;
@@ -34,3 +35,7 @@ function someCoolDecorator( totallyRadArgument, _value ): typeof totallyRadArgum
 
 @someCoolDecorator
 export class EmptyClass {}
+
+export function base64encode( str: string ): string {
+	return Buffer.from( str ).toString( 'base64' );
+}

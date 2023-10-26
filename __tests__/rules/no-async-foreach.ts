@@ -1,5 +1,12 @@
-import rule from '../../rules/no-async-foreach';
+/**
+ * External dependencies
+ */
 import { Linter, RuleTester } from 'eslint';
+
+/**
+ * Internal dependencies
+ */
+import rule from '../../rules/no-async-foreach';
 
 const ruleTester = new RuleTester();
 const parserOptions: Linter.ParserOptions = { ecmaVersion: 8 };
