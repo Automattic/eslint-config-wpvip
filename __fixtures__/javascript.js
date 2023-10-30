@@ -42,6 +42,7 @@ export function shadow() {
 	return lol;
 }
 
-nonExistent();
+// eslint-disable-next-line no-unused-vars
+const implicitCoercion = !! 'heyyy';
 
-// There is intentionally no new line at the end of this file to hit [eol-last](https://eslint.org/docs/rules/eol-last).
+nonExistent();
