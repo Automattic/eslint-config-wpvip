@@ -180,7 +180,14 @@ module.exports = {
 
 		'no-unused-expressions': 'error',
 
-		'no-unused-vars': [ 'error', { ignoreRestSiblings: true } ],
+		'no-unused-vars': [
+			'error',
+			{
+				argsIgnorePattern: '^_',
+				destructuredArrayIgnorePattern: '^_',
+				ignoreRestSiblings: true,
+			},
+		],
 
 		'no-useless-computed-key': 'error',
 
