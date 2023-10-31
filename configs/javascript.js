@@ -233,7 +233,6 @@ module.exports = {
 		'promise/avoid-new': 'off',
 		'promise/catch-or-return': 'off',
 		'promise/no-callback-in-promise': 'warn',
-		'promise/no-multiple-resolved': 'error',
 		'promise/no-native': 'off',
 		'promise/no-nesting': 'warn',
 		'promise/no-new-statics': 'error',
@@ -244,6 +243,11 @@ module.exports = {
 		'promise/prefer-await-to-callbacks': 'off',
 		'promise/prefer-await-to-then': 'off',
 		'promise/valid-params': 'error',
+
+		// This rule has been disabled because it is extremely slow:
+		// https://github.com/Automattic/vip-cli/pull/1534
+		//
+		// 'promise/no-multiple-resolved': 'error',
 	},
 
 	settings: {
