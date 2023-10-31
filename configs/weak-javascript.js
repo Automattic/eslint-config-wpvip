@@ -53,12 +53,16 @@ module.exports = {
 
 				radix: 'warn',
 
-				'promise/no-multiple-resolved': 'warn',
 				'promise/no-new-statics': 'warn',
 				'promise/no-return-in-finally': 'warn',
 				'promise/no-return-wrap': 'warn',
 				'promise/param-names': 'warn',
 				'promise/valid-params': 'warn',
+
+				// This rule has been disabled because it is extremely slow:
+				// https://github.com/Automattic/vip-cli/pull/1534
+				//
+				// 'promise/no-multiple-resolved': 'warn',
 			},
 		},
 	],
