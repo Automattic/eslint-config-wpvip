@@ -1,4 +1,11 @@
+/**
+ * External dependencies
+ */
 const fs = require( 'fs' );
+
+/**
+ * Internal dependencies
+ */
 const configs = require( '../configs' );
 
 const configNames = Object.keys( configs ).sort();

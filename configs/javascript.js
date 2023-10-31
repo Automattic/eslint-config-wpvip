@@ -134,6 +134,22 @@ module.exports = {
 		'import/no-unresolved': 'error',
 		'unused-imports/no-unused-imports': 'warn',
 
+		// Enforce external / internal import groups and alphabetical ordering.
+		'import/order': [
+			'error',
+			{
+				'newlines-between': 'always',
+				alphabetize: {
+					order: 'asc',
+				},
+				groups: [
+					[ 'builtin', 'external' ],
+					[ 'index', 'internal', 'object', 'parent', 'sibling' ],
+					[ 'type' ],
+				],
+			},
+		],
+
 		// Enforce Unix linebreaks. Included here and not in "formatting" since it
 		// is not controversial and helps with interchange.
 		'linebreak-style': [ 'error', 'unix' ],

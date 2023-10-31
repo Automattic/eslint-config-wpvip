@@ -1,5 +1,12 @@
-const debugLog = require( './debug-log' );
+/**
+ * External dependencies
+ */
 const findPackageJson = require( 'find-package-json' );
+
+/**
+ * Internal dependencies
+ */
+const debugLog = require( './debug-log' );
 
 // Get a list of all package.json files in the current directory tree, ascending
 // up the tree from the current directory. Note that this code behaves differently

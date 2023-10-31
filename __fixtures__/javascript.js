@@ -1,4 +1,5 @@
 import { unusedEs6Import } from './stub/unusedEs6Import';
+import { Buffer } from 'node:buffer';
 
 const cp = require( 'child_process' );
 
@@ -46,3 +47,7 @@ export function shadow() {
 const implicitCoercion = !! 'heyyy';
 
 nonExistent();
+
+export function base64encode( str ) {
+	return Buffer.from( str ).toString( 'base64' );
+}
