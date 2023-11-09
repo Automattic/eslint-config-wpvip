@@ -51,3 +51,5 @@ nonExistent();
 export function base64encode( str ) {
 	return Buffer.from( str ).toString( 'base64' );
 }
+
+export const constantBinary = x() || x() !== {};

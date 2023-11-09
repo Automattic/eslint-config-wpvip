@@ -42,6 +42,7 @@ module.exports = {
 		'no-compare-neg-zero': 'error',
 		// 'no-cond-assign': 'error', // extended below
 		'no-const-assign': 'error',
+		'no-constant-binary-expression': 'error',
 		'no-constant-condition': 'error',
 		'no-control-regex': 'error',
 		'no-debugger': 'error',
