@@ -360,11 +360,24 @@ import { unusedEs6Import } from './stub/unusedEs6Import';
     "endColumn": 14,
     "endLine": 8,
     "line": 8,
-    "message": "Do not use "@ts-ignore" because it alters compilation errors.",
-    "messageId": "tsDirectiveComment",
+    "message": "Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free.",
+    "messageId": "tsIgnoreInsteadOfExpectError",
     "nodeType": "Line",
     "ruleId": "@typescript-eslint/ban-ts-comment",
     "severity": 2,
+    "suggestions": [
+      {
+        "desc": "Replace "@ts-ignore" with "@ts-expect-error".",
+        "fix": {
+          "range": [
+            192,
+            205,
+          ],
+          "text": "// @ts-expect-error",
+        },
+        "messageId": "replaceTsIgnoreWithTsExpectError",
+      },
+    ],
   },
   {
     "column": 1,
