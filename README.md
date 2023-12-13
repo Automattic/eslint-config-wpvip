@@ -75,8 +75,10 @@ Note that the order of configs can matter, since they can contain overrides. It 
 Install [WP Prettier](https://github.com/Automattic/wp-prettier) to benefit from additional formatting rules:
 
 ```sh
-npm i --save-dev --save-exact "prettier@npm:wp-prettier@latest"
+npm i --save-dev --save-exact "prettier@npm:wp-prettier@2.8.5"
 ```
+
+Ensure that wp-prettier v3.0 and is above is not installed as that isn't currently supported.
 
 This repo also provides a Prettier config, which you can use with the following `.prettierrc`:
 
