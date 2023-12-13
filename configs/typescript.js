@@ -61,9 +61,12 @@ module.exports = {
 						allowWithDecorator: true,
 					},
 				],
+
+				// etc.
+				'unused-imports/no-unused-imports': 'warn',
 			},
 		},
 	],
 
-	plugins: [ '@typescript-eslint', 'jsdoc' ],
+	plugins: [ '@typescript-eslint', 'jsdoc', 'unused-imports' ],
 };
