@@ -53,3 +53,12 @@ export function base64encode( str ) {
 }
 
 export const constantBinary = x() || x() !== {};
+
+export class CoolClass {
+	// JavaScript doesn't have accessibility modifiers, so we expect this to be allowed.
+	secret = 'shhh';
+
+	implicitlyPublicMethod() {
+		return 'hi';
+	}
+}
