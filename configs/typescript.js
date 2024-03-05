@@ -23,6 +23,17 @@ module.exports = {
 			},
 
 			rules: {
+				// Require explicity visibility for class methods and properties to avoid
+				// implicit public access. Allow constructors to be implicitly public.
+				'@typescript-eslint/explicit-member-accessibility': [
+					'error',
+					{
+						overrides: {
+							constructors: 'off',
+						},
+					},
+				],
+
 				// TypeScript `any` type must not be used. This is a warning in the base
 				// config, and is elevated to an error here.
 				'@typescript-eslint/no-explicit-any': 'error',

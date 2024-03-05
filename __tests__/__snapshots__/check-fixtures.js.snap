@@ -454,5 +454,115 @@ import { unusedEs6Import } from './stub/unusedEs6Import';
     "ruleId": "@typescript-eslint/no-shadow",
     "severity": 2,
   },
+  {
+    "column": 2,
+    "endColumn": 17,
+    "endLine": 38,
+    "line": 38,
+    "message": "Missing accessibility modifier on class property secret.",
+    "messageId": "missingAccessibility",
+    "nodeType": "PropertyDefinition",
+    "ruleId": "@typescript-eslint/explicit-member-accessibility",
+    "severity": 2,
+    "suggestions": [
+      {
+        "data": {
+          "type": "public",
+        },
+        "desc": "Add 'public' accessibility modifier",
+        "fix": {
+          "range": [
+            675,
+            675,
+          ],
+          "text": "public ",
+        },
+        "messageId": "addExplicitAccessibility",
+      },
+      {
+        "data": {
+          "type": "private",
+        },
+        "desc": "Add 'private' accessibility modifier",
+        "fix": {
+          "range": [
+            675,
+            675,
+          ],
+          "text": "private ",
+        },
+        "messageId": "addExplicitAccessibility",
+      },
+      {
+        "data": {
+          "type": "protected",
+        },
+        "desc": "Add 'protected' accessibility modifier",
+        "fix": {
+          "range": [
+            675,
+            675,
+          ],
+          "text": "protected ",
+        },
+        "messageId": "addExplicitAccessibility",
+      },
+    ],
+  },
+  {
+    "column": 2,
+    "endColumn": 3,
+    "endLine": 48,
+    "line": 46,
+    "message": "Missing accessibility modifier on method definition implicitlyPublicMethod.",
+    "messageId": "missingAccessibility",
+    "nodeType": "MethodDefinition",
+    "ruleId": "@typescript-eslint/explicit-member-accessibility",
+    "severity": 2,
+    "suggestions": [
+      {
+        "data": {
+          "type": "public",
+        },
+        "desc": "Add 'public' accessibility modifier",
+        "fix": {
+          "range": [
+            838,
+            838,
+          ],
+          "text": "public ",
+        },
+        "messageId": "addExplicitAccessibility",
+      },
+      {
+        "data": {
+          "type": "private",
+        },
+        "desc": "Add 'private' accessibility modifier",
+        "fix": {
+          "range": [
+            838,
+            838,
+          ],
+          "text": "private ",
+        },
+        "messageId": "addExplicitAccessibility",
+      },
+      {
+        "data": {
+          "type": "protected",
+        },
+        "desc": "Add 'protected' accessibility modifier",
+        "fix": {
+          "range": [
+            838,
+            838,
+          ],
+          "text": "protected ",
+        },
+        "messageId": "addExplicitAccessibility",
+      },
+    ],
+  },
 ]
 `;
