@@ -9,8 +9,5 @@ module.exports = {
 
 		// Process.exit is used in CLI context to stop execution.
 		'no-process-exit': 'off',
-
-		// console.log is used all the time in the CLI context.
-		'no-console': 'off',
 	},
 };
