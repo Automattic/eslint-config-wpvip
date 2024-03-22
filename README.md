@@ -100,12 +100,18 @@ module.exports = {
 };
 ```
 
-If your project is not a CLI tool but calls `console` or `process` methods occasionally, you probably don't need this config. Instead, disable those rules only where necessary and include an explanation:
+If your project is not a CLI tool but calls `process` methods occasionally, you probably don't need this config. Instead, disable those rules only where necessary and include an explanation:
 
 ```js
 // Intentionally exiting because we have observed an unrecoverable error.
 // eslint-disable-next-line no-process-exit
 process.exit( 1 );
+```
+
+Note that `console.log` is still forbidden ([see here for an explanation](https://github.com/Automattic/eslint-config-wpvip/pull/198#issuecomment-2015322062)). If you're writing one-off Node scripts, you can disable the rule per file:
+
+```js
+/* eslint-disable no-console */
 ```
 
 ## JSDoc
