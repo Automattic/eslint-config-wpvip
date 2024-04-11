@@ -454,5 +454,16 @@ import { unusedEs6Import } from './stub/unusedEs6Import';
     "ruleId": "@typescript-eslint/no-shadow",
     "severity": 2,
   },
+  {
+    "column": 7,
+    "endColumn": 18,
+    "endLine": 47,
+    "line": 47,
+    "message": "'UnusedClass' is defined but never used.",
+    "messageId": "unusedVar",
+    "nodeType": "Identifier",
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "severity": 2,
+  },
 ]
 `;

@@ -104,6 +104,9 @@ module.exports = {
 		// Unguarded getRangeAt calls can throw errors in some browsers.
 		'@automattic/wpvip/no-unguarded-get-range-at': 'error',
 
+		// Ensures NestJS route prefixes are correctly formatted.
+		'@automattic/wpvip/nestjs-route-prefix': 'error',
+
 		'array-callback-return': 'error',
 
 		// Maximum cyclomatic complexity must not be above 20.
