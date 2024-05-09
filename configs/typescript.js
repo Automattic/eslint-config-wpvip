@@ -4,7 +4,7 @@
  */
 
 module.exports = {
-	ignorePatterns: [ '**/*.d.ts' ],
+	ignorePatterns: [ '**/*.d.ts', '**/*.d.cts', '**/*.d.mts' ],
 
 	overrides: [
 		{
@@ -14,7 +14,7 @@ module.exports = {
 				'plugin:@typescript-eslint/strict',
 			],
 
-			files: [ '**/*.ts', '**/*.tsx' ],
+			files: [ '**/*.ts', '**/*.tsx', '**/*.cts', '**/*.mts' ],
 
 			parser: '@typescript-eslint/parser',
 
