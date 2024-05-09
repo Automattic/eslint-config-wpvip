@@ -254,7 +254,7 @@ module.exports = {
 	settings: {
 		'import/resolver': {
 			node: {
-				extensions: [ '.js', '.jsx', '.ts', '.tsx' ],
+				extensions: [ '.js', '.jsx', '.ts', '.tsx', '.cjs', '.mjs', '.cts', '.mts' ],
 			},
 			typescript: 'eslint-import-resolver-typescript',
 		},
