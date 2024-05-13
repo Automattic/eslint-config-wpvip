@@ -53,6 +53,9 @@ module.exports = {
 				'@typescript-eslint/no-shadow': 'error',
 				'import/no-duplicates': 'error',
 
+				'dot-notation': 'off',
+				'@typescript-eslint/dot-notation': [ 'error', { allowKeywords: true } ],
+
 				// Empty classes are allowed if they are accompanied by a decorator.
 				// This is common in frameworks such as Angular / nest.js.
 				'@typescript-eslint/no-extraneous-class': [
