@@ -2,6 +2,7 @@
  * Rule: @automattic/wpvip/nestjs-route-prefix
  */
 
+const nestJsControllerDecorators = [ 'Controller' ];
 const nestJsRouteDecorators = [ 'Get', 'Post', 'Put', 'Delete', 'Patch', 'Options', 'Head' ];
 
 module.exports = {
@@ -16,14 +17,17 @@ module.exports = {
 				const decoratorName = node.expression.callee.name;
 				const argument = node.expression?.arguments[ 0 ] ?? [];
 
-				if ( decoratorName === 'Controller' ) {
+				if ( nestJsControllerDecorators.includes( decoratorName ) ) {
 					if ( argument && argument.type === 'Literal' && argument.value !== '' ) {
 						context.report( {
 							node,
 							message: '@Controller should not have route prefixes.',
 						} );
 					}
-				} else if ( nestJsRouteDecorators.includes( decoratorName ) ) {
+					return;
+				}
+
+				if ( nestJsRouteDecorators.includes( decoratorName ) ) {
 					if (
 						! argument ||
 						argument.type !== 'Literal' ||
