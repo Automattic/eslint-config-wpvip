@@ -52,11 +52,19 @@ export function base64encode( str: string ): string {
 	return Buffer.from( str ).toString( 'base64' );
 }
 
-function someCalleeDecorator() {
-	return function ( _target: unknown, _propertyKey: string, _descriptor: PropertyDescriptor ) {};
+function Controller( route: string ) {
+	return function < T extends { new ( ...args: any[] ): object } >(
+		constructor: T,
+		value: unknown
+	) {
+		return class extends constructor {
+			public route = route;
+			public value = value;
+		};
+	};
 }
 
-class UnusedClass {
-	@someCalleeDecorator()
-	method() {}
+@Controller( 'yeehaw' )
+export class SomeController {
+	public method() {}
 }
