@@ -5,11 +5,11 @@ const config = {
 	extends: [ require.resolve( './javascript' ) ],
 };
 
+config.extends.push( require.resolve( './formatting' ) );
+
 if ( isPackageInstalled( 'typescript' ) ) {
 	config.extends.push( require.resolve( './typescript' ) );
 }
-
-config.extends.push( require.resolve( './formatting' ) );
 
 if ( isPackageInstalled( 'jest' ) ) {
 	config.extends.push( require.resolve( './testing' ) );

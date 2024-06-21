@@ -4,7 +4,7 @@
  */
 
 module.exports = {
-	ignorePatterns: [ '**/*.d.ts' ],
+	ignorePatterns: [ '**/*.d.ts', '**/*.d.cts', '**/*.d.mts' ],
 
 	overrides: [
 		{
@@ -14,7 +14,7 @@ module.exports = {
 				'plugin:@typescript-eslint/strict',
 			],
 
-			files: [ '**/*.ts', '**/*.tsx' ],
+			files: [ '**/*.ts', '**/*.tsx', '**/*.cts', '**/*.mts' ],
 
 			parser: '@typescript-eslint/parser',
 
@@ -23,6 +23,17 @@ module.exports = {
 			},
 
 			rules: {
+				// Require explicity visibility for class methods and properties to avoid
+				// implicit public access. Allow constructors to be implicitly public.
+				'@typescript-eslint/explicit-member-accessibility': [
+					'error',
+					{
+						overrides: {
+							constructors: 'off',
+						},
+					},
+				],
+
 				// TypeScript `any` type must not be used. This is a warning in the base
 				// config, and is elevated to an error here.
 				'@typescript-eslint/no-explicit-any': 'error',
@@ -52,6 +63,9 @@ module.exports = {
 				'no-shadow': 'off',
 				'@typescript-eslint/no-shadow': 'error',
 				'import/no-duplicates': 'error',
+
+				'dot-notation': 'off',
+				'@typescript-eslint/dot-notation': [ 'error', { allowKeywords: true } ],
 
 				// Empty classes are allowed if they are accompanied by a decorator.
 				// This is common in frameworks such as Angular / nest.js.

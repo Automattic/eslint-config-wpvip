@@ -1,6 +1,6 @@
 {
   "name": "@automattic/eslint-plugin-wpvip",
-  "version": "0.9.2-dev.0",
+  "version": "0.11.1-dev.0",
   "description": "ESLint plugin for internal WordPress VIP projects",
   "main": "index.js",
   "scripts": {
@@ -32,14 +32,14 @@
   },
   "homepage": "https://github.com/Automattic/eslint-config-wpvip#readme",
   "dependencies": {
-    "@babel/eslint-parser": "7.23.3",
-    "@rushstack/eslint-patch": "1.6.0",
-    "@typescript-eslint/eslint-plugin": "6.13.1",
-    "@typescript-eslint/parser": "6.13.1",
+    "@babel/eslint-parser": "7.24.5",
+    "@rushstack/eslint-patch": "1.10.2",
+    "@typescript-eslint/eslint-plugin": "7.8.0",
+    "@typescript-eslint/parser": "7.8.0",
     "eslint-config-prettier": "8.7.0",
     "eslint-import-resolver-typescript": "3.6.1",
-    "eslint-plugin-import": "2.29.0",
-    "eslint-plugin-jest": "27.6.0",
+    "eslint-plugin-import": "2.29.1",
+    "eslint-plugin-jest": "28.5.0",
     "eslint-plugin-jsdoc": "46.8.2",
     "eslint-plugin-json": "3.1.0",
     "eslint-plugin-jsx-a11y": "6.7.1",
@@ -48,21 +48,21 @@
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-security": "1.7.1",
-    "eslint-plugin-unused-imports": "3.0.0",
+    "eslint-plugin-unused-imports": "3.2.0",
     "find-package-json": "1.2.0",
     "globals": "13.23.0"
   },
   "peerDependencies": {
-    "eslint": ">=8"
+    "eslint": "^8.56.0"
   },
   "devDependencies": {
     "@tsconfig/node18": "18.2.2",
     "@types/eslint": "8.44.8",
     "@types/jest": "29.5.10",
-    "eslint": "8.54.0",
+    "eslint": "8.56.0",
     "jest": "29.7.0",
     "prettier": "npm:wp-prettier@2.8.5",
-    "ts-jest": "29.1.1",
-    "typescript": "5.3.2"
+    "ts-jest": "29.1.2",
+    "typescript": "5.4.5"
   }
 }

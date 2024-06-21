@@ -34,7 +34,7 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
     "line": 1,
     "message": "'unusedEs6Import' is defined but never used.",
     "messageId": "unusedVar",
-    "nodeType": "Identifier",
+    "nodeType": null,
     "ruleId": "unused-imports/no-unused-imports",
     "severity": 1,
   },
@@ -285,7 +285,7 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
     "line": 1,
     "message": "'unusedEs6Import' is defined but never used.",
     "messageId": "unusedVar",
-    "nodeType": "Identifier",
+    "nodeType": null,
     "ruleId": "@typescript-eslint/no-unused-vars",
     "severity": 2,
   },
@@ -303,7 +303,7 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
     "line": 1,
     "message": "'unusedEs6Import' is defined but never used.",
     "messageId": "unusedVar",
-    "nodeType": "Identifier",
+    "nodeType": null,
     "ruleId": "unused-imports/no-unused-imports",
     "severity": 1,
   },
@@ -328,12 +328,12 @@ import { unusedEs6Import } from './stub/unusedEs6Import';
   },
   {
     "column": 48,
-    "endColumn": 61,
+    "endColumn": 53,
     "endLine": 4,
     "line": 4,
     "message": "'three' is defined but never used. Allowed unused args must match /^_/u.",
     "messageId": "unusedVar",
-    "nodeType": "Identifier",
+    "nodeType": null,
     "ruleId": "@typescript-eslint/no-unused-vars",
     "severity": 2,
   },
@@ -455,15 +455,180 @@ import { unusedEs6Import } from './stub/unusedEs6Import';
     "severity": 2,
   },
   {
+    "column": 2,
+    "endColumn": 17,
+    "endLine": 38,
+    "line": 38,
+    "message": "Missing accessibility modifier on class property secret.",
+    "messageId": "missingAccessibility",
+    "nodeType": "PropertyDefinition",
+    "ruleId": "@typescript-eslint/explicit-member-accessibility",
+    "severity": 2,
+    "suggestions": [
+      {
+        "data": {
+          "type": "public",
+        },
+        "desc": "Add 'public' accessibility modifier",
+        "fix": {
+          "range": [
+            675,
+            675,
+          ],
+          "text": "public ",
+        },
+        "messageId": "addExplicitAccessibility",
+      },
+      {
+        "data": {
+          "type": "private",
+        },
+        "desc": "Add 'private' accessibility modifier",
+        "fix": {
+          "range": [
+            675,
+            675,
+          ],
+          "text": "private ",
+        },
+        "messageId": "addExplicitAccessibility",
+      },
+      {
+        "data": {
+          "type": "protected",
+        },
+        "desc": "Add 'protected' accessibility modifier",
+        "fix": {
+          "range": [
+            675,
+            675,
+          ],
+          "text": "protected ",
+        },
+        "messageId": "addExplicitAccessibility",
+      },
+    ],
+  },
+  {
+    "column": 2,
+    "endColumn": 3,
+    "endLine": 48,
+    "line": 46,
+    "message": "Missing accessibility modifier on method definition implicitlyPublicMethod.",
+    "messageId": "missingAccessibility",
+    "nodeType": "MethodDefinition",
+    "ruleId": "@typescript-eslint/explicit-member-accessibility",
+    "severity": 2,
+    "suggestions": [
+      {
+        "data": {
+          "type": "public",
+        },
+        "desc": "Add 'public' accessibility modifier",
+        "fix": {
+          "range": [
+            838,
+            838,
+          ],
+          "text": "public ",
+        },
+        "messageId": "addExplicitAccessibility",
+      },
+      {
+        "data": {
+          "type": "private",
+        },
+        "desc": "Add 'private' accessibility modifier",
+        "fix": {
+          "range": [
+            838,
+            838,
+          ],
+          "text": "private ",
+        },
+        "messageId": "addExplicitAccessibility",
+      },
+      {
+        "data": {
+          "type": "protected",
+        },
+        "desc": "Add 'protected' accessibility modifier",
+        "fix": {
+          "range": [
+            838,
+            838,
+          ],
+          "text": "protected ",
+        },
+        "messageId": "addExplicitAccessibility",
+      },
+    ],
+  },
+  {
     "column": 7,
     "endColumn": 18,
-    "endLine": 47,
-    "line": 47,
+    "endLine": 59,
+    "line": 59,
     "message": "'UnusedClass' is defined but never used.",
     "messageId": "unusedVar",
-    "nodeType": "Identifier",
+    "nodeType": null,
     "ruleId": "@typescript-eslint/no-unused-vars",
     "severity": 2,
+  },
+  {
+    "column": 2,
+    "endColumn": 13,
+    "endLine": 61,
+    "line": 60,
+    "message": "Missing accessibility modifier on method definition method.",
+    "messageId": "missingAccessibility",
+    "nodeType": "MethodDefinition",
+    "ruleId": "@typescript-eslint/explicit-member-accessibility",
+    "severity": 2,
+    "suggestions": [
+      {
+        "data": {
+          "type": "public",
+        },
+        "desc": "Add 'public' accessibility modifier",
+        "fix": {
+          "range": [
+            1170,
+            1170,
+          ],
+          "text": "public ",
+        },
+        "messageId": "addExplicitAccessibility",
+      },
+      {
+        "data": {
+          "type": "private",
+        },
+        "desc": "Add 'private' accessibility modifier",
+        "fix": {
+          "range": [
+            1170,
+            1170,
+          ],
+          "text": "private ",
+        },
+        "messageId": "addExplicitAccessibility",
+      },
+      {
+        "data": {
+          "type": "protected",
+        },
+        "desc": "Add 'protected' accessibility modifier",
+        "fix": {
+          "range": [
+            1170,
+            1170,
+          ],
+          "text": "protected ",
+        },
+        "messageId": "addExplicitAccessibility",
+      },
+    ],
   },
 ]
 `;

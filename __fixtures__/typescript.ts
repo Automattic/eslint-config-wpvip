@@ -34,7 +34,19 @@ function someCoolDecorator( totallyRadArgument, _value ): typeof totallyRadArgum
 }
 
 @someCoolDecorator
-export class EmptyClass {}
+export class CoolClass {
+	secret: string;
+
+	constructor() {
+		// Constructors are exempt from explicit-member-accessibility rules, but
+		// properties are not.
+		this.secret = 'shhh';
+	}
+
+	implicitlyPublicMethod() {
+		return 'hi';
+	}
+}
 
 export function base64encode( str: string ): string {
 	return Buffer.from( str ).toString( 'base64' );
