@@ -258,6 +258,8 @@ exports[`linting javascript-missing-eol.js fixture matches snapshot 1`] = `
 ]
 `;
 
+exports[`linting typescript.test.ts fixture matches snapshot 1`] = `[]`;
+
 exports[`linting typescript.ts fixture matches snapshot 1`] = `
 [
   {
