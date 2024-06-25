@@ -564,5 +564,50 @@ import { unusedEs6Import } from './stub/unusedEs6Import';
       },
     ],
   },
+  {
+    "column": 47,
+    "endColumn": 50,
+    "endLine": 56,
+    "line": 56,
+    "message": "Unexpected any. Specify a different type.",
+    "messageId": "unexpectedAny",
+    "nodeType": "TSAnyKeyword",
+    "ruleId": "@typescript-eslint/no-explicit-any",
+    "severity": 2,
+    "suggestions": [
+      {
+        "desc": "Use \`unknown\` instead, this will force you to explicitly, and safely assert the type is correct.",
+        "fix": {
+          "range": [
+            1077,
+            1080,
+          ],
+          "text": "unknown",
+        },
+        "messageId": "suggestUnknown",
+      },
+      {
+        "desc": "Use \`never\` instead, this is useful when instantiating generic type parameters that you don't need to know the type of.",
+        "fix": {
+          "range": [
+            1077,
+            1080,
+          ],
+          "text": "never",
+        },
+        "messageId": "suggestNever",
+      },
+    ],
+  },
+  {
+    "column": 1,
+    "endColumn": 24,
+    "endLine": 67,
+    "line": 67,
+    "message": "@Controller should not have route prefixes.",
+    "nodeType": "Decorator",
+    "ruleId": "@automattic/wpvip/nestjs-route-prefix",
+    "severity": 2,
+  },
 ]
 `;
