@@ -51,3 +51,20 @@ export class CoolClass {
 export function base64encode( str: string ): string {
 	return Buffer.from( str ).toString( 'base64' );
 }
+
+function Controller( route: string ) {
+	return function < T extends { new ( ...args: any[] ): object } >(
+		constructor: T,
+		value: unknown
+	) {
+		return class extends constructor {
+			public route = route;
+			public value = value;
+		};
+	};
+}
+
+@Controller( 'yeehaw' )
+export class SomeController {
+	public method() {}
+}
