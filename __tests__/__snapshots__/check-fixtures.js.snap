@@ -382,24 +382,6 @@ import { unusedEs6Import } from './stub/unusedEs6Import';
     ],
   },
   {
-    "column": 1,
-    "endColumn": 14,
-    "endLine": 8,
-    "fix": {
-      "range": [
-        192,
-        205,
-      ],
-      "text": "// @ts-expect-error",
-    },
-    "line": 8,
-    "message": "Use "@ts-expect-error" to ensure an error is actually being suppressed.",
-    "messageId": "preferExpectErrorComment",
-    "nodeType": "Line",
-    "ruleId": "@typescript-eslint/prefer-ts-expect-error",
-    "severity": 2,
-  },
-  {
     "column": 21,
     "endColumn": 24,
     "endLine": 16,
@@ -458,12 +440,12 @@ import { unusedEs6Import } from './stub/unusedEs6Import';
   },
   {
     "column": 2,
-    "endColumn": 17,
+    "endColumn": 8,
     "endLine": 38,
     "line": 38,
     "message": "Missing accessibility modifier on class property secret.",
     "messageId": "missingAccessibility",
-    "nodeType": "PropertyDefinition",
+    "nodeType": null,
     "ruleId": "@typescript-eslint/explicit-member-accessibility",
     "severity": 2,
     "suggestions": [
@@ -513,12 +495,12 @@ import { unusedEs6Import } from './stub/unusedEs6Import';
   },
   {
     "column": 2,
-    "endColumn": 3,
-    "endLine": 48,
+    "endColumn": 24,
+    "endLine": 46,
     "line": 46,
     "message": "Missing accessibility modifier on method definition implicitlyPublicMethod.",
     "messageId": "missingAccessibility",
-    "nodeType": "MethodDefinition",
+    "nodeType": null,
     "ruleId": "@typescript-eslint/explicit-member-accessibility",
     "severity": 2,
     "suggestions": [
