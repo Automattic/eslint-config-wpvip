@@ -7,7 +7,7 @@
     "check-types": "tsc -p tsconfig.check.json",
     "cmd:format": "prettier --ignore-path .gitignore '**/*.(js|json|jsx|md|ts|tsx|yml|yaml)'",
     "cmd:jest": "npm run link-plugin && jest",
-    "cmd:lint": "npm run link-plugin && eslint --ext 'js,jsx,ts,tsx'",
+    "cmd:lint": "npm run link-plugin && eslint",
     "format": "npm run cmd:format -- --write",
     "format:check": "npm run cmd:format -- --check",
     "jest": "npm run cmd:jest",
@@ -15,7 +15,7 @@
     "link-plugin": "mkdir -p ./node_modules/@automattic; ln -fns $(pwd) ./node_modules/@automattic/eslint-plugin-wpvip",
     "lint": "npm run cmd:lint .",
     "lint:fix": "npm run cmd:lint . -- --fix",
-    "test": "npm run jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules npm run jest"
   },
   "repository": {
     "type": "git",
@@ -32,37 +32,38 @@
   },
   "homepage": "https://github.com/Automattic/eslint-config-wpvip#readme",
   "dependencies": {
-    "@babel/eslint-parser": "7.24.7",
-    "@rushstack/eslint-patch": "1.10.3",
-    "@typescript-eslint/eslint-plugin": "7.15.0",
-    "@typescript-eslint/parser": "7.15.0",
-    "eslint-config-prettier": "8.7.0",
-    "eslint-import-resolver-typescript": "3.6.1",
-    "eslint-plugin-import": "2.29.1",
-    "eslint-plugin-jest": "28.5.0",
-    "eslint-plugin-jsdoc": "46.8.2",
-    "eslint-plugin-json": "3.1.0",
-    "eslint-plugin-jsx-a11y": "6.7.1",
-    "eslint-plugin-prettier": "4.2.1",
-    "eslint-plugin-promise": "6.1.1",
-    "eslint-plugin-react": "7.33.2",
-    "eslint-plugin-react-hooks": "4.6.0",
-    "eslint-plugin-security": "1.7.1",
-    "eslint-plugin-unused-imports": "3.2.0",
+    "@babel/eslint-parser": "7.25.9",
+    "@rushstack/eslint-patch": "1.10.4",
+    "@typescript-eslint/eslint-plugin": "8.18.0",
+    "@typescript-eslint/parser": "8.18.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-import-resolver-typescript": "3.7.0",
+    "eslint-plugin-import": "2.31.0",
+    "eslint-plugin-jest": "28.9.0",
+    "eslint-plugin-jsdoc": "50.6.1",
+    "eslint-plugin-json": "4.0.1",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-prettier": "5.2.1",
+    "eslint-plugin-promise": "7.2.1",
+    "eslint-plugin-react": "7.37.2",
+    "eslint-plugin-react-hooks": "5.1.0",
+    "eslint-plugin-security": "3.0.1",
+    "eslint-plugin-unused-imports": "4.1.4",
     "find-package-json": "1.2.0",
-    "globals": "13.23.0"
+    "globals": "15.13.0"
   },
   "peerDependencies": {
-    "eslint": "^8.56.0"
+    "eslint": "^9.7.0"
   },
   "devDependencies": {
-    "@tsconfig/node18": "18.2.2",
-    "@types/eslint": "8.44.8",
-    "@types/jest": "29.5.12",
-    "eslint": "8.56.0",
+    "@tsconfig/node18": "18.2.4",
+    "@types/eslint": "9.6.1",
+    "@types/jest": "29.5.14",
+    "@typescript-eslint/rule-tester": "^8.18.0",
+    "eslint": "9.16.0",
     "jest": "29.7.0",
-    "prettier": "npm:wp-prettier@2.8.5",
-    "ts-jest": "29.1.5",
-    "typescript": "5.5.3"
+    "prettier": "npm:wp-prettier@3.0.3",
+    "ts-jest": "29.2.5",
+    "typescript": "5.7.2"
   }
 }

@@ -1,28 +1,22 @@
-const debugLog = require( '../utils/debug-log' );
 const isPackageInstalled = require( '../utils/is-package-installed' );
 
-const config = {
-	extends: [ require.resolve( './javascript' ) ],
-};
-
-config.extends.push( require.resolve( './formatting' ) );
+/** @type import('eslint').Linter.Config[] */
+const configs = [ ...require( './javascript' ), ...require( './formatting' ) ];
 
 if ( isPackageInstalled( 'typescript' ) ) {
-	config.extends.push( require.resolve( './typescript' ) );
+	configs.push( ...require( './typescript' ) );
 }
 
 if ( isPackageInstalled( 'jest' ) ) {
-	config.extends.push( require.resolve( './testing' ) );
+	configs.push( ...require( './testing' ) );
 }
 
 if ( isPackageInstalled( 'react' ) ) {
-	config.extends.push( require.resolve( './react' ) );
+	configs.push( ...require( './react' ) );
 }
 
 if ( isPackageInstalled( 'prettier' ) ) {
-	config.extends.push( require.resolve( './prettier' ) );
+	configs.push( ...require( './prettier' ) );
 }
 
-debugLog( `Using the following configs:\n${ config.extends.join( '\n' ) }` );
-
-module.exports = config;
+module.exports = configs;

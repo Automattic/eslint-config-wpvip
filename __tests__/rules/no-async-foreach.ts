@@ -1,15 +1,10 @@
-/**
- * External dependencies
- */
 import { Linter, RuleTester } from 'eslint';
 
-/**
- * Internal dependencies
- */
+/** @type {import('eslint').Rule.RuleModule} */
 import rule from '../../rules/no-async-foreach';
 
 const ruleTester = new RuleTester();
-const parserOptions: Linter.ParserOptions = { ecmaVersion: 8 };
+const languageOptions: Linter.LanguageOptions = { ecmaVersion: 8 };
 const errors = [ { message: 'Avoid passing an async function to Array.prototype.forEach' } ];
 
 describe( 'no-async-foreach', () => {
@@ -17,23 +12,23 @@ describe( 'no-async-foreach', () => {
 		valid: [
 			{
 				code: '[].forEach(() => {})',
-				parserOptions,
+				languageOptions,
 			},
 			{
 				code: '[].forEach(function() {})',
-				parserOptions,
+				languageOptions,
 			},
 		],
 		invalid: [
 			{
 				code: '[].forEach(async () => {})',
 				errors,
-				parserOptions,
+				languageOptions,
 			},
 			{
 				code: '[].forEach(async function() {})',
 				errors,
-				parserOptions,
+				languageOptions,
 			},
 		],
 	} );
