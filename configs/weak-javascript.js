@@ -6,64 +6,46 @@
  * They do not provide good protection or standardization, but can useful on a
  * temporary basis.
  */
-module.exports = {
-	overrides: [
-		{
-			// Don't apply weak rules to TypeScript files.
-			files: [ '**/*.js', '**/*.jsx' ],
 
-			/**
-			 * Downgrade rules from the base preset to "warn". Do not disable rules (set
-			 * to "off"). If a rule is already set to a warning, do not disable it.
-			 */
-			rules: {
-				complexity: 'warn',
+/** @type import('eslint').Linter.Config[] */
+module.exports = [
+	{
+		// Don't apply weak rules to TypeScript files.
+		files: [ '**/*.js', '**/*.jsx' ],
 
-				eqeqeq: 'warn',
+		/**
+		 * Downgrade rules from the base preset to "warn". Do not disable rules (set
+		 * to "off"). If a rule is already set to a warning, do not disable it.
+		 */
+		rules: {
+			complexity: 'warn',
+			eqeqeq: 'warn',
+			'object-shorthand': 'warn',
+			'no-async-promise-executor': 'warn',
+			'no-await-in-loop': 'warn',
+			'no-case-declarations': 'warn',
+			'no-dupe-else-if': 'warn',
+			'no-else-return': 'warn',
+			'no-eq-null': 'warn',
+			'no-lonely-if': 'warn',
+			'no-mixed-operators': 'warn',
+			'no-prototype-builtins': 'warn',
+			'no-shadow': 'warn',
+			'no-unused-vars': 'warn',
+			'no-useless-escape': 'warn',
+			'no-var': 'warn',
+			'one-var': 'warn',
+			radix: 'warn',
+			'promise/no-new-statics': 'warn',
+			'promise/no-return-in-finally': 'warn',
+			'promise/no-return-wrap': 'warn',
+			'promise/param-names': 'warn',
+			'promise/valid-params': 'warn',
 
-				'object-shorthand': 'warn',
-
-				'no-async-promise-executor': 'warn',
-
-				'no-await-in-loop': 'warn',
-
-				'no-case-declarations': 'warn',
-
-				'no-dupe-else-if': 'warn',
-
-				'no-else-return': 'warn',
-
-				'no-eq-null': 'warn',
-
-				'no-lonely-if': 'warn',
-
-				'no-mixed-operators': 'warn',
-
-				'no-prototype-builtins': 'warn',
-
-				'no-shadow': 'warn',
-
-				'no-unused-vars': 'warn',
-
-				'no-useless-escape': 'warn',
-
-				'no-var': 'warn',
-
-				'one-var': 'warn',
-
-				radix: 'warn',
-
-				'promise/no-new-statics': 'warn',
-				'promise/no-return-in-finally': 'warn',
-				'promise/no-return-wrap': 'warn',
-				'promise/param-names': 'warn',
-				'promise/valid-params': 'warn',
-
-				// This rule has been disabled because it is extremely slow:
-				// https://github.com/Automattic/vip-cli/pull/1534
-				//
-				// 'promise/no-multiple-resolved': 'warn',
-			},
+			// This rule has been disabled because it is extremely slow:
+			// https://github.com/Automattic/vip-cli/pull/1534
+			//
+			// 'promise/no-multiple-resolved': 'warn',
 		},
-	],
-};
+	},
+];

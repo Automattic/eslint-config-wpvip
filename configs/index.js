@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {Record<string, import('eslint').Linter.Config[]>} */
+const configs = {
 	base: require( './base' ), // synonym for javascript
 	cli: require( './cli' ),
 	formatting: require( './formatting' ),
@@ -13,3 +14,5 @@ module.exports = {
 	'weak-testing': require( './weak-testing' ),
 	'weak-typescript': require( './weak-typescript' ),
 };
+
+module.exports = configs;
