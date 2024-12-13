@@ -1,6 +1,5 @@
-import tsEsLintParser from '@typescript-eslint/parser';
-import { RuleTester } from '@typescript-eslint/rule-tester';
-import { type Linter } from 'eslint';
+import * as tsEsLintParser from '@typescript-eslint/parser';
+import { type Linter, RuleTester } from 'eslint';
 
 import rule from '../../rules/nestjs-route-prefix';
 
@@ -9,14 +8,12 @@ const languageOptions: Linter.LanguageOptions = {
 	parser: tsEsLintParser,
 	parserOptions: {
 		ecmaVersion: 'latest',
-		projectService: {
-			allowDefaultProject: [ '*.ts*' ],
-			tsconfigRootDir: __dirname + '/../../',
-		},
 	},
 };
 
-const ruleTester = new RuleTester();
+const ruleTester = new RuleTester( {
+	languageOptions,
+} );
 
 describe( 'nestjs-routes', () => {
 	ruleTester.run( 'nestjs-routes', rule, {
@@ -26,28 +23,24 @@ describe( 'nestjs-routes', () => {
 				@Get('/hello/w*d')
 				export class CustomController {}
 				`,
-				languageOptions,
 			},
 			{
 				code: `
 				@Get('/:id')
 				export class CustomController {}
 				`,
-				languageOptions,
 			},
 			{
 				code: `
 				@Controller()
 				export class CustomController {}
 				`,
-				languageOptions,
 			},
 			{
 				code: `
 				@Controller({ host: 'example.org' })
 				export class CustomController {}
 				`,
-				languageOptions,
 			},
 		],
 		invalid: [
@@ -57,7 +50,6 @@ describe( 'nestjs-routes', () => {
 				export class CustomController {}
 				`,
 				errors: [ { messageId: 'controllerPrefix' } ],
-				languageOptions,
 			},
 			{
 				code: `
@@ -65,7 +57,6 @@ describe( 'nestjs-routes', () => {
 				export class CustomController {}
 				`,
 				errors: [ { messageId: 'decoratorSlash', data: { decoratorName: 'Get' } } ],
-				languageOptions,
 			},
 			{
 				code: `
@@ -73,7 +64,6 @@ describe( 'nestjs-routes', () => {
 				export class CustomController {}
 				`,
 				errors: [ { messageId: 'decoratorSlash', data: { decoratorName: 'Get' } } ],
-				languageOptions,
 			},
 			{
 				code: `
@@ -81,7 +71,6 @@ describe( 'nestjs-routes', () => {
 				export class CustomController {}
 				`,
 				errors: [ { messageId: 'decoratorSlash', data: { decoratorName: 'Post' } } ],
-				languageOptions,
 			},
 			{
 				code: `
@@ -89,7 +78,6 @@ describe( 'nestjs-routes', () => {
 				export class CustomController {}
 				`,
 				errors: [ { messageId: 'decoratorSlash', data: { decoratorName: 'Get' } } ],
-				languageOptions,
 			},
 		],
 	} );
