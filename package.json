@@ -33,7 +33,6 @@
   "homepage": "https://github.com/Automattic/eslint-config-wpvip#readme",
   "dependencies": {
     "@babel/eslint-parser": "7.25.9",
-    "@rushstack/eslint-patch": "1.10.4",
     "@typescript-eslint/eslint-plugin": "8.18.0",
     "@typescript-eslint/parser": "8.18.0",
     "eslint-config-prettier": "9.1.0",
