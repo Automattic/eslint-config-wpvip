@@ -7,8 +7,7 @@
     "declaration": true,
     "noEmit": true,
     "resolveJsonModule": true,
-    "strictNullChecks": true,
-    "experimentalDecorators": true
+    "strictNullChecks": true
   },
   "include": [ "**/*.ts" ]
 }
