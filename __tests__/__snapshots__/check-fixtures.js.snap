@@ -48,6 +48,22 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
     "nodeType": "Identifier",
     "ruleId": "no-unused-vars",
     "severity": 2,
+    "suggestions": [
+      {
+        "data": {
+          "varName": "unusedEs6Import",
+        },
+        "desc": "Remove unused variable 'unusedEs6Import'.",
+        "fix": {
+          "range": [
+            0,
+            57,
+          ],
+          "text": "",
+        },
+        "messageId": "removeVar",
+      },
+    ],
   },
   {
     "column": 1,
@@ -110,6 +126,22 @@ import { unusedEs6Import } from './stub/unusedEs6Import';
     "nodeType": "Identifier",
     "ruleId": "no-unused-vars",
     "severity": 2,
+    "suggestions": [
+      {
+        "data": {
+          "varName": "y",
+        },
+        "desc": "Remove unused variable 'y'.",
+        "fix": {
+          "range": [
+            365,
+            366,
+          ],
+          "text": "",
+        },
+        "messageId": "removeVar",
+      },
+    ],
   },
   {
     "column": 9,
