@@ -30,6 +30,8 @@ module.exports = [
 	...tsEslintStrict,
 	{
 		ignores: [ '**/*.d.ts', '**/*.d.cts', '**/*.d.mts' ],
+	},
+	{
 		files,
 		languageOptions: {
 			parser: TsEsLintParser,
@@ -45,7 +47,7 @@ module.exports = [
 			// Ensures NestJS route prefixes are correctly formatted.
 			'@automattic/wpvip/nestjs-route-prefix': 'error',
 
-			// Require explicity visibility for class methods and properties to avoid
+			// Require explicitly visibility for class methods and properties to avoid
 			// implicit public access. Allow constructors to be implicitly public.
 			'@typescript-eslint/explicit-member-accessibility': [
 				'error',

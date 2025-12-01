@@ -1,5 +1,5 @@
 /**
- * Do not copy this .eslintrc for your project. See the README for instructions.
+ * Do not copy this eslint.config.js for your project. See the README for instructions.
  */
 
 const AutomatticPlugin = require( '.' );
