@@ -3,15 +3,34 @@
  * https://github.com/WordPress/gutenberg/blob/%40wordpress/eslint-plugin%4014.1.0/packages/eslint-plugin/configs/recommended.js
  */
 
-const TsEsLintPlugin = require( '@typescript-eslint/eslint-plugin' );
 const TsEsLintParser = require( '@typescript-eslint/parser' );
 const JsDoc = require( 'eslint-plugin-jsdoc' );
+const tseslint = require( 'typescript-eslint' );
+
+const files = [ '**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts' ];
+
+/**
+ * @param {import('eslint').Linter.Config} config
+ * @returns {import('eslint').Linter.Config}
+ */
+const addFiles = config => {
+	if ( ! config.files ) {
+		config.files = files;
+	}
+
+	return config;
+};
+
+const tsEslintTypeChecked = tseslint.configs.recommendedTypeChecked.map( addFiles );
+const tsEslintStrict = tseslint.configs.strict.map( addFiles ); // Already includes `recommended`
 
 /** @type import('eslint').Linter.Config[] */
 module.exports = [
+	...tsEslintTypeChecked,
+	...tsEslintStrict,
 	{
 		ignores: [ '**/*.d.ts', '**/*.d.cts', '**/*.d.mts' ],
-		files: [ '**/*.ts', '**/*.tsx', '**/*.cts', '**/*.mts' ],
+		files,
 		languageOptions: {
 			parser: TsEsLintParser,
 			parserOptions: {
@@ -20,14 +39,9 @@ module.exports = [
 		},
 		plugins: {
 			'@automattic/wpvip': require( '../plugin' ),
-			'@typescript-eslint': TsEsLintPlugin,
 			jsdoc: JsDoc,
 		},
 		rules: {
-			...TsEsLintPlugin.configs[ 'eslint-recommended' ].rules,
-			...TsEsLintPlugin.configs[ 'recommended-requiring-type-checking' ].rules,
-			...TsEsLintPlugin.configs.strict.rules,
-
 			// Ensures NestJS route prefixes are correctly formatted.
 			'@automattic/wpvip/nestjs-route-prefix': 'error',
 
