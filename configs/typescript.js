@@ -40,6 +40,7 @@ module.exports = [
 			},
 		},
 		plugins: {
+			'@typescript-eslint': tseslint.plugin,
 			'@automattic/wpvip': require( '../plugin' ),
 			jsdoc: JsDoc,
 		},
@@ -63,6 +64,7 @@ module.exports = [
 			'@typescript-eslint/no-explicit-any': 'error',
 
 			// Provide escape hatches around destructuring and arguments.
+			'no-unused-vars': 'off',
 			'@typescript-eslint/no-unused-vars': [
 				'error',
 				{
@@ -99,6 +101,11 @@ module.exports = [
 					allowWithDecorator: true,
 				},
 			],
+
+			'class-methods-use-this': 'off',
+
+			'default-param-last': 'off',
+			'@typescript-eslint/default-param-last': 'error',
 		},
 	},
 ];
