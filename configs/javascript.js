@@ -17,6 +17,12 @@ const globals = require( 'globals' );
 /** @type import('eslint').Linter.Config[] */
 module.exports = [
 	JsonPlugin.configs.recommended,
+	{
+		files: [ '**/tsconfig*.json' ],
+		rules: {
+			'json/*': [ 'error', { allowComments: true } ],
+		},
+	},
 	SecurityPluginConfigs.configs.recommended,
 	{
 		languageOptions: {
