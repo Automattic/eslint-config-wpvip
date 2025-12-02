@@ -55,7 +55,7 @@
     "eslint": "^9.7.0"
   },
   "devDependencies": {
-    "@tsconfig/node18": "18.2.6",
+    "@tsconfig/node20": "^20.1.8",
     "@types/eslint": "9.6.1",
     "@types/jest": "29.5.14",
     "eslint": "^9.39.1",
