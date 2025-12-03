@@ -11,7 +11,7 @@ const ReactHooksPlugin = require( 'eslint-plugin-react-hooks' );
 module.exports = [
 	ReactPlugin.configs.flat.recommended,
 	ReactHooksPlugin.configs.recommended,
-	JsxA11yPlugin.configs.recommended,
+	JsxA11yPlugin.flatConfigs.recommended,
 	{
 		parserOptions: {
 			ecmaFeatures: {
