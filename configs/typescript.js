@@ -13,13 +13,7 @@ const files = [ '**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts' ];
  * @param {import('eslint').Linter.Config} config
  * @returns {import('eslint').Linter.Config}
  */
-const addFiles = config => {
-	if ( ! config.files ) {
-		config.files = files;
-	}
-
-	return config;
-};
+const addFiles = config => ( config.files ? config : { ...config, files } );
 
 const tsEslintTypeChecked = tseslint.configs.recommendedTypeChecked.map( addFiles );
 const tsEslintStrict = tseslint.configs.strict.map( addFiles ); // Already includes `recommended`
