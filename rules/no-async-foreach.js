@@ -14,6 +14,9 @@ module.exports = {
 		docs: {
 			description: 'Avoid passing an async function to Array.prototype.forEach',
 		},
+		messages: {
+			avoidAsyncForEach: 'Avoid passing an async function to Array.prototype.forEach',
+		},
 		schema: [],
 	},
 	create( context ) {
@@ -29,7 +32,7 @@ module.exports = {
 					} );
 					if ( functionArguments ) {
 						if ( functionArguments.async ) {
-							context.report( node, 'Avoid passing an async function to Array.prototype.forEach' );
+							context.report( { node, messageId: 'avoidAsyncForEach' } );
 						}
 					}
 				}
