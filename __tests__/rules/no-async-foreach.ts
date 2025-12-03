@@ -5,7 +5,7 @@ import rule from '../../rules/no-async-foreach';
 
 const ruleTester = new RuleTester();
 const languageOptions: Linter.LanguageOptions = { ecmaVersion: 8 };
-const errors = [ { message: 'Avoid passing an async function to Array.prototype.forEach' } ];
+const errors = [ { messageId: 'avoidAsyncForEach' } ];
 
 describe( 'no-async-foreach', () => {
 	ruleTester.run( 'no-async-foreach', rule, {
