@@ -5,8 +5,8 @@ async function getLintMessages( fixture ) {
 	const rootPaths = [ __dirname, '..' ];
 	const eslint = new ESLint( {
 		ignore: false,
-		overrideConfigFile: path.resolve( ...rootPaths, '.eslintrc.js' ),
-		useEslintrc: false,
+		overrideConfigFile: path.resolve( ...rootPaths, 'eslint.config.js' ),
+		baseConfig: null,
 	} );
 
 	const [ { messages } ] = await eslint.lintFiles(

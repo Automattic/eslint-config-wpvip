@@ -1,15 +1,19 @@
-/**
- * External dependencies
- */
-import { Linter, RuleTester } from 'eslint';
+import * as tsEsLintParser from '@typescript-eslint/parser';
+import { type Linter, RuleTester } from 'eslint';
 
-/**
- * Internal dependencies
- */
 import rule from '../../rules/nestjs-route-prefix';
 
-const ruleTester = new RuleTester( { parser: require.resolve( '@typescript-eslint/parser' ) } );
-const parserOptions: Linter.ParserOptions = { ecmaVersion: 8 };
+const languageOptions: Linter.LanguageOptions = {
+	ecmaVersion: 'latest',
+	parser: tsEsLintParser,
+	parserOptions: {
+		ecmaVersion: 'latest',
+	},
+};
+
+const ruleTester = new RuleTester( {
+	languageOptions,
+} );
 
 describe( 'nestjs-routes', () => {
 	ruleTester.run( 'nestjs-routes', rule, {
@@ -19,28 +23,24 @@ describe( 'nestjs-routes', () => {
 				@Get('/hello/w*d')
 				export class CustomController {}
 				`,
-				parserOptions,
 			},
 			{
 				code: `
 				@Get('/:id')
 				export class CustomController {}
 				`,
-				parserOptions,
 			},
 			{
 				code: `
 				@Controller()
 				export class CustomController {}
 				`,
-				parserOptions,
 			},
 			{
 				code: `
 				@Controller({ host: 'example.org' })
 				export class CustomController {}
 				`,
-				parserOptions,
 			},
 		],
 		invalid: [
@@ -49,48 +49,35 @@ describe( 'nestjs-routes', () => {
 				@Controller('/v1')
 				export class CustomController {}
 				`,
-				errors: [ { message: '@Controller should not have route prefixes.' } ],
-				parserOptions,
+				errors: [ { messageId: 'controllerPrefix' } ],
 			},
 			{
 				code: `
 				@Get('hello/world/')
 				export class CustomController {}
 				`,
-				errors: [
-					{ message: "@Get should have a route starting with '/' and not ending with '/'." },
-				],
-				parserOptions,
+				errors: [ { messageId: 'decoratorSlash', data: { decoratorName: 'Get' } } ],
 			},
 			{
 				code: `
 				@Get('')
 				export class CustomController {}
 				`,
-				errors: [
-					{ message: "@Get should have a route starting with '/' and not ending with '/'." },
-				],
-				parserOptions,
+				errors: [ { messageId: 'decoratorSlash', data: { decoratorName: 'Get' } } ],
 			},
 			{
 				code: `
 				@Post('/hello/world/')
 				export class CustomController {}
 				`,
-				errors: [
-					{ message: "@Post should have a route starting with '/' and not ending with '/'." },
-				],
-				parserOptions,
+				errors: [ { messageId: 'decoratorSlash', data: { decoratorName: 'Post' } } ],
 			},
 			{
 				code: `
 				@Get(':id')
 				export class CustomController {}
 				`,
-				errors: [
-					{ message: "@Get should have a route starting with '/' and not ending with '/'." },
-				],
-				parserOptions,
+				errors: [ { messageId: 'decoratorSlash', data: { decoratorName: 'Get' } } ],
 			},
 		],
 	} );

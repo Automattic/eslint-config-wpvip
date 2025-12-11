@@ -7,7 +7,18 @@
  * https://www.npmjs.com/package/eslint-plugin-no-async-foreach
  */
 
+/** @type {import('eslint').Rule.RuleModule} */
 module.exports = {
+	meta: {
+		type: 'problem',
+		docs: {
+			description: 'Avoid passing an async function to Array.prototype.forEach',
+		},
+		messages: {
+			avoidAsyncForEach: 'Avoid passing an async function to Array.prototype.forEach',
+		},
+		schema: [],
+	},
 	create( context ) {
 		return {
 			ExpressionStatement( node ) {
@@ -21,7 +32,7 @@ module.exports = {
 					} );
 					if ( functionArguments ) {
 						if ( functionArguments.async ) {
-							context.report( node, 'Avoid passing an async function to Array.prototype.forEach' );
+							context.report( { node, messageId: 'avoidAsyncForEach' } );
 						}
 					}
 				}

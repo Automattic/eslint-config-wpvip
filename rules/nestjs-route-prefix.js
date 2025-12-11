@@ -5,7 +5,19 @@
 const nestJsControllerDecorators = [ 'Controller' ];
 const nestJsRouteDecorators = [ 'Get', 'Post', 'Put', 'Delete', 'Patch', 'Options', 'Head' ];
 
+/** @type {import('eslint').Rule.RuleModule} */
 module.exports = {
+	meta: {
+		type: 'problem',
+		docs: {
+			description: 'Enforce route prefixes for Nest.js route decorators',
+		},
+		messages: {
+			controllerPrefix: '@Controller should not have route prefixes.',
+			decoratorSlash: `@{{ decoratorName }} should have a route starting with '/' and not ending with '/'.`,
+		},
+		schema: [],
+	},
 	create( context ) {
 		return {
 			Decorator( node ) {
@@ -21,7 +33,7 @@ module.exports = {
 					if ( argument && argument.type === 'Literal' && argument.value !== '' ) {
 						context.report( {
 							node,
-							message: '@Controller should not have route prefixes.',
+							messageId: 'controllerPrefix',
 						} );
 					}
 					return;
@@ -36,7 +48,8 @@ module.exports = {
 					) {
 						context.report( {
 							node,
-							message: `@${ decoratorName } should have a route starting with '/' and not ending with '/'.`,
+							messageId: 'decoratorSlash',
+							data: { decoratorName },
 						} );
 					}
 				}
