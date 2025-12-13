@@ -100,6 +100,9 @@ module.exports = [
 
 			'default-param-last': 'off',
 			'@typescript-eslint/default-param-last': 'error',
+
+			// `this: void` is useful for certain patterns, such as in event handlers or bound methods.
+			'@typescript-eslint/no-invalid-void-type': [ 'error', { allowAsThisParameter: true } ],
 		},
 	},
 ];
