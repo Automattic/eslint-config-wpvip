@@ -22,6 +22,7 @@ describe( 'linting', () => {
 		'javascript-missing-eol.js',
 		'typescript.ts',
 		'typescript.test.ts',
+		'typescript-react.tsx',
 	] )( '%s fixture matches snapshot', async fixture => {
 		expect( await getLintMessages( fixture ) ).toMatchSnapshot();
 	} );
