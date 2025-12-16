@@ -10,12 +10,14 @@ const ReactHooksPlugin = require( 'eslint-plugin-react-hooks' );
 /** @type import('eslint').Linter.Config[] */
 module.exports = [
 	ReactPlugin.configs.flat.recommended,
-	ReactHooksPlugin.configs.recommended,
+	ReactHooksPlugin.configs.flat.recommended,
 	JsxA11yPlugin.flatConfigs.recommended,
 	{
-		parserOptions: {
-			ecmaFeatures: {
-				jsx: true,
+		languageOptions: {
+			parserOptions: {
+				ecmaFeatures: {
+					jsx: true,
+				},
 			},
 		},
 
