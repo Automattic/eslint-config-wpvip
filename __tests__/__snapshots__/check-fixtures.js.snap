@@ -629,3 +629,19 @@ import { unusedEs6Import } from './stub/unusedEs6Import';
   },
 ]
 `;
+
+exports[`linting typescript-react.tsx fixture matches snapshot 1`] = `
+[
+  {
+    "column": 8,
+    "endColumn": 11,
+    "endLine": 9,
+    "line": 9,
+    "message": "'foo' is assigned a value but never used.",
+    "messageId": "unusedVar",
+    "nodeType": null,
+    "ruleId": "@typescript-eslint/no-unused-vars",
+    "severity": 2,
+  },
+]
+`;
