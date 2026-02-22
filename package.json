@@ -1,6 +1,6 @@
 {
   "name": "@automattic/eslint-plugin-wpvip",
-  "version": "1.1.2-dev.0",
+  "version": "1.2.0",
   "description": "ESLint plugin for internal WordPress VIP projects",
   "main": "index.js",
   "scripts": {
