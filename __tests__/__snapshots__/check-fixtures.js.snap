@@ -34,9 +34,25 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
     "line": 1,
     "message": "'unusedEs6Import' is defined but never used.",
     "messageId": "unusedVar",
-    "nodeType": null,
+    "nodeType": "Identifier",
     "ruleId": "unused-imports/no-unused-imports",
     "severity": 1,
+    "suggestions": [
+      {
+        "data": {
+          "varName": "unusedEs6Import",
+        },
+        "desc": "Remove unused import declaration.",
+        "fix": {
+          "range": [
+            0,
+            58,
+          ],
+          "text": "",
+        },
+        "messageId": "removeUnusedImportDeclaration",
+      },
+    ],
   },
   {
     "column": 10,
@@ -327,9 +343,25 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
     "line": 1,
     "message": "'unusedEs6Import' is defined but never used.",
     "messageId": "unusedVar",
-    "nodeType": null,
+    "nodeType": "Identifier",
     "ruleId": "unused-imports/no-unused-imports",
     "severity": 1,
+    "suggestions": [
+      {
+        "data": {
+          "varName": "unusedEs6Import",
+        },
+        "desc": "Remove unused import declaration.",
+        "fix": {
+          "range": [
+            0,
+            58,
+          ],
+          "text": "",
+        },
+        "messageId": "removeUnusedImportDeclaration",
+      },
+    ],
   },
   {
     "column": 10,
@@ -338,9 +370,25 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
     "line": 1,
     "message": "'unusedEs6Import' is defined but never used.",
     "messageId": "unusedVar",
-    "nodeType": null,
+    "nodeType": "Identifier",
     "ruleId": "@typescript-eslint/no-unused-vars",
     "severity": 2,
+    "suggestions": [
+      {
+        "data": {
+          "varName": "unusedEs6Import",
+        },
+        "desc": "Remove unused import declaration.",
+        "fix": {
+          "range": [
+            0,
+            58,
+          ],
+          "text": "",
+        },
+        "messageId": "removeUnusedImportDeclaration",
+      },
+    ],
   },
   {
     "column": 1,
@@ -368,7 +416,7 @@ import { unusedEs6Import } from './stub/unusedEs6Import';
     "line": 4,
     "message": "'three' is defined but never used. Allowed unused args must match /^_/u.",
     "messageId": "unusedVar",
-    "nodeType": null,
+    "nodeType": "Identifier",
     "ruleId": "@typescript-eslint/no-unused-vars",
     "severity": 2,
   },
@@ -639,7 +687,7 @@ exports[`linting typescript-react.tsx fixture matches snapshot 1`] = `
     "line": 9,
     "message": "'foo' is assigned a value but never used.",
     "messageId": "unusedVar",
-    "nodeType": null,
+    "nodeType": "Identifier",
     "ruleId": "@typescript-eslint/no-unused-vars",
     "severity": 2,
   },
