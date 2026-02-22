@@ -46,7 +46,7 @@ exports[`linting javascript.js fixture matches snapshot 1`] = `
         "fix": {
           "range": [
             0,
-            57,
+            58,
           ],
           "text": "",
         },
@@ -355,7 +355,7 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
         "fix": {
           "range": [
             0,
-            57,
+            58,
           ],
           "text": "",
         },
@@ -382,7 +382,7 @@ exports[`linting typescript.ts fixture matches snapshot 1`] = `
         "fix": {
           "range": [
             0,
-            57,
+            58,
           ],
           "text": "",
         },
