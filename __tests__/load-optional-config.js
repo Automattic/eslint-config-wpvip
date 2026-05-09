@@ -28,7 +28,7 @@ describe( 'loadOptionalConfig', () => {
 	} );
 
 	it( 'skips missing optional modules', () => {
-		const error = new Error( 'Cannot find module prettier' );
+		const error = new Error( "Cannot find module 'prettier'" );
 		error.code = 'MODULE_NOT_FOUND';
 
 		isPackageInstalled.mockReturnValue( true );
@@ -52,5 +52,33 @@ describe( 'loadOptionalConfig', () => {
 				throw error;
 			} )
 		).toThrow( error );
+	} );
+
+	it( 'rethrows MODULE_NOT_FOUND for unrelated modules', () => {
+		const error = new Error( "Cannot find module 'some-other-lib'" );
+		error.code = 'MODULE_NOT_FOUND';
+
+		isPackageInstalled.mockReturnValue( true );
+
+		expect( () =>
+			loadOptionalConfig( 'prettier', () => {
+				throw error;
+			} )
+		).toThrow( error );
+	} );
+
+	it( 'swallows MODULE_NOT_FOUND for subpaths of the optional peer', () => {
+		const error = new Error( "Cannot find module 'react/lib/something'" );
+		error.code = 'MODULE_NOT_FOUND';
+
+		isPackageInstalled.mockReturnValue( true );
+
+		expect(
+			loadOptionalConfig( 'react', () => {
+				throw error;
+			} )
+		).toEqual( [] );
+
+		expect( debugLog ).toHaveBeenCalledWith( expect.stringContaining( 'react' ) );
 	} );
 } );
