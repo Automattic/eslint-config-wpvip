@@ -56,14 +56,14 @@
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.8",
-    "@types/eslint": "9.6.1",
-    "@types/jest": "30.0.0",
-    "@types/react": "19.2.7",
+    "@types/eslint": "^9.6.1",
+    "@types/jest": "^30.0.0",
+    "@types/react": "~19.2.7",
     "eslint": "^9.39.1",
-    "jest": "30.4.2",
+    "jest": "^30.4.2",
     "prettier": "npm:wp-prettier@3.0.3",
-    "react": "19.2.3",
-    "ts-jest": "29.4.6",
-    "typescript": "5.9.3"
+    "react": "~19.2.3",
+    "ts-jest": "^29.4.6",
+    "typescript": "^6.0.3"
   }
 }
