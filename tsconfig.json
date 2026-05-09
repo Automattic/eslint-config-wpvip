@@ -6,7 +6,8 @@
     "noEmit": true,
     "resolveJsonModule": true,
     "strictNullChecks": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "types": [ "node", "jest" ]
   },
   "include": [ "**/*.ts", "**/*.tsx" ]
 }
