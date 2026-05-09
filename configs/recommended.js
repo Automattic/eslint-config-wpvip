@@ -1,22 +1,11 @@
-const isPackageInstalled = require( '../utils/is-package-installed' );
+const loadOptionalConfig = require( '../utils/load-optional-config' );
 
 /** @type import('eslint').Linter.Config[] */
 const configs = [ ...require( './javascript' ), ...require( './formatting' ) ];
 
-if ( isPackageInstalled( 'typescript' ) ) {
-	configs.push( ...require( './typescript' ) );
-}
-
-if ( isPackageInstalled( 'jest' ) ) {
-	configs.push( ...require( './testing' ) );
-}
-
-if ( isPackageInstalled( 'react' ) ) {
-	configs.push( ...require( './react' ) );
-}
-
-if ( isPackageInstalled( 'prettier' ) ) {
-	configs.push( ...require( './prettier' ) );
-}
+configs.push( ...loadOptionalConfig( 'typescript', () => require( './typescript' ) ) );
+configs.push( ...loadOptionalConfig( 'jest', () => require( './testing' ) ) );
+configs.push( ...loadOptionalConfig( 'react', () => require( './react' ) ) );
+configs.push( ...loadOptionalConfig( 'prettier', () => require( './prettier' ) ) );
 
 module.exports = configs;

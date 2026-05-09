@@ -10,13 +10,15 @@ Install `eslint` and `@automattic/eslint-plugin-wpvip` to your project.
 npm install --save-dev eslint @automattic/eslint-plugin-wpvip
 ```
 
+Optional integrations are auto-detected when your project also installs `typescript`, `jest`, `react`, or `prettier`. These packages are declared as optional peer dependencies so consumers can opt in to the stacks they actually use.
+
 ## Contributing
 
 See [CONTRIBUTING.md](https://github.com/Automattic/eslint-config-wpvip/blob/trunk/CONTRIBUTING.md) for details on development, testing, publishing, etc.
 
 ## Configuration
 
-Create an `.eslintrc.js` file. **Note:** The `init` file allows you to avoid installing peer dependencies (available from `v0.5.0`).
+Create an `.eslintrc.js` file. If you use the `recommended` preset, you can preload the optional integrations with `init`.
 
 ```js
 require( '@automattic/eslint-plugin-wpvip/init' );
@@ -28,6 +30,8 @@ module.exports = {
 ```
 
 And that's it! It works automatically with most Babel and TypeScript projects. Code editors that are configured to work with ESLint will automatically pick up the rules and flag any errors or warnings.
+
+If your project uses only JavaScript, you do not need to install the optional peers. If you use the modular `typescript`, `testing`, `react`, or `prettier` configs directly, install the corresponding package in your project first.
 
 You may also wish to define an `.eslintignore` file if there are files or paths that you do not want to lint.
 
@@ -59,8 +63,8 @@ Of course, this recommended config may not be ideal for every project, so feel f
 module.exports = {
 	extends: [
 		'plugin:@automattic/wpvip/javascript',
-		'plugin:@automattic/wpvip/typescript', // when "typescript" is installed
 		'plugin:@automattic/wpvip/formatting',
+		'plugin:@automattic/wpvip/typescript', // when "typescript" is installed
 		'plugin:@automattic/wpvip/testing', // when "jest" is installed
 		'plugin:@automattic/wpvip/react', // when "react" is installed
 		'plugin:@automattic/wpvip/prettier', // when "prettier" is installed
