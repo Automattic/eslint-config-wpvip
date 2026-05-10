@@ -31,7 +31,6 @@ debugLog( `Found package.json: ${ parent.__path || 'none' }` );
 module.exports = function isPackageInstalled( packageName ) {
 	const isDevDependency = Boolean( parent.devDependencies?.[ `${ packageName }` ] );
 	const isProdDependency = Boolean( parent.dependencies?.[ `${ packageName }` ] );
-	const isPeerDependency = Boolean( parent.peerDependencies?.[ `${ packageName }` ] );
 
-	return isDevDependency || isProdDependency || isPeerDependency;
+	return isDevDependency || isProdDependency;
 };
