@@ -14,6 +14,15 @@ const SecurityPluginConfigs = require( 'eslint-plugin-security' );
 const UnusedImportsPlugin = require( 'eslint-plugin-unused-imports' );
 const globals = require( 'globals' );
 
+// Resolve the TypeScript resolver from this package's perspective so that
+// eslint-plugin-import can load it regardless of how the consuming project
+// hoists its dependencies. Passing the absolute path as the resolver name
+// bypasses `eslint-plugin-import`'s name-based lookup, which otherwise tries
+// to resolve `eslint-import-resolver-typescript` from each linted source
+// file's path and silently falls back to requiring `typescript` (the
+// compiler) when the resolver is nested under this plugin's node_modules.
+const typescriptResolverPath = require.resolve( 'eslint-import-resolver-typescript' );
+
 /** @type import('eslint').Linter.Config[] */
 module.exports = [
 	JsonPlugin.configs.recommended,
@@ -273,8 +282,10 @@ module.exports = [
 				node: {
 					extensions: [ '.js', '.jsx', '.ts', '.tsx', '.cjs', '.mjs', '.cts', '.mts' ],
 				},
-				typescript: 'eslint-import-resolver-typescript',
+				[ typescriptResolverPath ]: {},
 			},
 		},
 	},
 ];
+
+module.exports.typescriptResolverPath = typescriptResolverPath;
