@@ -19,4 +19,6 @@ if ( isPackageInstalled( 'prettier' ) ) {
 	configs.push( ...require( './prettier' ) );
 }
 
+configs.typescriptResolverPath = require( './javascript' ).typescriptResolverPath;
+
 module.exports = configs;
