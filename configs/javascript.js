@@ -35,6 +35,7 @@ module.exports = [
 	{
 		languageOptions: {
 			ecmaVersion: 2022,
+			sourceType: 'module',
 			globals: {
 				...globals.node,
 				...globals.nodeBuiltin,
