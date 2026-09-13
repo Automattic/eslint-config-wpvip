@@ -82,6 +82,6 @@
     "prettier": "npm:wp-prettier@3.0.3",
     "react": "~19.2.3",
     "ts-jest": "^29.4.6",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   }
 }
