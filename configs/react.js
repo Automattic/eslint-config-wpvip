@@ -22,6 +22,11 @@ module.exports = [
 	ReactHooksPlugin.configs.flat.recommended,
 	JsxA11yPlugin.flatConfigs.recommended,
 	{
+		// Flat config only lints .js/.mjs/.cjs files by default; include .jsx
+		// so `eslint .` picks it up without `--ext`.
+		files: [ '**/*.jsx' ],
+	},
+	{
 		languageOptions: {
 			parserOptions: {
 				ecmaFeatures: {

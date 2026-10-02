@@ -55,4 +55,15 @@ describe( 'configs', () => {
 			}
 		}
 	);
+
+	it( 'react config makes `eslint .` include .jsx files', async () => {
+		const eslint = new ESLint( {
+			cwd: path.resolve( __dirname, '..' ),
+			overrideConfigFile: true,
+			overrideConfig: configs.recommended,
+		} );
+
+		// Flat config returns no config for files no `files` pattern matches.
+		expect( await eslint.calculateConfigForFile( 'src/component.jsx' ) ).toBeDefined();
+	} );
 } );
