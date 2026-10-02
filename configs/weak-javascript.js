@@ -28,7 +28,7 @@ module.exports = [
 			'no-else-return': 'warn',
 			'no-eq-null': 'warn',
 			'no-lonely-if': 'warn',
-			'no-mixed-operators': 'warn',
+			'@stylistic/no-mixed-operators': 'warn',
 			'no-prototype-builtins': 'warn',
 			'no-shadow': 'warn',
 			'no-unused-vars': 'warn',

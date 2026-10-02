@@ -8,6 +8,8 @@ const JsxA11yPlugin = require( 'eslint-plugin-jsx-a11y' );
 const ReactPlugin = require( 'eslint-plugin-react' );
 const ReactHooksPlugin = require( 'eslint-plugin-react-hooks' );
 
+const StylisticPlugin = require( '../utils/stylistic-plugin' );
+
 // eslint-plugin-react calls context methods that were removed in ESLint 10.
 // Shim its rules in place (rather than using the new plugin object returned by
 // `fixupPluginRules`) so consumers that also register eslint-plugin-react don't
@@ -26,6 +28,10 @@ module.exports = [
 					jsx: true,
 				},
 			},
+		},
+
+		plugins: {
+			'@stylistic': StylisticPlugin,
 		},
 
 		settings: {
@@ -48,7 +54,7 @@ module.exports = [
 
 			'jsx-a11y/role-has-required-aria-props': 'off',
 
-			'jsx-quotes': 'error',
+			'@stylistic/jsx-quotes': 'error',
 
 			'react/display-name': 'off',
 

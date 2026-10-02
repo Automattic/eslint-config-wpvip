@@ -1,18 +1,23 @@
+const StylisticPlugin = require( '../utils/stylistic-plugin' );
+
 /** @type import('eslint').Linter.Config[] */
 module.exports = [
 	{
+		plugins: {
+			'@stylistic': StylisticPlugin,
+		},
 		/**
 		 * Please include a short description of the rule. For rules that downgrade or
 		 * disable errors, include a brief justification or reasoning.
 		 */
 		rules: {
-			'array-bracket-spacing': [ 'error', 'always' ],
+			'@stylistic/array-bracket-spacing': [ 'error', 'always' ],
 
-			'arrow-parens': [ 'error', 'always' ],
+			'@stylistic/arrow-parens': [ 'error', 'always' ],
 
-			'arrow-spacing': 'error',
+			'@stylistic/arrow-spacing': 'error',
 
-			'brace-style': [ 'error', '1tbs' ],
+			'@stylistic/brace-style': [ 'error', '1tbs' ],
 
 			// Identifiers should be in camelCase. Object properties are excluded
 			// (including when destructuring) since they often come from external
@@ -25,83 +30,87 @@ module.exports = [
 				},
 			],
 
-			'comma-dangle': [ 'error', 'always-multiline' ],
+			'@stylistic/comma-dangle': [ 'error', 'always-multiline' ],
 
-			'comma-spacing': 'error',
+			'@stylistic/comma-spacing': 'error',
 
-			'comma-style': [ 'error', 'last' ],
+			'@stylistic/comma-style': [ 'error', 'last' ],
 
-			'computed-property-spacing': [ 'error', 'always' ],
+			'@stylistic/computed-property-spacing': [ 'error', 'always' ],
 
 			curly: [ 'error', 'all' ],
 
 			'dot-notation': 'error',
 
 			// Files must end in a newline.
-			'eol-last': [ 'error', 'always' ],
+			'@stylistic/eol-last': [ 'error', 'always' ],
 
-			'func-call-spacing': 'error',
+			'@stylistic/function-call-spacing': 'error',
 
-			indent: [ 'error', 'tab', { SwitchCase: 1 } ],
+			'@stylistic/indent': [ 'error', 'tab', { SwitchCase: 1 } ],
 
-			'key-spacing': 'error',
+			'@stylistic/key-spacing': 'error',
 
-			'keyword-spacing': 'error',
+			'@stylistic/keyword-spacing': 'error',
 
 			// Lines containing code should be a maximum of 200 characters in length.
-			'max-len': [
+			'@stylistic/max-len': [
 				'warn',
 				{
 					code: 200,
 				},
 			],
 
-			'no-multi-spaces': 'error',
+			'@stylistic/no-multi-spaces': 'error',
 
 			'no-multi-str': 'error',
 
-			'no-multiple-empty-lines': [ 'error', { max: 1 } ],
+			'@stylistic/no-multiple-empty-lines': [ 'error', { max: 1 } ],
 
-			'no-trailing-spaces': 'error',
+			'@stylistic/no-trailing-spaces': 'error',
 
-			'no-whitespace-before-property': 'error',
+			'@stylistic/no-whitespace-before-property': 'error',
 
-			'object-curly-spacing': [ 'error', 'always' ],
+			'@stylistic/object-curly-spacing': [ 'error', 'always' ],
 
 			'object-shorthand': 'error',
 
-			'operator-linebreak': 'error',
+			'@stylistic/operator-linebreak': 'error',
 
-			'padded-blocks': [ 'error', 'never' ],
+			'@stylistic/padded-blocks': [ 'error', 'never' ],
 
 			// Arrow functions should be used for function arguments and callbacks.
 			'prefer-arrow-callback': 'warn',
 
-			quotes: [ 'error', 'single', { allowTemplateLiterals: true, avoidEscape: true } ],
+			'@stylistic/quotes': [
+				'error',
+				'single',
+				{ allowTemplateLiterals: 'always', avoidEscape: true },
+			],
 
-			'quote-props': [ 'error', 'as-needed' ],
+			'@stylistic/quote-props': [ 'error', 'as-needed' ],
 
-			semi: 'error',
+			'@stylistic/semi': 'error',
 
-			'semi-spacing': 'error',
+			'@stylistic/semi-spacing': 'error',
 
-			'space-before-blocks': [ 'error', 'always' ],
+			'@stylistic/space-before-blocks': [ 'error', 'always' ],
 
-			'space-before-function-paren': [
+			'@stylistic/space-before-function-paren': [
 				'error',
 				{ anonymous: 'never', named: 'never', asyncArrow: 'always' },
 			],
 
-			'space-in-parens': [ 'error', 'always' ],
+			'@stylistic/space-in-parens': [ 'error', 'always' ],
 
-			'space-infix-ops': 'error',
+			'@stylistic/space-infix-ops': 'error',
 
-			'space-unary-ops': [ 'error', { overrides: { '!': true, yield: true } } ],
+			'@stylistic/space-unary-ops': [ 'error', { overrides: { '!': true, yield: true } } ],
 
 			// Comments should always include consistent spacing for readability.
-			'spaced-comment': 'warn',
+			'@stylistic/spaced-comment': 'warn',
 
-			'template-curly-spacing': [ 'error', 'always' ],
+			'@stylistic/template-curly-spacing': [ 'error', 'always' ],
 		},
 	},
 ];
