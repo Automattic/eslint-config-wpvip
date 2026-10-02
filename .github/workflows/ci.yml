@@ -80,11 +80,11 @@ jobs:
       - name: Run tests
         run: npm test
 
-      # nodejs-setup caches node_modules (keyed by Node.js version and lockfile)
-      # after the job when it missed the cache. Restore the locked dependencies
-      # so a swapped-in ESLint version can never be saved to the shared cache.
+      # nodejs-setup saves node_modules to the cache (keyed by Node.js version
+      # and lockfile) after a successful job that missed the cache. Restore the
+      # locked dependencies so a swapped-in ESLint version is never cached.
       - name: Restore locked dependencies
-        if: always() && matrix.eslint != 'locked'
+        if: matrix.eslint != 'locked'
         run: npm ci --no-audit --no-fund
 
   node-compat:
