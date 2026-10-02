@@ -4,7 +4,11 @@
  */
 
 const TsEsLintParser = require( '@typescript-eslint/parser' );
-const JsDoc = require( 'eslint-plugin-jsdoc' );
+// eslint-plugin-jsdoc's CommonJS build exports the plugin as `default`, and its
+// flat configs register that object; use it so ESLint doesn't see two
+// different "jsdoc" plugins ("Cannot redefine plugin").
+const JsDocModule = require( 'eslint-plugin-jsdoc' );
+const JsDoc = JsDocModule.default ?? JsDocModule;
 const tseslint = require( 'typescript-eslint' );
 
 const files = [ '**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts' ];

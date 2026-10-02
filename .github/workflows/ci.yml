@@ -98,8 +98,8 @@ jobs:
         # Minimum supported Node.js versions (see engines). Linting this repo
         # loads every config through Node's own require(esm).
         node-version:
-          - 20.19.0
-          - 22.13.0
+          - 22.22.2
+          - 24.15.0
     steps:
       - name: Setup and install
         uses: Automattic/vip-actions/nodejs-setup@trunk

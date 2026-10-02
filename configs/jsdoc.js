@@ -3,7 +3,11 @@
  * https://github.com/WordPress/gutenberg/blob/%40wordpress/eslint-plugin%4014.1.0/packages/eslint-plugin/configs/jsdoc.js
  */
 
-const JsDoc = require( 'eslint-plugin-jsdoc' );
+// eslint-plugin-jsdoc's CommonJS build exports the plugin as `default`, and its
+// flat configs register that object; use it so ESLint doesn't see two
+// different "jsdoc" plugins ("Cannot redefine plugin").
+const JsDocModule = require( 'eslint-plugin-jsdoc' );
+const JsDoc = JsDocModule.default ?? JsDocModule;
 const globals = require( 'globals' );
 
 /**

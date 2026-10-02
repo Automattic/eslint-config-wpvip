@@ -40,7 +40,7 @@ Optional integrations are auto-detected when your project also installs `typescr
   - This package registers `@stylistic/eslint-plugin` under `@stylistic`. If your config also registers it, make sure npm resolves the same copy (a compatible version range), or ESLint will throw `Cannot redefine plugin "@stylistic"`.
 - **The `jsdoc` config** no longer enables `jsdoc/newline-after-description`, which was removed from `eslint-plugin-jsdoc` and made the config fail to load.
 - **ESLint `^9.39.1` or `^10.0.0` is required** (previously `^9.7.0`).
-- **Node.js `^20.19.0 || ^22.13.0 || >=24` is required**, including with ESLint 9. `@stylistic/eslint-plugin` is ESM-only and is loaded with `require()`, which needs Node's built-in `require(esm)` support, and `@eslint/compat` (used to support `eslint-plugin-react` on ESLint 10) requires the same versions.
+- **Node.js `^22.22.2 || >=24.15.0` is required**, including with ESLint 9 (Node.js 20 is end-of-life). `eslint-plugin-jsdoc` 65 requires these versions; `@stylistic/eslint-plugin` is ESM-only and is loaded with `require()`, which needs Node's built-in `require(esm)` support, and `@eslint/compat` (used to support `eslint-plugin-react` on ESLint 10) needs Node.js 20.19+ / 22.13+.
 
 ## Contributing
 
