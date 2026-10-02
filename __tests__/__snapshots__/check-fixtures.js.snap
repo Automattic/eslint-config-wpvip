@@ -1,5 +1,178 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`formatting rules formatting.js fixture matches snapshot 1`] = `
+[
+  {
+    "column": 7,
+    "line": 1,
+    "message": "Identifier name 'a' is too short (< 2).",
+    "ruleId": "id-length",
+  },
+  {
+    "column": 11,
+    "line": 1,
+    "message": "A space is required after '['.",
+    "ruleId": "@stylistic/array-bracket-spacing",
+  },
+  {
+    "column": 16,
+    "line": 1,
+    "message": "A space is required before ']'.",
+    "ruleId": "@stylistic/array-bracket-spacing",
+  },
+  {
+    "column": 7,
+    "line": 2,
+    "message": "Identifier name 'b' is too short (< 2).",
+    "ruleId": "id-length",
+  },
+  {
+    "column": 13,
+    "line": 2,
+    "message": "Identifier name 'c' is too short (< 2).",
+    "ruleId": "id-length",
+  },
+  {
+    "column": 15,
+    "line": 2,
+    "message": "Missing space before value for key 'c'.",
+    "ruleId": "@stylistic/key-spacing",
+  },
+  {
+    "column": 7,
+    "line": 3,
+    "message": "Identifier name 'd' is too short (< 2).",
+    "ruleId": "id-length",
+  },
+  {
+    "column": 11,
+    "line": 3,
+    "message": "Strings must use singlequote.",
+    "ruleId": "@stylistic/quotes",
+  },
+  {
+    "column": 7,
+    "line": 4,
+    "message": "Identifier name 'e' is too short (< 2).",
+    "ruleId": "id-length",
+  },
+  {
+    "column": 10,
+    "line": 5,
+    "message": "Identifier name 'f' is too short (< 2).",
+    "ruleId": "id-length",
+  },
+  {
+    "column": 11,
+    "line": 5,
+    "message": "Unexpected space before function parentheses.",
+    "ruleId": "@stylistic/space-before-function-paren",
+  },
+  {
+    "column": 12,
+    "line": 5,
+    "message": "There must be a space after this paren.",
+    "ruleId": "@stylistic/space-in-parens",
+  },
+  {
+    "column": 13,
+    "line": 5,
+    "message": "Identifier name 'x' is too short (< 2).",
+    "ruleId": "id-length",
+  },
+  {
+    "column": 14,
+    "line": 5,
+    "message": "There must be a space before this paren.",
+    "ruleId": "@stylistic/space-in-parens",
+  },
+  {
+    "column": 15,
+    "line": 5,
+    "message": "Missing space before opening brace.",
+    "ruleId": "@stylistic/space-before-blocks",
+  },
+  {
+    "column": 1,
+    "line": 6,
+    "message": "Expected indentation of 1 tab but found 2 spaces.",
+    "ruleId": "@stylistic/indent",
+  },
+  {
+    "column": 11,
+    "line": 6,
+    "message": "Operator '+' must be spaced.",
+    "ruleId": "@stylistic/space-infix-ops",
+  },
+  {
+    "column": 13,
+    "line": 6,
+    "message": "Missing semicolon.",
+    "ruleId": "@stylistic/semi",
+  },
+  {
+    "column": 1,
+    "line": 9,
+    "message": "More than 1 blank line not allowed.",
+    "ruleId": "@stylistic/no-multiple-empty-lines",
+  },
+  {
+    "column": 7,
+    "line": 10,
+    "message": "Identifier name 'g' is too short (< 2).",
+    "ruleId": "id-length",
+  },
+  {
+    "column": 1,
+    "line": 12,
+    "message": "Mixed spaces and tabs.",
+    "ruleId": "@stylistic/no-mixed-spaces-and-tabs",
+  },
+  {
+    "column": 1,
+    "line": 12,
+    "message": "Expected indentation of 0 tabs but found 2 spaces.",
+    "ruleId": "@stylistic/indent",
+  },
+  {
+    "column": 20,
+    "line": 14,
+    "message": "Identifier name 'a' is too short (< 2).",
+    "ruleId": "id-length",
+  },
+  {
+    "column": 23,
+    "line": 14,
+    "message": "Identifier name 'b' is too short (< 2).",
+    "ruleId": "id-length",
+  },
+  {
+    "column": 26,
+    "line": 14,
+    "message": "Identifier name 'd' is too short (< 2).",
+    "ruleId": "id-length",
+  },
+  {
+    "column": 29,
+    "line": 14,
+    "message": "Identifier name 'e' is too short (< 2).",
+    "ruleId": "id-length",
+  },
+  {
+    "column": 32,
+    "line": 14,
+    "message": "Identifier name 'f' is too short (< 2).",
+    "ruleId": "id-length",
+  },
+  {
+    "column": 35,
+    "line": 14,
+    "message": "Identifier name 'g' is too short (< 2).",
+    "ruleId": "id-length",
+  },
+]
+`;
+
 exports[`linting javascript.js fixture matches snapshot 1`] = `
 [
   {
