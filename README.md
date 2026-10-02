@@ -10,7 +10,7 @@ Install `eslint` and `@automattic/eslint-plugin-wpvip` to your project.
 npm install --save-dev eslint @automattic/eslint-plugin-wpvip
 ```
 
-ESLint 9 (`^9.7.0`) and ESLint 10 are supported.
+ESLint 9 (`^9.39.1`) and ESLint 10 are supported.
 
 Optional integrations are auto-detected when your project also installs `typescript`, `jest`, `react`, or `prettier`. These packages are declared as optional peer dependencies so consumers can opt in to the stacks they actually use.
 
@@ -39,6 +39,7 @@ Optional integrations are auto-detected when your project also installs `typescr
   - Results are not always identical: `@stylistic` fixes bugs in the frozen core rules. Notably, `@stylistic/indent` now checks lines whose indentation mixes tabs and spaces (core `indent` skipped them), such as a closing `}` / `)` / `]` indented with tabs plus two spaces, and indents chained assignments (`a = b = c`) differently. This only matters if the formatting rules are active, i.e. you don't use the `prettier` config, which turns them off.
   - This package registers `@stylistic/eslint-plugin` under `@stylistic`. If your config also registers it, make sure npm resolves the same copy (a compatible version range), or ESLint will throw `Cannot redefine plugin "@stylistic"`.
 - **The `jsdoc` config** no longer enables `jsdoc/newline-after-description`, which was removed from `eslint-plugin-jsdoc` and made the config fail to load.
+- **ESLint `^9.39.1` or `^10.0.0` is required** (previously `^9.7.0`).
 - **Node.js `^20.19.0 || ^22.13.0 || >=24` is required**, including with ESLint 9. `@stylistic/eslint-plugin` is ESM-only and is loaded with `require()`, which needs Node's built-in `require(esm)` support, and `@eslint/compat` (used to support `eslint-plugin-react` on ESLint 10) requires the same versions.
 
 ## Contributing

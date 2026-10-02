@@ -61,9 +61,11 @@ jobs:
         node:
           - version-file: .nvmrc
             version-name: pinned
+        # The minimum supported version of each major (see peerDependencies).
+        # The latest release is covered by the lockfile in the other jobs.
         eslint:
-          - 9
-          - 10
+          - 9.39.1
+          - 10.0.0
     steps:
       - name: Setup and install
         uses: Automattic/vip-actions/nodejs-setup@trunk

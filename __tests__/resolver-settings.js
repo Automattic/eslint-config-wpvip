@@ -26,6 +26,11 @@ describe( 'resolver settings', () => {
 		expect( await lint( "export { unusedEs6Import } from './stub/unusedEs6Import';\n" ) ).toEqual(
 			[]
 		);
+		// TypeScript-style `.js` specifiers that point at `.ts` files are only
+		// handled by the TypeScript resolver, not the node resolver.
+		expect(
+			await lint( "export { unusedEs6Import } from './stub/unusedEs6Import.js';\n" )
+		).toEqual( [] );
 		expect( await lint( "export { missing } from './stub/doesNotExist';\n" ) ).toHaveLength( 1 );
 	} );
 
