@@ -12,17 +12,18 @@ npm install --save-dev eslint @automattic/eslint-plugin-wpvip
 
 ESLint 9 (`^9.7.0`) and ESLint 10 are supported.
 
+Import rules are provided by [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x), registered under the `import` namespace, so rule IDs such as `import/order` are unchanged. Resolver settings now use the `import-x/` prefix (e.g. `import-x/resolver-next`); `import/*` settings are ignored.
+
 JavaScript files are parsed with ESLint's default parser (espree) at the latest ECMAScript version. Earlier versions used `@babel/eslint-parser`, which also applied your project's Babel config; syntax that only Babel understands (e.g. Flow or legacy decorators) is no longer supported, and `parserOptions.babelOptions` / `requireConfigFile` are ignored.
 
 Optional integrations are auto-detected when your project also installs `typescript`, `jest`, `react`, or `prettier`. These packages are declared as optional peer dependencies so consumers can opt in to the stacks they actually use.
 
 ### ESLint 10
 
-`eslint-plugin-import`, `eslint-plugin-jsx-a11y`, and `eslint-plugin-react` work with ESLint 10 (this plugin wraps them with [`@eslint/compat`](https://www.npmjs.com/package/@eslint/compat)), but they have not yet published releases that declare ESLint 10 in their peer dependencies. To avoid `ERESOLVE` errors with npm, add these overrides to your project's `package.json`. `$eslint` refers to your project's own `eslint` entry, so `eslint` must be listed directly in `devDependencies` (or `dependencies`):
+`eslint-plugin-jsx-a11y` and `eslint-plugin-react` work with ESLint 10 (this plugin shims `eslint-plugin-react` with [`@eslint/compat`](https://www.npmjs.com/package/@eslint/compat)), but they have not yet published releases that declare ESLint 10 in their peer dependencies. To avoid `ERESOLVE` errors with npm, add these overrides to your project's `package.json`. `$eslint` refers to your project's own `eslint` entry, so `eslint` must be listed directly in `devDependencies` (or `dependencies`):
 
 ```json
 "overrides": {
-	"eslint-plugin-import": { "eslint": "$eslint" },
 	"eslint-plugin-jsx-a11y": { "eslint": "$eslint" },
 	"eslint-plugin-react": { "eslint": "$eslint" }
 }

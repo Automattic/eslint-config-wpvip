@@ -3,17 +3,13 @@
  * https://github.com/WordPress/gutenberg/blob/%40wordpress/eslint-plugin%4014.1.0/packages/eslint-plugin/configs/react.js
  */
 
+const JsxA11yPlugin = require( 'eslint-plugin-jsx-a11y' );
 const ReactHooksPlugin = require( 'eslint-plugin-react-hooks' );
 
 const fixupPluginRulesInPlace = require( '../utils/fixup-plugin-rules' );
 
-// eslint-plugin-react and eslint-plugin-jsx-a11y call context methods that were
-// removed in ESLint 10.
-const JsxA11yPlugin = fixupPluginRulesInPlace( require( 'eslint-plugin-jsx-a11y' ) );
+// eslint-plugin-react calls context methods that were removed in ESLint 10.
 const ReactPlugin = fixupPluginRulesInPlace( require( 'eslint-plugin-react' ) );
-
-// jsx-a11y's flat configs register their own plugin object, not the module export.
-fixupPluginRulesInPlace( JsxA11yPlugin.flatConfigs.recommended.plugins[ 'jsx-a11y' ] );
 
 /** @type import('eslint').Linter.Config[] */
 module.exports = [
