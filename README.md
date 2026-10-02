@@ -39,7 +39,7 @@ Optional integrations are auto-detected when your project also installs `typescr
   - Results are not always identical: `@stylistic` fixes bugs in the frozen core rules. Notably, `@stylistic/indent` now checks lines whose indentation mixes tabs and spaces (core `indent` skipped them), such as a closing `}` / `)` / `]` indented with tabs plus two spaces, and indents chained assignments (`a = b = c`) differently. This only matters if the formatting rules are active, i.e. you don't use the `prettier` config, which turns them off.
   - This package registers `@stylistic/eslint-plugin` under `@stylistic`. If your config also registers it, make sure npm resolves the same copy (a compatible version range), or ESLint will throw `Cannot redefine plugin "@stylistic"`.
 - **The `jsdoc` config** no longer enables `jsdoc/newline-after-description`, which was removed from `eslint-plugin-jsdoc` and made the config fail to load.
-- **Node.js `^20.19.0 || ^22.13.0 || >=24` is required**, including with ESLint 9 (`@eslint/compat`, used to support `eslint-plugin-react` on ESLint 10, requires it).
+- **Node.js `^20.19.0 || ^22.13.0 || >=24` is required**, including with ESLint 9. `@stylistic/eslint-plugin` is ESM-only and is loaded with `require()`, which needs Node's built-in `require(esm)` support, and `@eslint/compat` (used to support `eslint-plugin-react` on ESLint 10) requires the same versions.
 
 ## Contributing
 
@@ -57,11 +57,13 @@ module.exports = [ ...wpvip.configs.recommended ];
 
 And that's it! It works automatically with most JavaScript and TypeScript projects.
 
-The `typescript`, `testing`, `react`, and `prettier` parts of `recommended` are loaded only when the corresponding package is installed. To load those optional integrations up front instead (for example, so a broken install fails before ESLint reads your config), require `init` first:
+The `typescript`, `testing`, `react`, and `prettier` parts of `recommended` are loaded only when the corresponding package is installed. If you need those optional configs resolved up front rather than when `recommended` is loaded, require `init` first. It uses the same detection as `recommended`, so optional integrations whose package is not installed are still skipped:
 
-````js
+```js
 require( '@automattic/eslint-plugin-wpvip/init' );
-``` Code editors that are configured to work with ESLint will automatically pick up the rules and flag any errors or warnings.
+```
+
+Code editors that are configured to work with ESLint will automatically pick up the rules and flag any errors or warnings.
 
 If your project uses only JavaScript, you do not need to install the optional peers. If you use the modular `typescript`, `testing`, `react`, or `prettier` configs directly, install the corresponding package in your project first.
 
@@ -81,7 +83,7 @@ Package scripts can be useful to run linting and formatting commands automatical
 		"lint:ignore-warnings": "npm run cmd:lint . -- --quiet"
 	}
 }
-````
+```
 
 **Note:** ESLint reads ignore patterns from the `ignores` key in `eslint.config.js`; to reuse `.gitignore`, see [`includeIgnoreFile`](https://eslint.org/docs/latest/use/configure/ignore#including-gitignore-files). Prettier automatically ignores files listed in `.prettierignore` or you can target `.gitignore` using `--ignore-path`.
 

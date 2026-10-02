@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "check-types": "tsc -p tsconfig.check.json",
-    "cmd:format": "prettier --ignore-path .gitignore '**/*.(js|json|jsx|md|ts|tsx|yml|yaml)'",
+    "cmd:format": "prettier --ignore-path .gitignore '**/*.(js|json|jsx|md|ts|tsx|yml|yaml)' '!__fixtures__/**'",
     "cmd:jest": "npm run link-plugin && jest",
     "cmd:lint": "npm run link-plugin && eslint",
     "format": "npm run cmd:format -- --write",
