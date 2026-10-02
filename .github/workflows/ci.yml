@@ -52,28 +52,54 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    # The lint job runs first and saves the node_modules cache, so the
+    # `--no-save` ESLint install below never ends up in the shared cache.
     needs:
       - lint
       - check-types
     strategy:
       fail-fast: false
       matrix:
-        node:
-          - version-file: .nvmrc
-            version-name: pinned
-        # The minimum supported version of each major (see peerDependencies).
-        # The latest release is covered by the lockfile in the other jobs.
+        # Minimum and latest supported versions of each ESLint major (see
+        # peerDependencies); "locked" uses the version in package-lock.json.
         eslint:
           - 9.39.1
+          - 9
           - 10.0.0
+          - locked
     steps:
+      # Jest can only require() ESM packages such as @stylistic/eslint-plugin
+      # on Node.js 24.9+, so the test suite runs on the pinned Node.js 24.
       - name: Setup and install
         uses: Automattic/vip-actions/nodejs-setup@trunk
         with:
           node-version-file: .nvmrc
 
       - name: Install ESLint ${{ matrix.eslint }}
+        if: matrix.eslint != 'locked'
         run: npm install --no-save --no-audit --no-fund eslint@${{ matrix.eslint }}
 
       - name: Run tests
         run: npm test
+
+  node-compat:
+    name: Lint with Node.js ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        # Minimum supported Node.js versions (see engines). Linting this repo
+        # loads every config through Node's own require(esm).
+        node-version:
+          - 20.19.0
+          - 22.13.0
+    steps:
+      - name: Setup and install
+        uses: Automattic/vip-actions/nodejs-setup@trunk
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Run linter
+        run: npm run lint
