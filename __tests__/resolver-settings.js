@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+const { ESLint } = require( 'eslint' );
 const fs = require( 'fs' );
 const path = require( 'path' );
 
@@ -10,21 +11,22 @@ const path = require( 'path' );
 const javascriptConfig = require( '../configs/javascript' );
 
 describe( 'resolver settings', () => {
-	it( 'configures import-x with node and TypeScript resolver instances', () => {
-		const entry = javascriptConfig.find(
-			item => item && item.settings && item.settings[ 'import-x/resolver-next' ]
-		);
-		expect( entry ).toBeDefined();
+	it( 'resolves relative imports of TypeScript files', async () => {
+		const eslint = new ESLint( {
+			cwd: path.resolve( __dirname, '..' ),
+			overrideConfigFile: true,
+			overrideConfig: javascriptConfig,
+		} );
+		const filePath = path.resolve( __dirname, '..', '__fixtures__', 'resolver.js' );
+		const lint = async code => {
+			const [ { messages } ] = await eslint.lintText( code, { filePath } );
+			return messages.filter( message => 'import/no-unresolved' === message.ruleId );
+		};
 
-		const resolvers = entry.settings[ 'import-x/resolver-next' ];
-		expect( resolvers.map( resolver => resolver.name ) ).toEqual( [
-			'eslint-plugin-import-x:node',
-			'eslint-import-resolver-typescript',
-		] );
-		for ( const resolver of resolvers ) {
-			expect( resolver.interfaceVersion ).toBe( 3 );
-			expect( typeof resolver.resolve ).toBe( 'function' );
-		}
+		expect( await lint( "export { unusedEs6Import } from './stub/unusedEs6Import';\n" ) ).toEqual(
+			[]
+		);
+		expect( await lint( "export { missing } from './stub/doesNotExist';\n" ) ).toHaveLength( 1 );
 	} );
 
 	it( 'resolves the bundled TypeScript resolver by absolute path', () => {

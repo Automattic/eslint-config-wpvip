@@ -3,13 +3,16 @@
  * https://github.com/WordPress/gutenberg/blob/%40wordpress/eslint-plugin%4014.1.0/packages/eslint-plugin/configs/react.js
  */
 
+const { fixupPluginRules } = require( '@eslint/compat' );
 const JsxA11yPlugin = require( 'eslint-plugin-jsx-a11y' );
+const ReactPlugin = require( 'eslint-plugin-react' );
 const ReactHooksPlugin = require( 'eslint-plugin-react-hooks' );
 
-const fixupPluginRulesInPlace = require( '../utils/fixup-plugin-rules' );
-
 // eslint-plugin-react calls context methods that were removed in ESLint 10.
-const ReactPlugin = fixupPluginRulesInPlace( require( 'eslint-plugin-react' ) );
+// Shim its rules in place (rather than using the new plugin object returned by
+// `fixupPluginRules`) so consumers that also register eslint-plugin-react don't
+// hit "Cannot redefine plugin".
+ReactPlugin.rules = fixupPluginRules( ReactPlugin ).rules;
 
 /** @type import('eslint').Linter.Config[] */
 module.exports = [

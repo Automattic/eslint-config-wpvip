@@ -69,7 +69,7 @@ module.exports = [
 			],
 
 			// Disable some rules that TypeScript handles and are also a Performance
-			// issue. See:
+			// issue (applies equally to eslint-plugin-import-x). See:
 			// https://github.com/typescript-eslint/typescript-eslint/blob/main/docs/linting/troubleshooting/Performance.md#eslint-plugin-import
 			'import/default': 'off',
 			'import/named': 'off',

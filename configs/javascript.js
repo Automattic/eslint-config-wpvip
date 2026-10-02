@@ -31,7 +31,6 @@ module.exports = [
 	SecurityPluginConfigs.configs.recommended,
 	{
 		languageOptions: {
-			ecmaVersion: 'latest',
 			globals: {
 				...globals.node,
 				...globals.nodeBuiltin,

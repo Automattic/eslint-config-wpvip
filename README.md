@@ -12,10 +12,6 @@ npm install --save-dev eslint @automattic/eslint-plugin-wpvip
 
 ESLint 9 (`^9.7.0`) and ESLint 10 are supported.
 
-Import rules are provided by [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x), registered under the `import` namespace, so rule IDs such as `import/order` are unchanged. Resolver settings now use the `import-x/` prefix (e.g. `import-x/resolver-next`); `import/*` settings are ignored.
-
-JavaScript files are parsed with ESLint's default parser (espree) at the latest ECMAScript version. Earlier versions used `@babel/eslint-parser`, which also applied your project's Babel config; syntax that only Babel understands (e.g. Flow or legacy decorators) is no longer supported, and `parserOptions.babelOptions` / `requireConfigFile` are ignored.
-
 Optional integrations are auto-detected when your project also installs `typescript`, `jest`, `react`, or `prettier`. These packages are declared as optional peer dependencies so consumers can opt in to the stacks they actually use.
 
 ### ESLint 10
@@ -28,6 +24,18 @@ Optional integrations are auto-detected when your project also installs `typescr
 	"eslint-plugin-react": { "eslint": "$eslint" }
 }
 ```
+
+### Upgrading to 2.0
+
+2.0 adds ESLint 10 support and contains these breaking changes:
+
+- **`eslint-plugin-import` is replaced by [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x).** It is registered under the `import` namespace, so rule IDs such as `import/order` and `eslint-disable` comments are unchanged. However:
+  - Settings now use the `import-x/` prefix. `import/*` settings (`import/resolver`, `import/internal-regex`, `import/core-modules`, …) are ignored; rename them, e.g. `import/resolver` → `import-x/resolver`.
+  - Do not register `eslint-plugin-import` under `import` yourself; ESLint will throw `Cannot redefine plugin "import"`.
+  - `import/enforce-node-protocol-usage` does not exist in `eslint-plugin-import-x`; remove it from your config.
+  - `eslint-plugin-import` is no longer installed with this package. If your config requires it, add it to your own `devDependencies`.
+- **JavaScript files are parsed with ESLint's default parser (espree)** instead of `@babel/eslint-parser`. Your project's Babel config is no longer applied, so syntax that only Babel understands (e.g. Flow or legacy decorators) is not supported, and `parserOptions.babelOptions` / `requireConfigFile` are ignored. The ECMAScript version follows ESLint's default (`latest`), so new built-in globals (e.g. `SuppressedError`, `Iterator`) are recognized.
+- **Node.js `^20.19.0 || ^22.13.0 || >=24` is required**, including with ESLint 9 (`@eslint/compat`, used to support `eslint-plugin-react` on ESLint 10, requires it).
 
 ## Contributing
 
