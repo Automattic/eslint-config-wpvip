@@ -52,8 +52,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-    # The lint job runs first and saves the node_modules cache, so the
-    # `--no-save` ESLint install below never ends up in the shared cache.
     needs:
       - lint
       - check-types
@@ -81,6 +79,13 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      # nodejs-setup caches node_modules (keyed by Node.js version and lockfile)
+      # after the job when it missed the cache. Restore the locked dependencies
+      # so a swapped-in ESLint version can never be saved to the shared cache.
+      - name: Restore locked dependencies
+        if: always() && matrix.eslint != 'locked'
+        run: npm ci --no-audit --no-fund
 
   node-compat:
     name: Lint with Node.js ${{ matrix.node-version }}

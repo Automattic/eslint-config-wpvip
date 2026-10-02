@@ -4,6 +4,10 @@
 
 This repo provides custom ESLint rules (in `./rules`) and configs (`./configs`). Generally speaking, any change is welcome for discussion, but keep in mind that these rules and configs are used across all of our projects, so they need to be practical and flexible.
 
+## Development Environment
+
+Use the Node.js version in [`.nvmrc`](./.nvmrc) (for example via `nvm use`). The test suite needs Node.js 24.9 or later, because Jest can only `require()` ES modules such as `@stylistic/eslint-plugin` from that version on. Projects that use this plugin only need a Node.js version listed in `engines` in `package.json`.
+
 ## Automated Testing
 
 This repo lints itself! Try to add code in `__fixtures__` that will produce errors, confirm that the errors are caught, then run `npm run jest:update-snapshot` to expect the errors.
