@@ -10,7 +10,21 @@ Install `eslint` and `@automattic/eslint-plugin-wpvip` to your project.
 npm install --save-dev eslint @automattic/eslint-plugin-wpvip
 ```
 
+ESLint 9 (`^9.7.0`) and ESLint 10 are supported.
+
 Optional integrations are auto-detected when your project also installs `typescript`, `jest`, `react`, or `prettier`. These packages are declared as optional peer dependencies so consumers can opt in to the stacks they actually use.
+
+### ESLint 10
+
+`eslint-plugin-import`, `eslint-plugin-jsx-a11y`, and `eslint-plugin-react` work with ESLint 10 (this plugin wraps them with [`@eslint/compat`](https://www.npmjs.com/package/@eslint/compat)), but they have not yet published releases that declare ESLint 10 in their peer dependencies. To avoid `ERESOLVE` errors with npm, add these overrides to your project's `package.json`:
+
+```json
+"overrides": {
+	"eslint-plugin-import": { "eslint": "$eslint" },
+	"eslint-plugin-jsx-a11y": { "eslint": "$eslint" },
+	"eslint-plugin-react": { "eslint": "$eslint" }
+}
+```
 
 ## Contributing
 

@@ -6,13 +6,16 @@
  * - https://github.com/WordPress/gutenberg/blob/%40wordpress/eslint-plugin%4014.1.0/packages/eslint-plugin/configs/recommended-with-formatting.js
  */
 
-const babelParser = require( '@babel/eslint-parser' );
-const ImportPlugin = require( 'eslint-plugin-import' );
+const { fixupPluginRules } = require( '@eslint/compat' );
 const JsonPlugin = require( 'eslint-plugin-json' );
 const PromisePlugin = require( 'eslint-plugin-promise' );
 const SecurityPluginConfigs = require( 'eslint-plugin-security' );
 const UnusedImportsPlugin = require( 'eslint-plugin-unused-imports' );
 const globals = require( 'globals' );
+
+// eslint-plugin-import calls context methods that were removed in ESLint 10.
+// `fixupPluginRules` shims them; it is a no-op on ESLint 9.
+const ImportPlugin = fixupPluginRules( require( 'eslint-plugin-import' ) );
 
 // Resolve the TypeScript resolver from this package's perspective so that
 // eslint-plugin-import can load it regardless of how the consuming project
@@ -35,17 +38,12 @@ module.exports = [
 	SecurityPluginConfigs.configs.recommended,
 	{
 		languageOptions: {
-			ecmaVersion: 2022,
+			ecmaVersion: 'latest',
 			globals: {
 				...globals.node,
 				...globals.nodeBuiltin,
 			},
-			parser: babelParser,
-			parserOptions: {
-				requireConfigFile: false,
-				sourceType: 'module',
-				ecmaVersion: 2022,
-			},
+			sourceType: 'module',
 		},
 		plugins: {
 			'@automattic/wpvip': require( '../plugin' ),

@@ -13,7 +13,9 @@ async function getLintMessages( fixture ) {
 		path.resolve( ...rootPaths, '__fixtures__', fixture )
 	);
 
-	return messages;
+	// ESLint 10 removed `nodeType` from lint messages. Strip it so snapshots
+	// match across supported ESLint versions.
+	return messages.map( ( { nodeType, ...message } ) => message );
 }
 
 describe( 'linting', () => {

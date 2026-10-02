@@ -3,15 +3,20 @@
  * https://github.com/WordPress/gutenberg/blob/%40wordpress/eslint-plugin%4014.1.0/packages/eslint-plugin/configs/react.js
  */
 
-const JsxA11yPlugin = require( 'eslint-plugin-jsx-a11y' );
-const ReactPlugin = require( 'eslint-plugin-react' );
+const { fixupPluginRules } = require( '@eslint/compat' );
 const ReactHooksPlugin = require( 'eslint-plugin-react-hooks' );
+
+// eslint-plugin-react and eslint-plugin-jsx-a11y call context methods that were
+// removed in ESLint 10 (e.g. `context.getFilename()`). `fixupPluginRules` shims
+// them; it is a no-op on ESLint 9.
+const JsxA11yPlugin = fixupPluginRules( require( 'eslint-plugin-jsx-a11y' ) );
+const ReactPlugin = fixupPluginRules( require( 'eslint-plugin-react' ) );
 
 /** @type import('eslint').Linter.Config[] */
 module.exports = [
-	ReactPlugin.configs.flat.recommended,
+	{ ...ReactPlugin.configs.flat.recommended, plugins: { react: ReactPlugin } },
 	ReactHooksPlugin.configs.flat.recommended,
-	JsxA11yPlugin.flatConfigs.recommended,
+	{ ...JsxA11yPlugin.flatConfigs.recommended, plugins: { 'jsx-a11y': JsxA11yPlugin } },
 	{
 		languageOptions: {
 			parserOptions: {

@@ -48,7 +48,7 @@ jobs:
       - uses: Automattic/vip-actions/dependaban@trunk
 
   jest:
-    name: Jest tests
+    name: Jest tests (ESLint ${{ matrix.eslint }})
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -61,11 +61,17 @@ jobs:
         node:
           - version-file: .nvmrc
             version-name: pinned
+        eslint:
+          - 9
+          - 10
     steps:
       - name: Setup and install
         uses: Automattic/vip-actions/nodejs-setup@trunk
         with:
           node-version-file: .nvmrc
+
+      - name: Install ESLint ${{ matrix.eslint }}
+        run: npm install --no-save --no-audit --no-fund eslint@${{ matrix.eslint }}
 
       - name: Run tests
         run: npm test
