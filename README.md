@@ -48,7 +48,7 @@ See [CONTRIBUTING.md](https://github.com/Automattic/eslint-config-wpvip/blob/tru
 
 ## Configuration
 
-Create an `eslint.config.js` file:
+Create an `eslint.config.cjs` file. The `.cjs` extension makes Node.js treat it as CommonJS even if your `package.json` has `"type": "module"`. The examples in this README use this file:
 
 ```js
 const wpvip = require( '@automattic/eslint-plugin-wpvip' );
@@ -86,7 +86,7 @@ Package scripts can be useful to run linting and formatting commands automatical
 }
 ```
 
-**Note:** ESLint reads ignore patterns from the `ignores` key in `eslint.config.js`; to reuse `.gitignore`, see [`includeIgnoreFile`](https://eslint.org/docs/latest/use/configure/ignore#including-gitignore-files). Prettier automatically ignores files listed in `.prettierignore` or you can target `.gitignore` using `--ignore-path`.
+**Note:** ESLint reads ignore patterns from the `ignores` key in `eslint.config.cjs`; to reuse `.gitignore`, see [`includeIgnoreFile`](https://eslint.org/docs/latest/use/configure/ignore#including-gitignore-files). Prettier automatically ignores files listed in `.prettierignore` or you can target `.gitignore` using `--ignore-path`.
 
 ## Recommended config
 
