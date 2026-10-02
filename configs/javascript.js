@@ -6,21 +6,19 @@
  * - https://github.com/WordPress/gutenberg/blob/%40wordpress/eslint-plugin%4014.1.0/packages/eslint-plugin/configs/recommended-with-formatting.js
  */
 
-const babelParser = require( '@babel/eslint-parser' );
-const ImportPlugin = require( 'eslint-plugin-import' );
+const { createTypeScriptImportResolver } = require( 'eslint-import-resolver-typescript' );
+const ImportPlugin = require( 'eslint-plugin-import-x' );
 const JsonPlugin = require( 'eslint-plugin-json' );
 const PromisePlugin = require( 'eslint-plugin-promise' );
 const SecurityPluginConfigs = require( 'eslint-plugin-security' );
 const UnusedImportsPlugin = require( 'eslint-plugin-unused-imports' );
 const globals = require( 'globals' );
 
-// Resolve the TypeScript resolver from this package's perspective so that
-// eslint-plugin-import can load it regardless of how the consuming project
-// hoists its dependencies. Passing the absolute path as the resolver name
-// bypasses `eslint-plugin-import`'s name-based lookup, which otherwise tries
-// to resolve `eslint-import-resolver-typescript` from each linted source
-// file's path and silently falls back to requiring `typescript` (the
-// compiler) when the resolver is nested under this plugin's node_modules.
+const StylisticPlugin = require( '../utils/stylistic-plugin' );
+
+// Absolute path to the TypeScript import resolver bundled with this package.
+// The configs pass resolver instances directly (`import-x/resolver-next`), so
+// this is only kept for consumers that configure resolvers themselves.
 const typescriptResolverPath = require.resolve( 'eslint-import-resolver-typescript' );
 
 /** @type import('eslint').Linter.Config[] */
@@ -35,20 +33,16 @@ module.exports = [
 	SecurityPluginConfigs.configs.recommended,
 	{
 		languageOptions: {
-			ecmaVersion: 2022,
 			globals: {
 				...globals.node,
 				...globals.nodeBuiltin,
 			},
-			parser: babelParser,
-			parserOptions: {
-				requireConfigFile: false,
-				sourceType: 'module',
-				ecmaVersion: 2022,
-			},
 		},
 		plugins: {
 			'@automattic/wpvip': require( '../plugin' ),
+			'@stylistic': StylisticPlugin,
+			// eslint-plugin-import-x is registered under the `import` namespace so
+			// rule IDs (and consumers' overrides / disable comments) stay `import/*`.
 			import: ImportPlugin,
 			promise: PromisePlugin,
 			'unused-imports': UnusedImportsPlugin,
@@ -84,7 +78,7 @@ module.exports = [
 			'no-empty-pattern': 'error',
 			'no-ex-assign': 'error',
 			'no-extra-boolean-cast': 'error',
-			'no-extra-semi': 'error',
+			'@stylistic/no-extra-semi': 'error',
 			'no-fallthrough': 'error',
 			'no-func-assign': 'error',
 			'no-global-assign': 'error',
@@ -94,8 +88,8 @@ module.exports = [
 			'no-irregular-whitespace': 'error',
 			'no-loss-of-precision': 'error',
 			'no-misleading-character-class': 'error',
-			'no-mixed-spaces-and-tabs': 'error',
-			'no-new-symbol': 'error',
+			'@stylistic/no-mixed-spaces-and-tabs': 'error',
+			'no-new-native-nonconstructor': 'error',
 			'no-nonoctal-decimal-escape': 'error',
 			'no-obj-calls': 'error',
 			'no-octal': 'error',
@@ -180,7 +174,7 @@ module.exports = [
 
 			// Enforce Unix linebreaks. Included here and not in "formatting" since it
 			// is not controversial and helps with interchange.
-			'linebreak-style': [ 'error', 'unix' ],
+			'@stylistic/linebreak-style': [ 'error', 'unix' ],
 
 			'no-alert': 'error',
 
@@ -214,7 +208,7 @@ module.exports = [
 
 			'no-implicit-coercion': 'error',
 
-			'no-mixed-operators': 'error',
+			'@stylistic/no-mixed-operators': 'error',
 
 			'no-nested-ternary': 'error',
 
@@ -255,7 +249,7 @@ module.exports = [
 				},
 			],
 
-			'wrap-iife': [ 'error', 'any' ],
+			'@stylistic/wrap-iife': [ 'error', 'any' ],
 
 			'promise/always-return': 'off',
 			'promise/avoid-new': 'off',
@@ -278,12 +272,12 @@ module.exports = [
 			// 'promise/no-multiple-resolved': 'error',
 		},
 		settings: {
-			'import/resolver': {
-				node: {
+			'import-x/resolver-next': [
+				ImportPlugin.createNodeResolver( {
 					extensions: [ '.js', '.jsx', '.ts', '.tsx', '.cjs', '.mjs', '.cts', '.mts' ],
-				},
-				[ typescriptResolverPath ]: {},
-			},
+				} ),
+				createTypeScriptImportResolver(),
+			],
 		},
 	},
 ];

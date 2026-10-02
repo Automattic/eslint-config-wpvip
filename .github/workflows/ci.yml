@@ -48,7 +48,7 @@ jobs:
       - uses: Automattic/vip-actions/dependaban@trunk
 
   jest:
-    name: Jest tests
+    name: Jest tests (ESLint ${{ matrix.eslint }})
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -58,14 +58,53 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node:
-          - version-file: .nvmrc
-            version-name: pinned
+        # Minimum and latest supported versions of each ESLint major (see
+        # peerDependencies); "locked" uses the version in package-lock.json.
+        eslint:
+          - 9.39.1
+          - 9
+          - 10.0.0
+          - locked
     steps:
+      # Jest can only require() ESM packages such as @stylistic/eslint-plugin
+      # on Node.js 24.9+, so the test suite runs on the pinned Node.js 24.
       - name: Setup and install
         uses: Automattic/vip-actions/nodejs-setup@trunk
         with:
           node-version-file: .nvmrc
 
+      - name: Install ESLint ${{ matrix.eslint }}
+        if: matrix.eslint != 'locked'
+        run: npm install --no-save --no-audit --no-fund eslint@${{ matrix.eslint }}
+
       - name: Run tests
         run: npm test
+
+      # nodejs-setup saves node_modules to the cache (keyed by Node.js version
+      # and lockfile) after a successful job that missed the cache. Restore the
+      # locked dependencies so a swapped-in ESLint version is never cached.
+      - name: Restore locked dependencies
+        if: matrix.eslint != 'locked'
+        run: npm ci --no-audit --no-fund
+
+  node-compat:
+    name: Lint with Node.js ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        # Minimum supported Node.js versions (see engines). Linting this repo
+        # loads every config through Node's own require(esm).
+        node-version:
+          - 20.19.0
+          - 22.13.0
+    steps:
+      - name: Setup and install
+        uses: Automattic/vip-actions/nodejs-setup@trunk
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Run linter
+        run: npm run lint

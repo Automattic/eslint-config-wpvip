@@ -3,9 +3,18 @@
  * https://github.com/WordPress/gutenberg/blob/%40wordpress/eslint-plugin%4014.1.0/packages/eslint-plugin/configs/react.js
  */
 
+const { fixupPluginRules } = require( '@eslint/compat' );
 const JsxA11yPlugin = require( 'eslint-plugin-jsx-a11y' );
 const ReactPlugin = require( 'eslint-plugin-react' );
 const ReactHooksPlugin = require( 'eslint-plugin-react-hooks' );
+
+const StylisticPlugin = require( '../utils/stylistic-plugin' );
+
+// eslint-plugin-react calls context methods that were removed in ESLint 10.
+// Shim its rules in place (rather than using the new plugin object returned by
+// `fixupPluginRules`) so consumers that also register eslint-plugin-react don't
+// hit "Cannot redefine plugin".
+ReactPlugin.rules = fixupPluginRules( ReactPlugin ).rules;
 
 /** @type import('eslint').Linter.Config[] */
 module.exports = [
@@ -13,12 +22,21 @@ module.exports = [
 	ReactHooksPlugin.configs.flat.recommended,
 	JsxA11yPlugin.flatConfigs.recommended,
 	{
+		// Flat config only lints .js/.mjs/.cjs files by default; include .jsx
+		// so `eslint .` picks it up without `--ext`.
+		files: [ '**/*.jsx' ],
+	},
+	{
 		languageOptions: {
 			parserOptions: {
 				ecmaFeatures: {
 					jsx: true,
 				},
 			},
+		},
+
+		plugins: {
+			'@stylistic': StylisticPlugin,
 		},
 
 		settings: {
@@ -41,7 +59,7 @@ module.exports = [
 
 			'jsx-a11y/role-has-required-aria-props': 'off',
 
-			'jsx-quotes': 'error',
+			'@stylistic/jsx-quotes': 'error',
 
 			'react/display-name': 'off',
 

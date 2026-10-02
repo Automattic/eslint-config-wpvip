@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+const { ESLint } = require( 'eslint' );
 const fs = require( 'fs' );
 const path = require( 'path' );
 
@@ -10,32 +11,38 @@ const path = require( 'path' );
 const javascriptConfig = require( '../configs/javascript' );
 
 describe( 'resolver settings', () => {
-	it( 'configures eslint-plugin-import with an absolute resolver path', () => {
-		const entry = javascriptConfig.find(
-			item => item && item.settings && item.settings[ 'import/resolver' ]
+	it( 'resolves relative imports of TypeScript files', async () => {
+		const eslint = new ESLint( {
+			cwd: path.resolve( __dirname, '..' ),
+			overrideConfigFile: true,
+			overrideConfig: javascriptConfig,
+		} );
+		const filePath = path.resolve( __dirname, '..', '__fixtures__', 'resolver.js' );
+		const lint = async code => {
+			const [ { messages } ] = await eslint.lintText( code, { filePath } );
+			return messages.filter( message => 'import/no-unresolved' === message.ruleId );
+		};
+
+		expect( await lint( "export { unusedEs6Import } from './stub/unusedEs6Import';\n" ) ).toEqual(
+			[]
 		);
-		expect( entry ).toBeDefined();
+		// TypeScript-style `.js` specifiers that point at `.ts` files are only
+		// handled by the TypeScript resolver, not the node resolver.
+		expect(
+			await lint( "export { unusedEs6Import } from './stub/unusedEs6Import.js';\n" )
+		).toEqual( [] );
+		expect( await lint( "export { missing } from './stub/doesNotExist';\n" ) ).toHaveLength( 1 );
+	} );
 
-		const resolverMap = entry.settings[ 'import/resolver' ];
-		const customKeys = Object.keys( resolverMap ).filter( name => 'node' !== name );
-		expect( customKeys ).toHaveLength( 1 );
-
-		const resolverKey = customKeys[ 0 ];
-		expect( path.isAbsolute( resolverKey ) ).toBe( true );
+	it( 'resolves the bundled TypeScript resolver by absolute path', () => {
+		const { typescriptResolverPath } = javascriptConfig;
+		expect( path.isAbsolute( typescriptResolverPath ) ).toBe( true );
 		// eslint-disable-next-line security/detect-non-literal-fs-filename
-		expect( fs.existsSync( resolverKey ) ).toBe( true );
-		expect( resolverKey ).toEqual( expect.stringContaining( 'eslint-import-resolver-typescript' ) );
-
-		// eslint-disable-next-line security/detect-non-literal-require
-		const resolverModule = require( resolverKey );
-		expect( resolverModule.interfaceVersion ).toBe( 2 );
-		expect( typeof resolverModule.resolve ).toBe( 'function' );
-
-		// eslint-disable-next-line security/detect-object-injection
-		expect( typeof resolverMap[ resolverKey ] ).toBe( 'object' );
-
-		expect( resolverKey ).toBe( javascriptConfig.typescriptResolverPath );
-		expect( require( '..' ).typescriptResolverPath ).toBe( resolverKey );
+		expect( fs.existsSync( typescriptResolverPath ) ).toBe( true );
+		expect( typescriptResolverPath ).toEqual(
+			expect.stringContaining( 'eslint-import-resolver-typescript' )
+		);
+		expect( require( '..' ).typescriptResolverPath ).toBe( typescriptResolverPath );
 	} );
 
 	it( 'exposes typescriptResolverPath on the plugin entry point', () => {

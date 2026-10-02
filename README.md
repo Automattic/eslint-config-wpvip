@@ -10,7 +10,37 @@ Install `eslint` and `@automattic/eslint-plugin-wpvip` to your project.
 npm install --save-dev eslint @automattic/eslint-plugin-wpvip
 ```
 
+ESLint 9 (`^9.39.1`) and ESLint 10 are supported.
+
 Optional integrations are auto-detected when your project also installs `typescript`, `jest`, `react`, or `prettier`. These packages are declared as optional peer dependencies so consumers can opt in to the stacks they actually use.
+
+### ESLint 10
+
+`eslint-plugin-jsx-a11y` and `eslint-plugin-react` work with ESLint 10 (this plugin shims `eslint-plugin-react` with [`@eslint/compat`](https://www.npmjs.com/package/@eslint/compat)), but they have not yet published releases that declare ESLint 10 in their peer dependencies. To avoid `ERESOLVE` errors with npm, add these overrides to your project's `package.json`. `$eslint` refers to your project's own `eslint` entry, so `eslint` must be listed directly in `devDependencies` (or `dependencies`):
+
+```json
+"overrides": {
+	"eslint-plugin-jsx-a11y": { "eslint": "$eslint" },
+	"eslint-plugin-react": { "eslint": "$eslint" }
+}
+```
+
+### Upgrading to 2.0
+
+2.0 adds ESLint 10 support and contains these breaking changes:
+
+- **`eslint-plugin-import` is replaced by [`eslint-plugin-import-x`](https://github.com/un-ts/eslint-plugin-import-x).** It is registered under the `import` namespace, so rule IDs such as `import/order` and `eslint-disable` comments are unchanged. However:
+  - Settings now use the `import-x/` prefix. `import/*` settings (`import/resolver`, `import/internal-regex`, `import/core-modules`, …) are ignored; rename them, e.g. `import/resolver` → `import-x/resolver`.
+  - Do not register `eslint-plugin-import` under `import` yourself; ESLint will throw `Cannot redefine plugin "import"`.
+  - `import/enforce-node-protocol-usage` does not exist in `eslint-plugin-import-x`; remove it from your config.
+  - `eslint-plugin-import` is no longer installed with this package. If your config requires it, add it to your own `devDependencies`.
+- **JavaScript files are parsed with ESLint's default parser (espree)** instead of `@babel/eslint-parser`. Your project's Babel config is no longer applied, so syntax that only Babel understands (e.g. Flow or legacy decorators) is not supported, and `parserOptions.babelOptions` / `requireConfigFile` are ignored. The ECMAScript version follows ESLint's default (`latest`), so new built-in globals (e.g. `SuppressedError`, `Iterator`) are recognized.
+- **Deprecated core formatting rules moved to [`@stylistic/eslint-plugin`](https://eslint.style/).** ESLint is removing its formatting rules, so the `formatting`, `javascript` and `react` configs now use `@stylistic/*` rules configured with the same options (e.g. `indent` → `@stylistic/indent`, `func-call-spacing` → `@stylistic/function-call-spacing`). Rename any overrides or `eslint-disable` comments for these rules; overriding the old core names no longer has any effect. `no-new-symbol` is replaced by `no-new-native-nonconstructor`.
+  - Results are not always identical: `@stylistic` fixes bugs in the frozen core rules. Notably, `@stylistic/indent` now checks lines whose indentation mixes tabs and spaces (core `indent` skipped them), such as a closing `}` / `)` / `]` indented with tabs plus two spaces, and indents chained assignments (`a = b = c`) differently. This only matters if the formatting rules are active, i.e. you don't use the `prettier` config, which turns them off.
+  - This package registers `@stylistic/eslint-plugin` under `@stylistic`. If your config also registers it, make sure npm resolves the same copy (a compatible version range), or ESLint will throw `Cannot redefine plugin "@stylistic"`.
+- **The `jsdoc` config** no longer enables `jsdoc/newline-after-description`, which was removed from `eslint-plugin-jsdoc` and made the config fail to load.
+- **ESLint `^9.39.1` or `^10.0.0` is required** (previously `^9.7.0`).
+- **Node.js `^20.19.0 || ^22.13.0 || >=24` is required**, including with ESLint 9. `@stylistic/eslint-plugin` is ESM-only and is loaded with `require()`, which needs Node's built-in `require(esm)` support, and `@eslint/compat` (used to support `eslint-plugin-react` on ESLint 10) requires the same versions.
 
 ## Contributing
 
@@ -18,22 +48,27 @@ See [CONTRIBUTING.md](https://github.com/Automattic/eslint-config-wpvip/blob/tru
 
 ## Configuration
 
-Create an `.eslintrc.js` file. If you use the `recommended` preset, you can preload the optional integrations with `init`.
+Create an `eslint.config.cjs` file. The `.cjs` extension makes Node.js treat it as CommonJS even if your `package.json` has `"type": "module"`. The examples in this README use this file:
+
+```js
+const wpvip = require( '@automattic/eslint-plugin-wpvip' );
+
+module.exports = [ ...wpvip.configs.recommended ];
+```
+
+And that's it! It works automatically with most JavaScript and TypeScript projects.
+
+The `typescript`, `testing`, `react`, and `prettier` parts of `recommended` are loaded only when the corresponding package is installed. If you need those optional configs resolved up front rather than when `recommended` is loaded, require `init` first. It uses the same detection as `recommended`, so optional integrations whose package is not installed are still skipped:
 
 ```js
 require( '@automattic/eslint-plugin-wpvip/init' );
-
-module.exports = {
-	extends: [ 'plugin:@automattic/wpvip/recommended' ],
-	root: true,
-};
 ```
 
-And that's it! It works automatically with most Babel and TypeScript projects. Code editors that are configured to work with ESLint will automatically pick up the rules and flag any errors or warnings.
+Code editors that are configured to work with ESLint will automatically pick up the rules and flag any errors or warnings.
 
 If your project uses only JavaScript, you do not need to install the optional peers. If you use the modular `typescript`, `testing`, `react`, or `prettier` configs directly, install the corresponding package in your project first.
 
-You may also wish to define an `.eslintignore` file if there are files or paths that you do not want to lint.
+To skip files or paths, add a config object with `ignores` (for example `{ ignores: [ 'dist/**' ] }`) to the array.
 
 Package scripts can be useful to run linting and formatting commands automatically. Here are some suggested scripts for your project's `package.json`—only copy the ones that are useful to you. The `cmd:` scripts help you compose commands without repeating verbose CLI arguments.
 
@@ -41,7 +76,7 @@ Package scripts can be useful to run linting and formatting commands automatical
 {
 	"scripts": {
 		"cmd:format": "prettier '**/*.(js|json|jsx|md|ts|tsx|yml|yaml)'",
-		"cmd:lint": "eslint --ext 'js,jsx,ts,tsx'",
+		"cmd:lint": "eslint",
 		"format": "npm run cmd:format -- --write",
 		"format:check": "npm run cmd:format -- --check",
 		"lint": "npm run cmd:lint .",
@@ -51,7 +86,7 @@ Package scripts can be useful to run linting and formatting commands automatical
 }
 ```
 
-**Note:** ESLint automatically ignores files listed in `.eslintignore` or you can target `.gitignore` using `--ignore-path`. Similarly, Prettier automatically ignores files listed in `.prettierignore` or you can target `.gitignore` using `--ignore-path`.
+**Note:** ESLint reads ignore patterns from the `ignores` key in `eslint.config.cjs`; to reuse `.gitignore`, see [`includeIgnoreFile`](https://eslint.org/docs/latest/use/configure/ignore#including-gitignore-files). Prettier automatically ignores files listed in `.prettierignore` or you can target `.gitignore` using `--ignore-path`.
 
 ## Recommended config
 
@@ -60,26 +95,26 @@ The "recommended" config includes rules for JavaScript, TypeScript, Jest, and Re
 Of course, this recommended config may not be ideal for every project, so feel free to "build your own" using the available modular configs. The recommended config is equivalent to:
 
 ```js
-module.exports = {
-	extends: [
-		'plugin:@automattic/wpvip/javascript',
-		'plugin:@automattic/wpvip/formatting',
-		'plugin:@automattic/wpvip/typescript', // when "typescript" is installed
-		'plugin:@automattic/wpvip/testing', // when "jest" is installed
-		'plugin:@automattic/wpvip/react', // when "react" is installed
-		'plugin:@automattic/wpvip/prettier', // when "prettier" is installed
-	],
-};
+const wpvip = require( '@automattic/eslint-plugin-wpvip' );
+
+module.exports = [
+	...wpvip.configs.javascript,
+	...wpvip.configs.formatting,
+	...wpvip.configs.typescript, // when "typescript" is installed
+	...wpvip.configs.testing, // when "jest" is installed
+	...wpvip.configs.react, // when "react" is installed
+	...wpvip.configs.prettier, // when "prettier" is installed
+];
 ```
 
 Note that the order of configs can matter, since they can contain overrides. It is particularly important to add the `prettier` config last.
 
 ### Prettier
 
-Install [WP Prettier](https://github.com/Automattic/wp-prettier) v2.x to benefit from additional formatting rules:
+Install [WP Prettier](https://github.com/Automattic/wp-prettier) v3.x to benefit from additional formatting rules:
 
 ```sh
-npm i --save-dev --save-exact "prettier@npm:wp-prettier@2.8.5"
+npm i --save-dev --save-exact "prettier@npm:wp-prettier@3.0.3"
 ```
 
 This repo also provides a Prettier config, which you can use with the following `.prettierrc`:
@@ -99,17 +134,15 @@ For maximum benefit, see [Prettier's documentation on enabling format-on-save in
 The `cli` config allows certain behaviors that are usually against best practice but are useful in a codebase that produces a CLI tool:
 
 ```js
-module.exports = {
-	extends: [ 'plugin:@automattic/wpvip/recommended', 'plugin:@automattic/wpvip/cli' ],
-};
+module.exports = [ ...wpvip.configs.recommended, ...wpvip.configs.cli ];
 ```
 
-If your project is not a CLI tool but calls `process` methods occasionally, you probably don't need this config. Instead, disable those rules only where necessary and include an explanation:
+If your project is not a CLI tool but spawns child processes occasionally, you probably don't need this config. Instead, disable those rules only where necessary and include an explanation:
 
 ```js
-// Intentionally exiting because we have observed an unrecoverable error.
-// eslint-disable-next-line no-process-exit
-process.exit( 1 );
+// Running a fixed, trusted command.
+// eslint-disable-next-line security/detect-child-process
+const { execSync } = require( 'child_process' );
 ```
 
 Note that `console.log` is still forbidden ([see here for an explanation](https://github.com/Automattic/eslint-config-wpvip/pull/198#issuecomment-2015322062)). If you're writing one-off Node scripts, you can disable the rule per file:
@@ -123,9 +156,7 @@ Note that `console.log` is still forbidden ([see here for an explanation](https:
 JSDoc is considered optional, especially compared to better alternatives like TypeScript and OpenAPI documentation. If you want to enforce the use of JSDoc, use the `jsdoc` config:
 
 ```js
-module.exports = {
-	extends: [ 'plugin:@automattic/wpvip/recommended', 'plugin:@automattic/wpvip/jsdoc' ],
-};
+module.exports = [ ...wpvip.configs.recommended, ...wpvip.configs.jsdoc ];
 ```
 
 Note that rules that require `@param` and `@return` types are relaxed in TypeScript files.

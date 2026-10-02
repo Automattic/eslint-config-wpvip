@@ -18,7 +18,7 @@ module.exports = {
 		fixable: 'code',
 	},
 	create( context ) {
-		const comments = context.getSourceCode().getAllComments();
+		const comments = context.sourceCode.getAllComments();
 
 		/**
 		 * Locality classification of an import, one of "External",

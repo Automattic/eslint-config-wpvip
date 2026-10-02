@@ -94,7 +94,6 @@ module.exports = [
 			'jsdoc/check-values': 'off',
 			'jsdoc/empty-tags': 'error',
 			'jsdoc/implements-on-classes': 'error',
-			'jsdoc/newline-after-description': 'error',
 			'jsdoc/require-param': 'error',
 			'jsdoc/require-param-name': 'error',
 			'jsdoc/require-param-type': 'error',
