@@ -173,6 +173,41 @@ exports[`formatting rules formatting.js fixture matches snapshot 1`] = `
 ]
 `;
 
+exports[`formatting rules formatting.ts fixture matches snapshot 1`] = `
+[
+  {
+    "column": 18,
+    "line": 4,
+    "message": "Forbidden non-null assertion.",
+    "ruleId": "@typescript-eslint/no-non-null-assertion",
+  },
+  {
+    "column": 16,
+    "line": 5,
+    "message": "Unexpected space before unary operator '!'.",
+    "ruleId": "@stylistic/space-unary-ops",
+  },
+  {
+    "column": 16,
+    "line": 5,
+    "message": "Forbidden non-null assertion.",
+    "ruleId": "@typescript-eslint/no-non-null-assertion",
+  },
+  {
+    "column": 17,
+    "line": 6,
+    "message": "Forbidden non-null assertion.",
+    "ruleId": "@typescript-eslint/no-non-null-assertion",
+  },
+  {
+    "column": 18,
+    "line": 10,
+    "message": "Unary operator '!' must be followed by whitespace.",
+    "ruleId": "@stylistic/space-unary-ops",
+  },
+]
+`;
+
 exports[`linting javascript.js fixture matches snapshot 1`] = `
 [
   {
