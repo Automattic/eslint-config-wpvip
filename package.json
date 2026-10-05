@@ -7,12 +7,11 @@
     "check-types": "tsc -p tsconfig.check.json",
     "cmd:format": "prettier --ignore-path .gitignore '**/*.(js|json|jsx|md|ts|tsx|yml|yaml)' '!__fixtures__/**'",
     "cmd:jest": "jest",
-    "cmd:lint": "npm run link-plugin && eslint",
+    "cmd:lint": "eslint",
     "format": "npm run cmd:format -- --write",
     "format:check": "npm run cmd:format -- --check",
     "jest": "npm run cmd:jest",
     "jest:update-snapshot": "npm run cmd:jest -- --updateSnapshot",
-    "link-plugin": "mkdir -p ./node_modules/@automattic; ln -fns $(pwd) ./node_modules/@automattic/eslint-plugin-wpvip",
     "lint": "npm run cmd:lint .",
     "lint:fix": "npm run cmd:lint . -- --fix",
     "test": "NODE_OPTIONS=--experimental-vm-modules npm run jest"
