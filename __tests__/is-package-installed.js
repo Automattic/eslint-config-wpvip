@@ -9,40 +9,19 @@ function loadIsPackageInstalledWith( packageJson ) {
 }
 
 describe( 'isPackageInstalled', () => {
-	beforeEach( () => {
-		jest.clearAllMocks();
-	} );
-
-	it( 'returns true for dependencies', () => {
+	it.each( [
+		[ true, 'dependencies' ],
+		[ true, 'devDependencies' ],
+		// A peerDependencies entry alone doesn't mean the project installs it.
+		[ false, 'peerDependencies' ],
+	] )( 'returns %p for a package listed only in %s', ( expected, dependencyType ) => {
 		const isPackageInstalled = loadIsPackageInstalledWith( {
 			__path: '/project/package.json',
-			dependencies: {
-				react: '^19.0.0',
-			},
-		} );
-
-		expect( isPackageInstalled( 'react' ) ).toBe( true );
-	} );
-
-	it( 'returns true for devDependencies', () => {
-		const isPackageInstalled = loadIsPackageInstalledWith( {
-			__path: '/project/package.json',
-			devDependencies: {
+			[ dependencyType ]: {
 				typescript: '^6.0.0',
 			},
 		} );
 
-		expect( isPackageInstalled( 'typescript' ) ).toBe( true );
-	} );
-
-	it( 'returns false for peerDependencies without an installed dependency entry', () => {
-		const isPackageInstalled = loadIsPackageInstalledWith( {
-			__path: '/project/package.json',
-			peerDependencies: {
-				typescript: '^6.0.0',
-			},
-		} );
-
-		expect( isPackageInstalled( 'typescript' ) ).toBe( false );
+		expect( isPackageInstalled( 'typescript' ) ).toBe( expected );
 	} );
 } );

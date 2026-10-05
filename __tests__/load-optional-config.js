@@ -5,6 +5,12 @@ const debugLog = require( '../utils/debug-log' );
 const isPackageInstalled = require( '../utils/is-package-installed' );
 const loadOptionalConfig = require( '../utils/load-optional-config' );
 
+function moduleNotFoundError( moduleName ) {
+	const error = new Error( `Cannot find module '${ moduleName }'` );
+	error.code = 'MODULE_NOT_FOUND';
+	return error;
+}
+
 describe( 'loadOptionalConfig', () => {
 	beforeEach( () => {
 		jest.clearAllMocks();
@@ -27,58 +33,39 @@ describe( 'loadOptionalConfig', () => {
 		expect( loadOptionalConfig( 'react', () => config ) ).toBe( config );
 	} );
 
-	it( 'skips missing optional modules', () => {
-		const error = new Error( "Cannot find module 'prettier'" );
-		error.code = 'MODULE_NOT_FOUND';
-
+	it.each( [
+		{ missing: 'the optional peer', packageName: 'prettier', missingModule: 'prettier' },
+		{
+			missing: 'a subpath of the optional peer',
+			packageName: 'react',
+			missingModule: 'react/lib/something',
+		},
+	] )( 'skips the config when $missing is missing', ( { packageName, missingModule } ) => {
 		isPackageInstalled.mockReturnValue( true );
 
 		expect(
-			loadOptionalConfig( 'prettier', () => {
-				throw error;
+			loadOptionalConfig( packageName, () => {
+				throw moduleNotFoundError( missingModule );
 			} )
 		).toEqual( [] );
 
-		expect( debugLog ).toHaveBeenCalledWith( expect.stringContaining( 'prettier' ) );
+		expect( debugLog ).toHaveBeenCalledWith( expect.stringContaining( packageName ) );
 	} );
 
-	it( 'rethrows non-module-loading errors', () => {
-		const error = new Error( 'boom' );
-
+	it.each( [
+		{ errors: 'non-module-loading errors', packageName: 'typescript', error: new Error( 'boom' ) },
+		{
+			errors: 'MODULE_NOT_FOUND for unrelated modules',
+			packageName: 'prettier',
+			error: moduleNotFoundError( 'some-other-lib' ),
+		},
+	] )( 'rethrows $errors', ( { packageName, error } ) => {
 		isPackageInstalled.mockReturnValue( true );
 
 		expect( () =>
-			loadOptionalConfig( 'typescript', () => {
+			loadOptionalConfig( packageName, () => {
 				throw error;
 			} )
 		).toThrow( error );
-	} );
-
-	it( 'rethrows MODULE_NOT_FOUND for unrelated modules', () => {
-		const error = new Error( "Cannot find module 'some-other-lib'" );
-		error.code = 'MODULE_NOT_FOUND';
-
-		isPackageInstalled.mockReturnValue( true );
-
-		expect( () =>
-			loadOptionalConfig( 'prettier', () => {
-				throw error;
-			} )
-		).toThrow( error );
-	} );
-
-	it( 'swallows MODULE_NOT_FOUND for subpaths of the optional peer', () => {
-		const error = new Error( "Cannot find module 'react/lib/something'" );
-		error.code = 'MODULE_NOT_FOUND';
-
-		isPackageInstalled.mockReturnValue( true );
-
-		expect(
-			loadOptionalConfig( 'react', () => {
-				throw error;
-			} )
-		).toEqual( [] );
-
-		expect( debugLog ).toHaveBeenCalledWith( expect.stringContaining( 'react' ) );
 	} );
 } );

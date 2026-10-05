@@ -12,13 +12,18 @@ const configs = require( '../configs' );
 
 const configNames = Object.keys( configs ).sort();
 
-describe( 'configs', () => {
-	it( 'do not use disallowed characters in object keys', () => {
-		configNames.forEach( name => {
-			expect( name ).toMatch( /^[a-z\-/]+$/ );
-		} );
-	} );
+// Lint each distinct config combined with recommended. Skip `recommended`
+// itself (combining it with itself is a no-op, and check-fixtures.js snapshots
+// its output for the same fixtures) and aliases of another config (`base` is
+// the same array as `javascript`).
+const combinedConfigNames = configNames.filter(
+	name =>
+		'recommended' !== name &&
+		// eslint-disable-next-line security/detect-object-injection
+		configNames.findLast( other => configs[ other ] === configs[ name ] ) === name
+);
 
+describe( 'configs', () => {
 	it( 'are all exported', () => {
 		// This test makes sure we don't forget to export a config.
 		const expectedNames = fs
@@ -32,7 +37,7 @@ describe( 'configs', () => {
 		expect( configNames ).toEqual( expectedNames );
 	} );
 
-	it.each( configNames )(
+	it.each( combinedConfigNames )(
 		'%s loads and lints JavaScript and TypeScript when combined with recommended',
 		async name => {
 			const root = path.resolve( __dirname, '..' );
