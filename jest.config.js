@@ -12,4 +12,7 @@ if ( major < 24 || ( 24 === major && minor < 9 ) ) {
 module.exports = {
 	preset: 'ts-jest',
 	testEnvironment: 'node',
+	// Fixtures are linted by the tests, not run as tests. Without this,
+	// `__fixtures__/typescript.test.ts` matches Jest's default `testMatch`.
+	testPathIgnorePatterns: [ '/node_modules/', '<rootDir>/__fixtures__/' ],
 };

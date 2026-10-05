@@ -3,15 +3,17 @@ const path = require( 'path' );
 
 const configs = require( '../configs' );
 
-async function getLintMessages( fixture ) {
-	const rootPaths = [ __dirname, '..' ];
-	const eslint = new ESLint( {
-		ignore: false,
-		overrideConfigFile: path.resolve( ...rootPaths, 'eslint.config.js' ),
-		baseConfig: null,
-	} );
+const rootPaths = [ __dirname, '..' ];
 
-	const [ { messages } ] = await eslint.lintFiles(
+// Share one instance so the config file is loaded and validated only once.
+const recommendedEslint = new ESLint( {
+	ignore: false,
+	overrideConfigFile: path.resolve( ...rootPaths, 'eslint.config.js' ),
+	baseConfig: null,
+} );
+
+async function getLintMessages( fixture ) {
+	const [ { messages } ] = await recommendedEslint.lintFiles(
 		path.resolve( ...rootPaths, '__fixtures__', fixture )
 	);
 

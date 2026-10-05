@@ -44,10 +44,4 @@ describe( 'resolver settings', () => {
 		);
 		expect( require( '..' ).typescriptResolverPath ).toBe( typescriptResolverPath );
 	} );
-
-	it( 'exposes typescriptResolverPath on the plugin entry point', () => {
-		const plugin = require( '..' );
-		expect( typeof plugin.typescriptResolverPath ).toBe( 'string' );
-		expect( path.isAbsolute( plugin.typescriptResolverPath ) ).toBe( true );
-	} );
 } );
