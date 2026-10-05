@@ -35,16 +35,22 @@ describe( 'linting', () => {
 // The recommended config ends with the prettier config, which turns the
 // formatting rules off. Lint without it so the formatting rules are covered.
 describe( 'formatting rules', () => {
-	it( 'formatting.js fixture matches snapshot', async () => {
+	it.each( [
+		[ 'formatting.js', () => [ ...configs.javascript, ...configs.formatting ] ],
+		[
+			'formatting.ts',
+			() => [ ...configs.javascript, ...configs.formatting, ...configs.typescript ],
+		],
+	] )( '%s fixture matches snapshot', async ( fixture, getConfig ) => {
 		const eslint = new ESLint( {
 			cwd: path.resolve( __dirname, '..' ),
 			ignore: false,
 			overrideConfigFile: true,
-			overrideConfig: [ ...configs.javascript, ...configs.formatting ],
+			overrideConfig: getConfig(),
 		} );
 
 		const [ { messages } ] = await eslint.lintFiles(
-			path.resolve( __dirname, '..', '__fixtures__', 'formatting.js' )
+			path.resolve( __dirname, '..', '__fixtures__', fixture )
 		);
 
 		expect(

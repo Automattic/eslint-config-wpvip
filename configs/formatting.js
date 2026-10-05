@@ -105,7 +105,13 @@ module.exports = [
 
 			'@stylistic/space-infix-ops': 'error',
 
-			'@stylistic/space-unary-ops': [ 'error', { overrides: { '!': true, yield: true } } ],
+			// Logical NOT should be followed by a space (`! foo`). TypeScript non-null
+			// assertions (`foo!`) share the `!` override unless `ts-non-null` is set,
+			// so keep them unspaced.
+			'@stylistic/space-unary-ops': [
+				'error',
+				{ overrides: { '!': true, 'ts-non-null': false, yield: true } },
+			],
 
 			// Comments should always include consistent spacing for readability.
 			'@stylistic/spaced-comment': 'warn',
