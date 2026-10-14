@@ -1,0 +1,7 @@
+{
+  // Type-aware linting of the fixtures only needs the fixtures. Without this
+  // file they use the root tsconfig.json, whose program also includes the rule
+  // tests and the type declarations they import (typescript, typescript-eslint).
+  "extends": "../tsconfig.json",
+  "include": [ "**/*.ts", "**/*.tsx" ]
+}
